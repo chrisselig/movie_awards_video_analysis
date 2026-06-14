@@ -1,0 +1,7 @@
+yt-dlp
+youtube-transcript-api
+libsql-experimental
+nltk
+python-dotenv
+pytest
+ruff

@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Justin & Tyler Movie Awards: A Forensic Linguistic Investigation</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        :root {
+            --bg: #faf7f2;
+            --text: #1a1a1a;
+            --accent: #c0392b;
+            --accent2: #2c3e50;
+            --accent3: #e67e22;
+            --muted: #7f8c8d;
+            --border: #ddd;
+            --card-bg: #fff;
+            --highlight: #ffeaa7;
+            --justin: #c0392b;
+            --tyler: #2980b9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+        header {
+            text-align: center;
+            padding: 80px 0 40px;
+            border-bottom: 3px double var(--text);
+            margin-bottom: 60px;
+        }
+        header .kicker {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        header .subtitle {
+            font-size: 20px;
+            color: var(--muted);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+        header .byline {
+            margin-top: 24px;
+            font-size: 13px;
+            color: var(--muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .filter-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+            margin-bottom: 40px;
+        }
+        .filter-bar .inner {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .filter-bar label {
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+        }
+        .filter-bar select {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 14px;
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .filter-bar .active-filter {
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .speaker-toggle {
+            display: flex;
+            gap: 4px;
+        }
+        .speaker-btn {
+            padding: 5px 14px;
+            border: 2px solid var(--border);
+            background: var(--card-bg);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.15s;
+        }
+        .speaker-btn.active {
+            color: #fff;
+            border-color: transparent;
+        }
+        .speaker-btn[data-speaker="all"].active { background: var(--text); }
+        .speaker-btn[data-speaker="Justin"].active { background: var(--justin); }
+        .speaker-btn[data-speaker="Tyler"].active { background: var(--tyler); }
+
+        .section { margin-bottom: 80px; }
+        .section-header {
+            border-top: 2px solid var(--text);
+            padding-top: 8px;
+            margin-bottom: 24px;
+        }
+        .section-header .section-kicker {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+        .section-header .section-sub {
+            font-size: 16px;
+            color: var(--muted);
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        .narrative {
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            max-width: 680px;
+        }
+        .narrative .highlight { background: var(--highlight); padding: 1px 4px; }
+        .narrative strong { color: var(--accent); }
+
+        .chart-container {
+            margin: 32px 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 24px;
+            position: relative;
+        }
+        .chart-container .chart-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .chart-container .chart-subtitle {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+        .chart-container .chart-source {
+            font-size: 11px;
+            color: var(--muted);
+            font-family: 'JetBrains Mono', monospace;
+            margin-top: 12px;
+        }
+
+        .big-numbers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+        .big-number {
+            text-align: center;
+            padding: 24px 16px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+        }
+        .big-number .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1;
+        }
+        .big-number .label {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .records-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .record-card {
+            padding: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+        }
+        .record-card .record-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+        .record-card .record-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .record-card .record-detail {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* Speaker comparison */
+        .speaker-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 32px 0;
+        }
+        .speaker-card {
+            padding: 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--muted);
+        }
+        .speaker-card.justin { border-top-color: var(--justin); }
+        .speaker-card.tyler { border-top-color: var(--tyler); }
+        .speaker-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+        .speaker-card .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+        }
+        .speaker-card .stat-row .stat-label { color: var(--muted); }
+        .speaker-card .stat-row .stat-value { font-weight: 600; }
+
+        svg text { font-family: 'Source Sans 3', sans-serif; }
+        .axis text { font-size: 12px; fill: var(--muted); }
+        .axis line, .axis path { stroke: var(--border); }
+
+        .tooltip {
+            position: absolute;
+            background: var(--text);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s;
+            z-index: 999;
+            max-width: 300px;
+        }
+        .tooltip .tt-title { font-weight: 700; margin-bottom: 4px; }
+
+        .word-cloud text { cursor: default; transition: opacity 0.2s; }
+        .word-cloud text:hover { opacity: 0.7; }
+
+        .pull-quote {
+            border-left: 4px solid var(--accent);
+            padding: 16px 24px;
+            margin: 32px 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-style: italic;
+            color: var(--accent2);
+        }
+        .pull-quote .attribution {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-style: normal;
+            color: var(--muted);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .no-speaker-note {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 12px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 32px; }
+            .section-header h2 { font-size: 24px; }
+            .records-grid, .speaker-comparison { grid-template-columns: 1fr; }
+            .big-numbers { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 80px 0;
+            font-size: 18px;
+            color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="kicker">A Forensic Linguistic Investigation</div>
+        <h1>The Justin & Tyler<br>Movie Awards</h1>
+        <div class="subtitle">We analyzed every word from 124 videos so you don't have to. Here's what we found when we put their mouths under the microscope.</div>
+        <div class="byline">Data analysis performed on transcripts spanning 2011 &ndash; 2025</div>
+    </header>
+</div>
+
+<div class="filter-bar">
+    <div class="container">
+        <div class="inner">
+            <label>Year:</label>
+            <select id="filter-year"><option value="all">All Years</option></select>
+            <label>Video:</label>
+            <select id="filter-video"><option value="all">All Videos</option></select>
+            <label>Speaker:</label>
+            <div class="speaker-toggle" id="speaker-toggle">
+                <button class="speaker-btn active" data-speaker="all">Both</button>
+                <button class="speaker-btn" data-speaker="Justin">Justin</button>
+                <button class="speaker-btn" data-speaker="Tyler">Tyler</button>
+            </div>
+            <span class="active-filter" id="active-filter-label"></span>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="main-content">
+    <div class="loading">Loading data...</div>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+let DATA = null;
+let currentYear = "all";
+let currentVideo = "all";
+let currentSpeaker = "all";
+
+const tooltip = d3.select("#tooltip");
+const fmt = d3.format(",");
+const fmtDec = d3.format(",.1f");
+
+function showTooltip(event, html) {
+    tooltip.html(html).style("opacity", 1)
+        .style("left", (event.pageX + 12) + "px")
+        .style("top", (event.pageY - 12) + "px");
+}
+function hideTooltip() { tooltip.style("opacity", 0); }
+
+function speakerColor(s) {
+    return s === "Justin" ? "var(--justin)" : s === "Tyler" ? "var(--tyler)" : "var(--accent2)";
+}
+
+d3.json("data.json").then(data => {
+    DATA = data;
+    initFilters();
+    render();
+}).catch(err => {
+    document.getElementById("main-content").innerHTML =
+        `<div class="loading">Error loading data: ${err.message}</div>`;
+});
+
+function initFilters() {
+    const yearSelect = d3.select("#filter-year");
+    Object.keys(DATA.by_year).sort().forEach(y => {
+        yearSelect.append("option").attr("value", y).text(y);
+    });
+    yearSelect.on("change", function() {
+        currentYear = this.value;
+        currentVideo = "all";
+        updateVideoFilter();
+        render();
+    });
+
+    d3.select("#filter-video").on("change", function() {
+        currentVideo = this.value;
+        render();
+    });
+
+    d3.selectAll(".speaker-btn").on("click", function() {
+        d3.selectAll(".speaker-btn").classed("active", false);
+        d3.select(this).classed("active", true);
+        currentSpeaker = this.dataset.speaker;
+        render();
+    });
+
+    updateVideoFilter();
+}
+
+function updateVideoFilter() {
+    const sel = d3.select("#filter-video");
+    sel.selectAll("option").remove();
+    sel.append("option").attr("value", "all").text("All Videos");
+    getFilteredVideos().sort((a,b) => (a.title||"").localeCompare(b.title||"")).forEach(v => {
+        sel.append("option").attr("value", v.video_id)
+            .text(v.title.length > 55 ? v.title.slice(0,52)+"..." : v.title);
+    });
+}
+
+function getFilteredVideos() {
+    let videos = Object.values(DATA.videos);
+    if (currentYear !== "all") videos = videos.filter(v => v.year == currentYear);
+    return videos;
+}
+
+function getActiveVideos() {
+    if (currentVideo !== "all") {
+        const v = DATA.videos[currentVideo];
+        return v ? [v] : [];
+    }
+    return getFilteredVideos();
+}
+
+// Aggregate word_frequency arrays across videos, optionally for a speaker
+function aggWordFreq(videos, speaker) {
+    const combined = {};
+    videos.forEach(v => {
+        let data;
+        if (speaker && speaker !== "all" && v.by_speaker && v.by_speaker[speaker]) {
+            data = v.by_speaker[speaker].word_frequency;
+        } else if (speaker === "all" || !speaker) {
+            data = v.word_frequency;
+        } else return;
+        if (!data) return;
+        data.forEach(([word, count]) => { combined[word] = (combined[word]||0) + count; });
+    });
+    return Object.entries(combined).sort((a,b) => b[1]-a[1]);
+}
+
+function aggFillers(videos, speaker) {
+    const combined = {};
+    videos.forEach(v => {
+        let data;
+        if (speaker && speaker !== "all" && v.by_speaker && v.by_speaker[speaker]) {
+            data = v.by_speaker[speaker].filler_words;
+        } else if (speaker === "all" || !speaker) {
+            data = v.filler_words;
+        } else return;
+        if (!data) return;
+        Object.entries(data).forEach(([w, d]) => {
+            combined[w] = (combined[w]||0) + d.count;
+        });
+    });
+    return Object.entries(combined).sort((a,b) => b[1]-a[1]);
+}
+
+function aggSuperlatives(videos, speaker) {
+    const combined = {};
+    videos.forEach(v => {
+        let data;
+        if (speaker && speaker !== "all" && v.by_speaker && v.by_speaker[speaker]) {
+            data = v.by_speaker[speaker].superlatives;
+        } else if (speaker === "all" || !speaker) {
+            data = v.superlatives;
+        } else return;
+        if (!data || !data.words) return;
+        Object.entries(data.words).forEach(([w, d]) => {
+            combined[w] = (combined[w]||0) + d.count;
+        });
+    });
+    return Object.entries(combined).sort((a,b) => b[1]-a[1]);
+}
+
+function hasSpeakerData(videos) {
+    return videos.some(v => v.has_speaker_data);
+}
+
+function render() {
+    const container = d3.select("#main-content");
+    container.html("");
+    const videos = getActiveVideos();
+    const sp = currentSpeaker;
+    const label = currentVideo !== "all"
+        ? DATA.videos[currentVideo]?.title
+        : currentYear !== "all" ? `${currentYear} Awards` : "All Years (2011-2025)";
+    d3.select("#active-filter-label").text(
+        (sp !== "all" ? sp + " - " : "") + label
+    );
+
+    if (!videos.length) {
+        container.append("div").attr("class","loading").text("No data for this selection.");
+        return;
+    }
+
+    if (sp !== "all" && !hasSpeakerData(videos)) {
+        container.append("div").attr("class","no-speaker-note").html(
+            `<strong>Speaker data not yet available.</strong> Run the diarization pipeline (<code>python diarize.py</code>) to enable per-speaker analysis. Showing combined data instead.`
+        );
+    }
+
+    renderBigNumbers(container, videos, sp);
+    renderNarrative(container, videos, sp);
+    if (sp === "all" && DATA.has_speaker_data) renderSpeakerComparison(container, videos);
+    renderWordCloud(container, videos, sp);
+    renderFillerWordsChart(container, videos, sp);
+    renderSuperlativeChart(container, videos, sp);
+    if (currentVideo === "all") renderVocabularyEvolution(container, sp);
+    if (videos.length === 1) renderEnergyTimeline(container, videos[0]);
+    renderHarmonyMeter(container, videos);
+    renderHotTakes(container, videos, sp);
+    if (currentVideo === "all") renderRecords(container);
+    if (currentVideo === "all") renderFillerEvolution(container, sp);
+    renderFooter(container);
+}
+
+function renderBigNumbers(container, videos, speaker) {
+    const section = container.append("div").attr("class","section");
+    let totalWords = 0, totalMin = 0, totalFillers = 0, totalSups = 0;
+
+    videos.forEach(v => {
+        if (speaker !== "all" && v.by_speaker && v.by_speaker[speaker]) {
+            const sp = v.by_speaker[speaker];
+            totalWords += sp.vocabulary?.total_words || 0;
+            totalMin += (sp.speaking_time_seconds || 0) / 60;
+            totalFillers += Object.values(sp.filler_words || {}).reduce((s,f) => s + f.count, 0);
+            totalSups += sp.superlatives?.total || 0;
+        } else {
+            totalWords += v.vocabulary?.total_words || 0;
+            totalMin += v.duration_min || 0;
+            totalFillers += Object.values(v.filler_words || {}).reduce((s,f) => s + f.count, 0);
+            totalSups += v.superlatives?.total || 0;
+        }
+    });
+    const avgWpm = totalMin > 0 ? Math.round(totalWords / totalMin) : 0;
+
+    const nums = section.append("div").attr("class","big-numbers");
+    [[fmt(videos.length), "Videos"],
+     [fmt(totalWords), "Words Spoken"],
+     [fmtDec(totalMin / 60), "Hours"],
+     [fmt(avgWpm), "Avg Words/Min"],
+     [fmt(totalFillers), "Filler Words"],
+     [fmt(totalSups), "Superlatives"]
+    ].forEach(([num, lbl]) => {
+        const card = nums.append("div").attr("class","big-number");
+        card.append("div").attr("class","number").text(num);
+        card.append("div").attr("class","label").text(lbl);
+    });
+}
+
+function renderNarrative(container, videos, speaker) {
+    const section = container.append("div").attr("class","section");
+    let totalWords = 0, totalMin = 0;
+    const fillerAgg = {};
+    videos.forEach(v => {
+        const src = (speaker !== "all" && v.by_speaker?.[speaker]) || v;
+        totalWords += src.vocabulary?.total_words || 0;
+        totalMin += (src.speaking_time_seconds ? src.speaking_time_seconds/60 : v.duration_min) || 0;
+        const fw = src.filler_words || {};
+        Object.entries(fw).forEach(([w,d]) => { fillerAgg[w] = (fillerAgg[w]||0) + d.count; });
+    });
+    const totalFillers = Object.values(fillerAgg).reduce((s,c) => s+c, 0);
+    const fillerPct = totalWords > 0 ? (totalFillers / totalWords * 100).toFixed(1) : 0;
+    const topFiller = Object.entries(fillerAgg).sort((a,b) => b[1]-a[1])[0];
+    const who = speaker !== "all" ? speaker : "Justin and Tyler";
+    const novels = Math.round(totalWords / 80000);
+
+    section.append("div").attr("class","narrative").html(
+        `Over <strong>${fmt(videos.length)} videos</strong> and ` +
+        `<strong>${fmtDec(totalMin)} minutes</strong>, ${who} spoke ` +
+        `approximately <strong>${fmt(totalWords)} words</strong> about movies. ` +
+        `That's roughly ${novels} novel${novels !== 1 ? 's' : ''}. ` +
+        (topFiller ? `Favorite verbal crutch? <span class="highlight">"${topFiller[0]}"</span>, ` +
+        `uttered <strong>${fmt(topFiller[1])} times</strong>. ` : '') +
+        `About <strong>${fillerPct}%</strong> of everything is filler.`
+    );
+}
+
+function renderSpeakerComparison(container, videos) {
+    if (!DATA.by_speaker || !Object.keys(DATA.by_speaker).length) return;
+
+    const section = container.append("div").attr("class","section");
+    const header = section.append("div").attr("class","section-header");
+    header.append("div").attr("class","section-kicker").text("Head to Head");
+    header.append("h2").text("Justin vs. Tyler: The Tale of the Tape");
+    header.append("div").attr("class","section-sub").text("Who talks more? Who uses bigger words? Who can't stop saying 'amazing'?");
+
+    const grid = section.append("div").attr("class","speaker-comparison");
+
+    ["Justin", "Tyler"].forEach(name => {
+        const stats = DATA.by_speaker[name];
+        if (!stats) return;
+        const card = grid.append("div").attr("class", `speaker-card ${name.toLowerCase()}`);
+        card.append("h3").text(name);
+
+        const rows = [
+            ["Total Words", fmt(stats.total_words)],
+            ["Speaking Time", fmtDec(stats.total_speaking_time_min) + " min"],
+            ["Words/Minute", fmtDec(stats.words_per_minute)],
+            ["Unique Words", fmt(stats.unique_words)],
+            ["Vocabulary (TTR)", stats.ttr],
+            ["Fillers/Minute", stats.filler_per_minute],
+            ["Superlatives/Min", stats.superlative_per_minute],
+            ["Hot Takes", fmt(stats.hot_takes)],
+            ["Top Filler", stats.top_fillers?.[0] ? `"${stats.top_fillers[0][0]}" (${stats.top_fillers[0][1]}x)` : "N/A"],
+            ["Top Superlative", stats.top_superlatives?.[0] ? `"${stats.top_superlatives[0][0]}" (${stats.top_superlatives[0][1]}x)` : "N/A"],
+        ];
+
+        rows.forEach(([lbl, val]) => {
+            const row = card.append("div").attr("class","stat-row");
+            row.append("span").attr("class","stat-label").text(lbl);
+            row.append("span").attr("class","stat-value").text(val);
+        });
+    });
+
+    // Speaking time bar comparison
+    const jTime = DATA.by_speaker.Justin?.total_speaking_time_min || 0;
+    const tTime = DATA.by_speaker.Tyler?.total_speaking_time_min || 0;
+    const total = jTime + tTime;
+    if (total > 0) {
+        const chart = section.append("div").attr("class","chart-container");
+        chart.append("div").attr("class","chart-title").text("Who Dominates the Mic?");
+        const svg = chart.append("svg").attr("viewBox","0 0 900 60");
+        const jPct = jTime / total;
+        svg.append("rect").attr("x",20).attr("y",10).attr("width",(860)*jPct).attr("height",40)
+            .attr("fill","var(--justin)").attr("rx",4);
+        svg.append("rect").attr("x",20+(860)*jPct).attr("y",10).attr("width",(860)*(1-jPct)).attr("height",40)
+            .attr("fill","var(--tyler)").attr("rx",4);
+        svg.append("text").attr("x",30).attr("y",35).attr("fill","#fff").attr("font-weight","700")
+            .attr("font-size","14px").text(`Justin: ${(jPct*100).toFixed(0)}%`);
+        svg.append("text").attr("x",880).attr("y",35).attr("fill","#fff").attr("font-weight","700")
+            .attr("font-size","14px").attr("text-anchor","end").text(`Tyler: ${((1-jPct)*100).toFixed(0)}%`);
+    }
+}
+
+function renderWordCloud(container, videos, speaker) {
+    const section = container.append("div").attr("class","section");
+    const header = section.append("div").attr("class","section-header");
+    header.append("div").attr("class","section-kicker").text("Lexical Obsessions");
+    header.append("h2").text(speaker !== "all" ? `What ${speaker} Can't Stop Saying` : "What They Can't Stop Talking About");
+    header.append("div").attr("class","section-sub").text("Most frequently used words, stop words removed. Size = frequency.");
+
+    const wordData = aggWordFreq(videos, speaker).slice(0, 60);
+    if (!wordData.length) return;
+
+    const chart = section.append("div").attr("class","chart-container");
+    const width = 900, height = 400;
+    const svg = chart.append("svg").attr("viewBox",`0 0 ${width} ${height}`).attr("class","word-cloud");
+
+    const maxCount = wordData[0][1];
+    const fontSize = d3.scaleSqrt().domain([wordData[wordData.length-1][1], maxCount]).range([10, 52]);
+    const color = d3.scaleOrdinal().range(["#c0392b","#2c3e50","#e67e22","#27ae60","#8e44ad","#2980b9","#d35400"]);
+    const cx = width/2, cy = height/2;
+
+    wordData.forEach(([word, count], i) => {
+        const size = fontSize(count);
+        const angle = i * 0.7;
+        const radius = Math.sqrt(i) * 28;
+        let x = Math.max(size*2, Math.min(width-size*2, cx + radius*Math.cos(angle)));
+        let y = Math.max(size, Math.min(height-size/2, cy + radius*Math.sin(angle)));
+
+        svg.append("text").attr("x",x).attr("y",y).attr("text-anchor","middle")
+            .attr("font-size",size+"px").attr("font-weight",size>30?700:400)
+            .attr("fill",color(i%7)).attr("opacity",0.85).text(word)
+            .on("mouseover", function(event) {
+                showTooltip(event, `<div class="tt-title">"${word}"</div>Used ${fmt(count)} times`);
+                d3.select(this).attr("opacity",1);
+            })
+            .on("mouseout", function() { hideTooltip(); d3.select(this).attr("opacity",0.85); });
+    });
+    chart.append("div").attr("class","chart-source").text("Source: YouTube auto-generated transcripts");
+}
+
+function renderFillerWordsChart(container, videos, speaker) {
+    const section = container.append("div").attr("class","section");
+    const header = section.append("div").attr("class","section-header");
+    header.append("div").attr("class","section-kicker").text("Verbal Tics");
+    header.append("h2").text(speaker !== "all" ? `${speaker}'s Crutch Collection` : "The Crutch Collection");
+    header.append("div").attr("class","section-sub").text("How often they lean on filler words. We all do it. They do it more.");
+
+    const fillerData = aggFillers(videos, speaker).slice(0, 12);
+    if (!fillerData.length) return;
+
+    const chart = section.append("div").attr("class","chart-container");
+    const margin = {top:20,right:30,bottom:40,left:110};
+    const width = 900-margin.left-margin.right;
+    const height = fillerData.length*40+margin.top+margin.bottom;
+
+    const svg = chart.append("svg")
+        .attr("viewBox",`0 0 ${width+margin.left+margin.right} ${height}`)
+        .append("g").attr("transform",`translate(${margin.left},${margin.top})`);
+
+    const x = d3.scaleLinear().domain([0,d3.max(fillerData,d=>d[1])]).range([0,width]);
+    const y = d3.scaleBand().domain(fillerData.map(d=>d[0])).range([0,height-margin.top-margin.bottom]).padding(0.3);
+
+    const barColor = speaker === "Justin" ? "var(--justin)" : speaker === "Tyler" ? "var(--tyler)" : "var(--accent)";
+
+    svg.selectAll("rect").data(fillerData).join("rect")
+        .attr("x",0).attr("y",d=>y(d[0])).attr("width",d=>x(d[1])).attr("height",y.bandwidth())
+        .attr("fill",barColor).attr("opacity",0.8)
+        .on("mouseover",function(event,d){showTooltip(event,`<div class="tt-title">"${d[0]}"</div>${fmt(d[1])} times`);d3.select(this).attr("opacity",1);})
+        .on("mouseout",function(){hideTooltip();d3.select(this).attr("opacity",0.8);});
+
+    svg.selectAll(".bar-label").data(fillerData).join("text")
+        .attr("x",d=>x(d[1])+6).attr("y",d=>y(d[0])+y.bandwidth()/2).attr("dy","0.35em")
+        .attr("font-size","13px").attr("fill","#666").text(d=>fmt(d[1]));
+
+    svg.append("g").call(d3.axisLeft(y).tickSize(0)).selectAll("text")
+        .attr("font-size","14px").attr("font-weight","600").attr("fill","#333");
+    svg.select(".domain").remove();
+}
+
+function renderSuperlativeChart(container, videos, speaker) {
+    const section = container.append("div").attr("class","section");
+    const header = section.append("div").attr("class","section-header");
+    header.append("div").attr("class","section-kicker").text("Hyperbole Index");
+    header.append("h2").text("Everything Is Either a Masterpiece or Garbage");
+    header.append("div").attr("class","section-sub").text("Tracking their addiction to extreme language.");
+
+    const supData = aggSuperlatives(videos, speaker).slice(0, 15);
+    if (!supData.length) return;
+
+    const totalSups = d3.sum(supData,d=>d[1]);
+    let totalWords = 0;
+    videos.forEach(v => {
+        const src = (speaker !== "all" && v.by_speaker?.[speaker]) || v;
+        totalWords += src.vocabulary?.total_words || 0;
+    });
+    const supPct = totalWords > 0 ? (totalSups/totalWords*100).toFixed(2) : 0;
+
+    section.append("div").attr("class","narrative").html(
+        `Nuance is an endangered species. <strong>${supPct}%</strong> of all words are superlatives. ` +
+        `"${supData[0][0]}" has been deployed <strong>${fmt(supData[0][1])} times</strong>. ` +
+        `Films are never "decent" - they're either <em>masterpieces</em> or <em>unwatchable garbage</em>.`
+    );
+
+    const chart = section.append("div").attr("class","chart-container");
+    const margin = {top:10,right:20,bottom:60,left:50};
+    const width = 900-margin.left-margin.right, height = 300-margin.top-margin.bottom;
+    const svg = chart.append("svg")
+        .attr("viewBox",`0 0 ${width+margin.left+margin.right} ${height+margin.top+margin.bottom}`)
+        .append("g").attr("transform",`translate(${margin.left},${margin.top})`);
+
+    const x = d3.scaleBand().domain(supData.map(d=>d[0])).range([0,width]).padding(0.2);
+    const yS = d3.scaleLinear().domain([0,d3.max(supData,d=>d[1])]).range([height,0]);
+
+    const positive = new Set(["best","greatest","amazing","incredible","fantastic","perfect",
+        "masterpiece","brilliant","genius","beautiful","stunning","phenomenal","outstanding","flawless","insane","goat"]);
+
+    svg.selectAll("rect").data(supData).join("rect")
+        .attr("x",d=>x(d[0])).attr("y",d=>yS(d[1])).attr("width",x.bandwidth()).attr("height",d=>height-yS(d[1]))
+        .attr("fill",d=>positive.has(d[0])?"#27ae60":"#c0392b").attr("opacity",0.8)
+        .on("mouseover",function(event,d){showTooltip(event,`<div class="tt-title">"${d[0]}"</div>${fmt(d[1])} uses`);d3.select(this).attr("opacity",1);})
+        .on("mouseout",function(){hideTooltip();d3.select(this).attr("opacity",0.8);});
+
+    svg.append("g").attr("transform",`translate(0,${height})`).call(d3.axisBottom(x))
+        .selectAll("text").attr("transform","rotate(-35)").attr("text-anchor","end").attr("font-size","12px");
+    svg.append("g").call(d3.axisLeft(yS).ticks(5));
+}
+
+function renderVocabularyEvolution(container, speaker) {
+    if (!DATA.by_year) return;
+    const years = Object.values(DATA.by_year)
+        .filter(y => currentYear === "all" || y.year == currentYear)
+        .sort((a,b) => a.year - b.year);
+    if (years.length < 2) return;
+
+    const section = container.append("div").attr("class","section");
+    const header = section.append("div").attr("class","section-header");
+    header.append("div").attr("class","section-kicker").text("Intellectual Trajectory");
+    header.append("h2").text("Are They Getting Smarter?");
+    header.append("div").attr("class","section-sub").text("Vocabulary richness (type-token ratio) and words-per-minute over time.");
+
+    const firstTTR = years[0].ttr, lastTTR = years[years.length-1].ttr;
+    const trend = lastTTR > firstTTR ? "expanding" : "shrinking";
+    section.append("div").attr("class","narrative").html(
+        `In ${years[0].year}, vocabulary diversity was <strong>${years[0].ttr}</strong>. ` +
+        `By ${years[years.length-1].year}, it was <strong>${years[years.length-1].ttr}</strong>. ` +
+        `Their vocabulary is <span class="highlight">${trend}</span>. ` +
+        (trend === "shrinking"
+            ? "Fewer unique words per total spoken. Either they've found their favorites, or the movies are breaking their brains."
+            : "More unique words. The movies are making them more articulate. Or they bought a thesaurus.")
+    );
+
+    const chart = section.append("div").attr("class","chart-container");
+    const margin = {top:20,right:60,bottom:40,left:60};
+    const width = 900-margin.left-margin.right, height = 280-margin.top-margin.bottom;
+    const svg = chart.append("svg")
+        .attr("viewBox",`0 0 ${width+margin.left+margin.right} ${height+margin.top+margin.bottom}`)
+        .append("g").attr("transform",`translate(${margin.left},${margin.top})`);
+
+    const x = d3.scaleLinear().domain(d3.extent(years,d=>d.year)).range([0,width]);
+    const y = d3.scaleLinear().domain([d3.min(years,d=>d.ttr)*0.9,d3.max(years,d=>d.ttr)*1.1]).range([height,0]);
+    const y2 = d3.scaleLinear().domain([d3.min(years,d=>d.words_per_minute)*0.9,d3.max(years,d=>d.words_per_minute)*1.1]).range([height,0]);
+
+    svg.append("path").datum(years)
+        .attr("d",d3.line().x(d=>x(d.year)).y(d=>y(d.ttr)).curve(d3.curveMonotoneX))
+        .attr("fill","none").attr("stroke","#c0392b").attr("stroke-width",2.5);
+    svg.append("path").datum(years)
+        .attr("d",d3.line().x(d=>x(d.year)).y(d=>y2(d.words_per_minute)).curve(d3.curveMonotoneX))
+        .attr("fill","none").attr("stroke","#2980b9").attr("stroke-width",2.5).attr("stroke-dasharray","5,3");
+
+    svg.selectAll(".dt").data(years).join("circle")
+        .attr("cx",d=>x(d.year)).attr("cy",d=>y(d.ttr)).attr("r",5).attr("fill","#c0392b")
+        .on("mouseover",(event,d)=>showTooltip(event,`<div class="tt-title">${d.year}</div>TTR: ${d.ttr}<br>WPM: ${d.words_per_minute}`))
+        .on("mouseout",hideTooltip);
+    svg.selectAll(".dw").data(years).join("circle")
+        .attr("cx",d=>x(d.year)).attr("cy",d=>y2(d.words_per_minute)).attr("r",5).attr("fill","#2980b9")
+        .on("mouseover",(event,d)=>showTooltip(event,`<div class="tt-title">${d.year}</div>WPM: ${d.words_per_minute}<br>TTR: ${d.ttr}`))
+        .on("mouseout",hideTooltip);
+
+    svg.append("g").attr("transform",`translate(0,${height})`).call(d3.axisBottom(x).ticks(years.length).tickFormat(d3.format("d")));
+    svg.append("g").call(d3.axisLeft(y).ticks(5)).append("text").attr("fill","#c0392b").attr("y",-10).attr("font-size","11px").text("TTR");
+    svg.append("g").attr("transform",`translate(${width},0)`).call(d3.axisRight(y2).ticks(5))
+        .append("text").attr("fill","#2980b9").attr("y",-10).attr("font-size","11px").text("WPM");
+
+    const legend = svg.append("g").attr("transform",`translate(${width-200},10)`);
+    legend.append("line").attr("x1",0).attr("x2",20).attr("y1",0).attr("y2",0).attr("stroke","#c0392b").attr("stroke-width",2.5);
+    legend.append("text").attr("x",25).attr("y",4).attr("font-size","12px").text("Vocabulary Richness (TTR)");
+    legend.append("line").attr("x1",0).attr("x2",20).attr("y1",20).attr("y2",20).attr("stroke","#2980b9").attr("stroke-width",2.5).attr("stroke-dasharray","5,3");
+    legend.append("text").attr("x",25).attr("y",24).attr("font-size","12px").text("Words Per Minute");
+}
+
+function renderEnergyTimeline(container, video) {
+    if (!video.energy_timeline?.length) return;
+
+    const section = container.append("div").attr("class","section");
+    const header = section.append("div").attr("class","section-header");
+    header.append("div").attr("class","section-kicker").text("Energy Map");
+    header.append("h2").text("When Do They Peak?");
+    header.append("div").attr("class","section-sub").text("Talking speed across the video timeline. Red = high superlative/filler density.");
+
+    const data = video.energy_timeline;
+    const chart = section.append("div").attr("class","chart-container");
+    const margin = {top:20,right:30,bottom:50,left:50};
+    const width = 900-margin.left-margin.right, height = 260-margin.top-margin.bottom;
+    const svg = chart.append("svg")
+        .attr("viewBox",`0 0 ${width+margin.left+margin.right} ${height+margin.top+margin.bottom}`)
+        .append("g").attr("transform",`translate(${margin.left},${margin.top})`);
+
+    const x = d3.scaleBand().domain(data.map(d=>d.pct_through+"%")).range([0,width]).padding(0.15);
+    const yE = d3.scaleLinear().domain([0,d3.max(data,d=>d.words_per_minute)*1.1]).range([height,0]);
+
+    svg.selectAll("rect").data(data).join("rect")
+        .attr("x",d=>x(d.pct_through+"%")).attr("y",d=>yE(d.words_per_minute))
+        .attr("width",x.bandwidth()).attr("height",d=>height-yE(d.words_per_minute))
+        .attr("fill",d=>{const i=d.superlatives+d.fillers;return i>10?"#c0392b":i>5?"#e67e22":"#2c3e50";})
+        .attr("opacity",0.75)
+        .on("mouseover",function(event,d){
+            let tip = `<div class="tt-title">${d.pct_through}% through</div>WPM: ${d.words_per_minute}<br>Superlatives: ${d.superlatives}<br>Fillers: ${d.fillers}`;
+            if (d.wpm_justin) tip += `<br>Justin WPM: ${d.wpm_justin}`;
+            if (d.wpm_tyler) tip += `<br>Tyler WPM: ${d.wpm_tyler}`;
+            showTooltip(event,tip);d3.select(this).attr("opacity",1);
+        })
+        .on("mouseout",function(){hideTooltip();d3.select(this).attr("opacity",0.75);});
+
+    svg.append("g").attr("transform",`translate(0,${height})`).call(d3.axisBottom(x));
+    svg.append("g").call(d3.axisLeft(yE).ticks(5));
+    svg.append("text").attr("transform","rotate(-90)").attr("y",-40).attr("x",-height/2)
+        .attr("text-anchor","middle").attr("font-size","12px").attr("fill","#666").text("Words per Minute");
+}
+
+function renderHarmonyMeter(container, videos) {
+    const section = container.append("div").attr("class","section");
+    const header = section.append("div").attr("class","section-header");
+    header.append("div").attr("class","section-kicker").text("Friendship Stress Test");
+    header.append("h2").text("The Harmony Index");
+    header.append("div").attr("class","section-sub").text("Agreement vs. disagreement markers in conversation.");
+
+    const totalAgree = d3.sum(videos,v=>v.agreement_disagreement?.agreements||0);
+    const totalDisagree = d3.sum(videos,v=>v.agreement_disagreement?.disagreements||0);
+    const total = totalAgree + totalDisagree;
+    if (!total) { section.append("div").attr("class","narrative").text("Not enough opinion data."); return; }
+
+    const ratio = totalDisagree > 0 ? (totalAgree/totalDisagree).toFixed(1) : "Infinite";
+    section.append("div").attr("class","narrative").html(
+        `For every disagreement, they agree <strong>${ratio} times</strong>. ` +
+        `Out of <strong>${fmt(total)}</strong> opinion exchanges, ` +
+        `<strong>${fmt(totalAgree)}</strong> agreements, <strong>${fmt(totalDisagree)}</strong> disagreements. ` +
+        (parseFloat(ratio) > 3 ? "They're a hive mind with two mouths." :
+         parseFloat(ratio) < 1.5 ? "They should see a couples therapist." :
+         "Healthy tension. They push back just enough.")
+    );
+
+    const chart = section.append("div").attr("class","chart-container");
+    const svg = chart.append("svg").attr("viewBox","0 0 900 80");
+    const pct = totalAgree / total;
+    svg.append("rect").attr("x",20).attr("y",20).attr("width",860*pct).attr("height",40).attr("fill","#27ae60").attr("rx",4);
+    svg.append("rect").attr("x",20+860*pct).attr("y",20).attr("width",860*(1-pct)).attr("height",40).attr("fill","#c0392b").attr("rx",4);
+    svg.append("text").attr("x",30).attr("y",45).attr("fill","#fff").attr("font-weight","700").attr("font-size","14px").text(`Agree: ${(pct*100).toFixed(0)}%`);
+    svg.append("text").attr("x",880).attr("y",45).attr("fill","#fff").attr("font-weight","700").attr("font-size","14px").attr("text-anchor","end").text(`Disagree: ${((1-pct)*100).toFixed(0)}%`);
+}
+
+function renderHotTakes(container, videos, speaker) {
+    const section = container.append("div").attr("class","section");
+    const header = section.append("div").attr("class","section-header");
+    header.append("div").attr("class","section-kicker").text("Controversy Radar");
+    header.append("h2").text("Hot Take Hall of Fame");
+    header.append("div").attr("class","section-sub").text("Unpopular opinions, overrated/underrated calls, and fighting words.");
+
+    const totalHT = d3.sum(videos,v=>{
+        if (speaker !== "all" && v.by_speaker?.[speaker]) return v.by_speaker[speaker].hot_takes?.count || 0;
+        return v.hot_takes?.count || 0;
+    });
+    const avg = videos.length > 0 ? (totalHT/videos.length).toFixed(1) : 0;
+
+    section.append("div").attr("class","narrative").html(
+        `<strong>${fmt(totalHT)} hot takes</strong> detected, averaging <strong>${avg} per video</strong>. ` +
+        (totalHT > 50 ? "Professional contrarians." : totalHT > 10 ? "Moderate spice level." : "Surprisingly mild.")
+    );
+
+    const allTakes = [];
+    videos.forEach(v => {
+        const src = (speaker !== "all" && v.by_speaker?.[speaker]) || v;
+        (src.hot_takes?.instances || []).forEach(ht => {
+            allTakes.push({...ht, video: v.title, year: v.year});
+        });
+    });
+    allTakes.slice(0,5).forEach(take => {
+        section.append("div").attr("class","pull-quote")
+            .html(`"...${take.context}..."<div class="attribution">Detected "${take.marker}" &mdash; ${take.video}</div>`);
+    });
+}
+
+function renderRecords(container) {
+    if (currentVideo !== "all" || !DATA.all_time_records) return;
+    const records = DATA.all_time_records;
+    const section = container.append("div").attr("class","section");
+    const header = section.append("div").attr("class","section-header");
+    header.append("div").attr("class","section-kicker").text("Record Book");
+    header.append("h2").text("The All-Time Superlatives");
+    header.append("div").attr("class","section-sub").text("The most extreme episodes in Justin & Tyler history.");
+
+    const grid = section.append("div").attr("class","records-grid");
+    const defs = {
+        longest_video: {label:"Marathon Award",detail:d=>`${d.duration_min} min (${d.year})`},
+        most_words_video: {label:"Most Verbose",detail:d=>`${fmt(d.word_count)} words (${d.year})`},
+        highest_wpm_video: {label:"Speed Talker",detail:d=>`${d.wpm} WPM (${d.year})`},
+        most_fillers_video: {label:"Uh... Award",detail:d=>`${fmt(d.filler_count)} fillers (${d.year})`},
+        most_superlatives_video: {label:"Drama Queen",detail:d=>`${fmt(d.superlative_count)} superlatives (${d.year})`},
+        richest_vocabulary_video: {label:"Thesaurus Rex",detail:d=>`TTR: ${d.ttr} (${d.year})`},
+        most_harmonious_video: {label:"Best Bromance",detail:d=>`Harmony ratio: ${d.ratio} (${d.year})`},
+        most_combative_video: {label:"Fight Night",detail:d=>`${d.disagreements} disagreements (${d.year})`},
+    };
+    Object.entries(defs).forEach(([key,cfg]) => {
+        const r = records[key]; if (!r) return;
+        const card = grid.append("div").attr("class","record-card");
+        card.append("div").attr("class","record-label").text(cfg.label);
+        card.append("div").attr("class","record-value").text(r.title.length>50?r.title.slice(0,47)+"...":r.title);
+        card.append("div").attr("class","record-detail").text(cfg.detail(r));
+    });
+}
+
+function renderFillerEvolution(container, speaker) {
+    if (!DATA.by_year) return;
+    const years = Object.values(DATA.by_year)
+        .filter(y => currentYear === "all" || y.year == currentYear)
+        .sort((a,b) => a.year - b.year);
+    if (years.length < 2) return;
+
+    const section = container.append("div").attr("class","section");
+    const header = section.append("div").attr("class","section-header");
+    header.append("div").attr("class","section-kicker").text("Verbal Decay");
+    header.append("h2").text("Filler Words: A Growing Epidemic?");
+    header.append("div").attr("class","section-sub").text("Filler and superlative words per minute over the years.");
+
+    const chart = section.append("div").attr("class","chart-container");
+    const margin = {top:20,right:60,bottom:40,left:60};
+    const width = 900-margin.left-margin.right, height = 260-margin.top-margin.bottom;
+    const svg = chart.append("svg")
+        .attr("viewBox",`0 0 ${width+margin.left+margin.right} ${height+margin.top+margin.bottom}`)
+        .append("g").attr("transform",`translate(${margin.left},${margin.top})`);
+
+    const x = d3.scaleLinear().domain(d3.extent(years,d=>d.year)).range([0,width]);
+    const yF = d3.scaleLinear().domain([0,d3.max(years,d=>d.filler_per_minute)*1.2]).range([height,0]);
+    const yS = d3.scaleLinear().domain([0,d3.max(years,d=>d.superlative_per_minute)*1.2]).range([height,0]);
+
+    svg.append("path").datum(years)
+        .attr("d",d3.area().x(d=>x(d.year)).y0(height).y1(d=>yF(d.filler_per_minute)).curve(d3.curveMonotoneX))
+        .attr("fill","#c0392b").attr("opacity",0.15);
+    svg.append("path").datum(years)
+        .attr("d",d3.line().x(d=>x(d.year)).y(d=>yF(d.filler_per_minute)).curve(d3.curveMonotoneX))
+        .attr("fill","none").attr("stroke","#c0392b").attr("stroke-width",2.5);
+    svg.append("path").datum(years)
+        .attr("d",d3.line().x(d=>x(d.year)).y(d=>yS(d.superlative_per_minute)).curve(d3.curveMonotoneX))
+        .attr("fill","none").attr("stroke","#e67e22").attr("stroke-width",2.5).attr("stroke-dasharray","5,3");
+
+    svg.selectAll(".df").data(years).join("circle")
+        .attr("cx",d=>x(d.year)).attr("cy",d=>yF(d.filler_per_minute)).attr("r",4).attr("fill","#c0392b")
+        .on("mouseover",(event,d)=>showTooltip(event,`<div class="tt-title">${d.year}</div>Fillers/min: ${d.filler_per_minute}<br>Superlatives/min: ${d.superlative_per_minute}`))
+        .on("mouseout",hideTooltip);
+    svg.selectAll(".ds").data(years).join("circle")
+        .attr("cx",d=>x(d.year)).attr("cy",d=>yS(d.superlative_per_minute)).attr("r",4).attr("fill","#e67e22")
+        .on("mouseover",(event,d)=>showTooltip(event,`<div class="tt-title">${d.year}</div>Superlatives/min: ${d.superlative_per_minute}`))
+        .on("mouseout",hideTooltip);
+
+    svg.append("g").attr("transform",`translate(0,${height})`).call(d3.axisBottom(x).ticks(years.length).tickFormat(d3.format("d")));
+    svg.append("g").call(d3.axisLeft(yF).ticks(5)).append("text").attr("fill","#c0392b").attr("y",-10).text("Fillers/min");
+    svg.append("g").attr("transform",`translate(${width},0)`).call(d3.axisRight(yS).ticks(5))
+        .append("text").attr("fill","#e67e22").attr("y",-10).text("Superlatives/min");
+
+    const legend = svg.append("g").attr("transform",`translate(${width-220},10)`);
+    legend.append("line").attr("x1",0).attr("x2",20).attr("y1",0).attr("y2",0).attr("stroke","#c0392b").attr("stroke-width",2.5);
+    legend.append("text").attr("x",25).attr("y",4).attr("font-size","12px").text("Filler Words / Minute");
+    legend.append("line").attr("x1",0).attr("x2",20).attr("y1",20).attr("y2",20).attr("stroke","#e67e22").attr("stroke-width",2.5).attr("stroke-dasharray","5,3");
+    legend.append("text").attr("x",25).attr("y",24).attr("font-size","12px").text("Superlatives / Minute");
+}
+
+function renderFooter(container) {
+    const section = container.append("div").attr("class","section")
+        .style("border-top","2px solid #1a1a1a").style("padding-top","24px").style("margin-bottom","80px");
+    section.append("div").attr("class","narrative").html(
+        `<strong>Methodology:</strong> Transcripts from YouTube auto-generated captions via YouTube Transcript API. ` +
+        `Word analysis uses NLTK (English stop words removed). Speaker diarization via pyannote.audio ` +
+        `(when available). Filler words, superlatives, and opinion markers use keyword matching against curated lists. ` +
+        `<br><br>Caveats: Auto-generated transcripts aren't perfect. Sarcasm detection remains impossible for machines. ` +
+        `Speaker attribution depends on diarization quality. This analysis should be taken with approximately zero seriousness.`
+    );
+    section.append("div").style("font-size","12px").style("color","#999")
+        .style("font-family","JetBrains Mono, monospace").style("margin-top","16px")
+        .html(`Generated ${new Date().toLocaleDateString()} | Data: @BridgewatersFinest | ` +
+              `${DATA.diarized_videos || 0}/${DATA.total_videos} videos with speaker data`);
+}
+</script>
+</body>
+</html>

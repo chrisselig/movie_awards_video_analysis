@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+.env
+audio/
+*.wav
+*.webm
+*.mp3
+.vercel/
+node_modules/
