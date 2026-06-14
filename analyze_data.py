@@ -66,6 +66,9 @@ REACTION_PATTERNS = {
 
 SPEAKERS = ["Justin", "Tyler"]
 
+# Castle the Rabbit - Tyler's rabbit named after Frank Castle (The Punisher)
+CASTLE_PATTERNS = re.compile(r'\bcastle\b', re.I)
+
 
 def log(msg):
     print(msg, flush=True)
@@ -308,6 +311,33 @@ def analyze_movie_mentions(segments):
     }
 
 
+def analyze_castle(segments):
+    """Track mentions of Castle the Rabbit (Tyler's rabbit, named after The Punisher).
+    Also detects 'Castle Award' references - an actual award category in the show."""
+    mentions = []
+    full_text = " ".join(s["text"] for s in segments)
+
+    for seg in segments:
+        if CASTLE_PATTERNS.search(seg["text"]):
+            mentions.append({
+                "time": seg["start"],
+                "text": seg["text"].strip(),
+            })
+
+    # Count from full text for accuracy
+    total_count = len(CASTLE_PATTERNS.findall(full_text))
+    castle_award_count = len(re.findall(r'castle\s+award', full_text, re.I))
+    movie_refs = len(re.findall(r'infinity\s+castle', full_text, re.I))
+
+    return {
+        "total_mentions": total_count,
+        "castle_award_mentions": castle_award_count,
+        "movie_castle_mentions": movie_refs,
+        "rabbit_mentions": max(total_count - castle_award_count - movie_refs, 0),
+        "contexts": mentions[:10],
+    }
+
+
 def analyze_video(vdata):
     """Run all analyses for a single video, including per-speaker breakdowns."""
     segments = vdata["segments"]
@@ -333,6 +363,7 @@ def analyze_video(vdata):
         "energy_timeline": analyze_energy_over_time(vdata),
         "reactions": analyze_reactions(segments),
         "movie_mentions": analyze_movie_mentions(segments),
+        "castle": analyze_castle(segments),
     }
 
     # Per-speaker analysis (if diarization data exists)
@@ -639,6 +670,32 @@ def main():
     log("Finding all-time records...")
     all_time = compute_all_time_stats(all_data)
 
+    # Castle the Rabbit aggregate stats
+    log("Tracking Castle the Rabbit...")
+    castle_total = 0
+    castle_award_total = 0
+    castle_by_year = {}
+    castle_top_videos = []
+    for vid_id, va in video_analyses.items():
+        c = va.get("castle", {})
+        count = c.get("total_mentions", 0)
+        castle_total += count
+        castle_award_total += c.get("castle_award_mentions", 0)
+        if count > 0:
+            castle_top_videos.append({"title": va["title"], "year": va["year"], "count": count})
+        yr = va.get("year")
+        if yr:
+            castle_by_year[yr] = castle_by_year.get(yr, 0) + count
+    castle_top_videos.sort(key=lambda x: -x["count"])
+
+    castle_stats = {
+        "total_mentions": castle_total,
+        "castle_award_mentions": castle_award_total,
+        "by_year": castle_by_year,
+        "top_videos": castle_top_videos[:10],
+    }
+    log(f"  Castle mentioned {castle_total} times across all videos")
+
     output = {
         "generated_at": datetime.now().isoformat(),
         "total_videos": len(all_data),
@@ -649,6 +706,7 @@ def main():
         "by_year": year_stats,
         "by_speaker": speaker_stats,
         "all_time_records": all_time,
+        "castle": castle_stats,
     }
 
     output_path = os.path.join(os.path.dirname(__file__), "public", "data.json")

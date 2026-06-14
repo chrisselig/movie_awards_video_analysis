@@ -7,7 +7,7 @@ from analyze_data import (
     tokenize, analyze_word_frequency, analyze_filler_words,
     analyze_superlatives, analyze_agreement_disagreement,
     analyze_hot_takes, analyze_vocabulary_richness,
-    get_segments_for_speaker
+    analyze_castle, get_segments_for_speaker
 )
 
 
@@ -98,6 +98,26 @@ def test_analyze_vocabulary_richness_empty():
     result = analyze_vocabulary_richness(segs, 60)
     assert result["total_words"] == 0
     assert result["ttr"] == 0
+
+
+def test_analyze_castle_counts_mentions():
+    segs = _make_segments("the Castle was great and Castle Award goes to this film")
+    result = analyze_castle(segs)
+    assert result["total_mentions"] == 2
+    assert result["castle_award_mentions"] == 1
+
+
+def test_analyze_castle_excludes_infinity_castle():
+    segs = _make_segments("Infinity Castle was a great movie with castle vibes")
+    result = analyze_castle(segs)
+    assert result["movie_castle_mentions"] == 1
+    assert result["rabbit_mentions"] == 1
+
+
+def test_analyze_castle_no_mentions():
+    segs = _make_segments("this movie was just okay nothing special")
+    result = analyze_castle(segs)
+    assert result["total_mentions"] == 0
 
 
 def test_get_segments_for_speaker_filters():
