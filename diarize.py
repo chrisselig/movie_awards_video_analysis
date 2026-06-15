@@ -115,6 +115,7 @@ def run_diarization(audio_path, hf_token):
     """Run pyannote speaker diarization on audio file."""
     try:
         from pyannote.audio import Pipeline
+        from pyannote.audio.pipelines.utils.hook import ProgressHook
     except ImportError:
         log("  ERROR: pyannote.audio not installed. Run: pip install pyannote.audio")
         return None
@@ -122,14 +123,17 @@ def run_diarization(audio_path, hf_token):
     log("  Running diarization...")
     pipeline = Pipeline.from_pretrained(
         "pyannote/speaker-diarization-3.1",
-        use_auth_token=hf_token
+        token=hf_token
     )
 
-    # Run diarization
-    diarization = pipeline(str(audio_path))
+    # Run diarization with progress reporting
+    with ProgressHook() as hook:
+        diarization = pipeline(str(audio_path), hook=hook)
 
     segments = []
-    for turn, _, speaker in diarization.itertracks(yield_label=True):
+    # Newer pyannote returns DiarizeOutput; extract the Annotation object
+    annotation = getattr(diarization, "speaker_diarization", diarization)
+    for turn, _, speaker in annotation.itertracks(yield_label=True):
         segments.append({
             "speaker": speaker,
             "start": turn.start,
