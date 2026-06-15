@@ -2,6 +2,7 @@
   "buildCommand": "",
   "outputDirectory": "public",
   "framework": null,
+  "alias": ["the-movie-awards.ca"],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]

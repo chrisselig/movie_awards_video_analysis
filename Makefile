@@ -21,7 +21,7 @@ diarize:
 
 # Local preview
 serve:
-	cd public && python -m http.server 8080
+	cd public && python3 -m http.server 8080
 
 # Deploy to Vercel
 deploy:
