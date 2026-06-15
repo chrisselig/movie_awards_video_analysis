@@ -1,15 +1,16 @@
 {
-  "generated_at": "2026-06-14T18:36:22.400969",
+  "generated_at": "2026-06-15T17:04:07.498490",
   "total_videos": 124,
   "total_with_transcripts": 122,
-  "diarized_videos": 0,
-  "has_speaker_data": false,
+  "diarized_videos": 9,
+  "has_speaker_data": true,
   "videos": {
     "8ZUjAIGXKvw": {
       "video_id": "8ZUjAIGXKvw",
       "title": "AFTER CREDITS SCENE - 12TH MOVIE AWARDS",
       "year": null,
       "category": "After Credits",
+      "upload_date": null,
       "duration_min": 0.7,
       "speaker_times": {},
       "word_frequency": [
@@ -368,6 +369,7 @@
       "title": "Miscellaneous Awards! [SP] | 10th Justin & Tyler Movie Awards",
       "year": null,
       "category": "Miscellaneous",
+      "upload_date": null,
       "duration_min": 70.3,
       "speaker_times": {},
       "word_frequency": [
@@ -1001,6 +1003,7 @@
       "title": "Miscellaneous Awards! | 11th Justin & Tyler Movie Awards",
       "year": null,
       "category": "Miscellaneous",
+      "upload_date": null,
       "duration_min": 76.0,
       "speaker_times": {},
       "word_frequency": [
@@ -1657,6 +1660,7 @@
       "title": "Miscellaneous Awards! | 9th Justin & Tyler Movie Awards",
       "year": null,
       "category": "Miscellaneous",
+      "upload_date": null,
       "duration_min": 61.2,
       "speaker_times": {},
       "word_frequency": [
@@ -2286,6 +2290,7 @@
       "title": "Miscellaneous Movie Awards | 12th Justin & Tyler Movie Awards",
       "year": null,
       "category": "Miscellaneous",
+      "upload_date": null,
       "duration_min": 87.8,
       "speaker_times": {},
       "word_frequency": [
@@ -2899,6 +2904,7 @@
       "title": "Opening Ceremony + Hall of Fame [SP] | 10th Justin & Tyler Movie Awards",
       "year": null,
       "category": "Opening Ceremony",
+      "upload_date": null,
       "duration_min": 12.3,
       "speaker_times": {},
       "word_frequency": [
@@ -3400,6 +3406,7 @@
       "title": "Opening Ceremony | 11th Justin & Tyler Movie Awards",
       "year": null,
       "category": "Opening Ceremony",
+      "upload_date": null,
       "duration_min": 9.8,
       "speaker_times": {},
       "word_frequency": [
@@ -3892,6 +3899,7 @@
       "title": "Opening Ceremony | 12th Justin & Tyler Movie Awards",
       "year": null,
       "category": "Opening Ceremony",
+      "upload_date": null,
       "duration_min": 11.4,
       "speaker_times": {},
       "word_frequency": [
@@ -4370,6 +4378,7 @@
       "title": "Opening Ceremony | 9th Justin & Tyler Movie Awards",
       "year": null,
       "category": "Opening Ceremony",
+      "upload_date": null,
       "duration_min": 6.3,
       "speaker_times": {},
       "word_frequency": [
@@ -4855,6 +4864,7 @@
       "title": "2011 DPC Awards - Justin's Movie Awards Pt. 1",
       "year": 2011,
       "category": "Other",
+      "upload_date": null,
       "duration_min": 10.2,
       "speaker_times": {},
       "word_frequency": [
@@ -5391,6 +5401,7 @@
       "title": "2011 DPC Awards - Justin's Movie Awards Pt. 2",
       "year": 2011,
       "category": "Other",
+      "upload_date": null,
       "duration_min": 13.5,
       "speaker_times": {},
       "word_frequency": [
@@ -5956,6 +5967,7 @@
       "title": "2011 DPC Awards - Justin's Movie Awards Pt. 3",
       "year": 2011,
       "category": "Other",
+      "upload_date": null,
       "duration_min": 12.1,
       "speaker_times": {},
       "word_frequency": [
@@ -6442,6 +6454,7 @@
       "title": "2011 DPC Awards - Justin's Movie Awards Pt. 4",
       "year": 2011,
       "category": "Other",
+      "upload_date": null,
       "duration_min": 19.3,
       "speaker_times": {},
       "word_frequency": [
@@ -6988,6 +7001,7 @@
       "title": "2011 DPC Awards - Justin's Movie Awards Pt. 5",
       "year": 2011,
       "category": "Other",
+      "upload_date": null,
       "duration_min": 17.7,
       "speaker_times": {},
       "word_frequency": [
@@ -7523,6 +7537,7 @@
       "title": "The 2012 BridgewatersFinest Awards -- Movie Awards -- Best Actor, Actress & Director",
       "year": 2012,
       "category": "Best Actresses",
+      "upload_date": null,
       "duration_min": 10.1,
       "speaker_times": {},
       "word_frequency": [
@@ -8050,6 +8065,7 @@
       "title": "The 2012 BridgewatersFinest Awards -- Movie Awards -- Loved, Hated & Expected More",
       "year": 2012,
       "category": "Hated & Loved",
+      "upload_date": null,
       "duration_min": 11.3,
       "speaker_times": {},
       "word_frequency": [
@@ -8504,6 +8520,7 @@
       "title": "The 2012 BridgewatersFinest Awards -- Movie Awards -- Worst Movies of 2012",
       "year": 2012,
       "category": "Worst Movies",
+      "upload_date": null,
       "duration_min": 21.5,
       "speaker_times": {},
       "word_frequency": [
@@ -9038,6 +9055,7 @@
       "title": "The 2013 BridgewatersFinest Movie Awards -- Best Actor, Best Actress, Best Director Of 2013",
       "year": 2013,
       "category": "Best Actresses",
+      "upload_date": null,
       "duration_min": 12.4,
       "speaker_times": {},
       "word_frequency": [
@@ -9561,6 +9579,7 @@
       "title": "The 2013 BridgewatersFinest Movie Awards -- Best Genre Movies Of 2013",
       "year": 2013,
       "category": "Best Genre Movies",
+      "upload_date": null,
       "duration_min": 8.8,
       "speaker_times": {},
       "word_frequency": [
@@ -9987,6 +10006,7 @@
       "title": "The 2013 BridgewatersFinest Movie Awards -- Expected More, Expected Less, Hated, Loved",
       "year": 2013,
       "category": "Hated & Loved",
+      "upload_date": null,
       "duration_min": 13.2,
       "speaker_times": {},
       "word_frequency": [
@@ -10517,6 +10537,7 @@
       "title": "The 2013 BridgewatersFinest Movie Awards -- Top Ten Worst Movies Of 2013",
       "year": 2013,
       "category": "Worst Movies",
+      "upload_date": null,
       "duration_min": 21.1,
       "speaker_times": {},
       "word_frequency": [
@@ -11042,6 +11063,7 @@
       "title": "The 2013 BridgewatersFinest Movie Awards -- Top Twenty Best Movies Of 2013 (#10 to #1)",
       "year": 2013,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 19.4,
       "speaker_times": {},
       "word_frequency": [
@@ -11582,6 +11604,7 @@
       "title": "The 2013 BridgewatersFinest Movie Awards -- Top Twenty Best Movies Of 2013 (#20 to #11)",
       "year": 2013,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 19.4,
       "speaker_times": {},
       "word_frequency": [
@@ -12115,6 +12138,7 @@
       "title": "The 2014 BridgewatersFinest Movie Awards -- Best Actor, Best Actress, and Best Director of 2014",
       "year": 2014,
       "category": "Best Actresses",
+      "upload_date": null,
       "duration_min": 37.5,
       "speaker_times": {},
       "word_frequency": [
@@ -12687,6 +12711,7 @@
       "title": "The 2014 BridgewatersFinest Movie Awards -- Best Genre Movies Of 2014",
       "year": 2014,
       "category": "Best Genre Movies",
+      "upload_date": null,
       "duration_min": 17.2,
       "speaker_times": {},
       "word_frequency": [
@@ -13234,6 +13259,7 @@
       "title": "The 2014 BridgewatersFinest Movie Awards -- Expected More, Expected Less, Hated & Loved",
       "year": 2014,
       "category": "Hated & Loved",
+      "upload_date": null,
       "duration_min": 27.1,
       "speaker_times": {},
       "word_frequency": [
@@ -13720,6 +13746,7 @@
       "title": "The 2014 BridgewatersFinest Movie Awards -- Opening (Ceremony?)",
       "year": 2014,
       "category": "Opening Ceremony",
+      "upload_date": null,
       "duration_min": 3.5,
       "speaker_times": {},
       "word_frequency": [
@@ -14151,6 +14178,7 @@
       "title": "The 2014 BridgewatersFinest Movie Awards -- Top Ten Worst Movies Of 2014",
       "year": 2014,
       "category": "Worst Movies",
+      "upload_date": null,
       "duration_min": 43.3,
       "speaker_times": {},
       "word_frequency": [
@@ -14729,6 +14757,7 @@
       "title": "The 2014 BridgewatersFinest Movie Awards -- Top Twenty-Five Best Movies Of 2014 (#10 to #1)",
       "year": 2014,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 48.6,
       "speaker_times": {},
       "word_frequency": [
@@ -15284,6 +15313,7 @@
       "title": "The 2014 BridgewatersFinest Movie Awards -- Top Twenty-Five Best Movies Of 2014 (#25 to #11)",
       "year": 2014,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 60.3,
       "speaker_times": {},
       "word_frequency": [
@@ -15834,6 +15864,7 @@
       "title": "The 2015 BridgewatersFinest Movie Awards -- Best Actor, Best Actress, Best Director of 2015",
       "year": 2015,
       "category": "Best Actresses",
+      "upload_date": null,
       "duration_min": 39.1,
       "speaker_times": {},
       "word_frequency": [
@@ -16425,6 +16456,7 @@
       "title": "The 2015 BridgewatersFinest Movie Awards -- Best Genre Movies of 2015",
       "year": 2015,
       "category": "Best Genre Movies",
+      "upload_date": null,
       "duration_min": 21.4,
       "speaker_times": {},
       "word_frequency": [
@@ -17005,6 +17037,7 @@
       "title": "The 2015 BridgewatersFinest Movie Awards -- Miscellaneous Movie Awards",
       "year": 2015,
       "category": "Miscellaneous",
+      "upload_date": null,
       "duration_min": 45.2,
       "speaker_times": {},
       "word_frequency": [
@@ -17593,6 +17626,7 @@
       "title": "The 2015 BridgewatersFinest Movie Awards -- Opening Ceremony",
       "year": 2015,
       "category": "Opening Ceremony",
+      "upload_date": null,
       "duration_min": 3.6,
       "speaker_times": {},
       "word_frequency": [
@@ -18028,6 +18062,7 @@
       "title": "The 2015 BridgewatersFinest Movie Awards -- Top 30 Best Movies of 2015 (#10 to #1)",
       "year": 2015,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 44.9,
       "speaker_times": {},
       "word_frequency": [
@@ -18599,6 +18634,7 @@
       "title": "The 2015 BridgewatersFinest Movie Awards -- Top 30 Best Movies of 2015 (#20 to #11)",
       "year": 2015,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 41.0,
       "speaker_times": {},
       "word_frequency": [
@@ -19167,6 +19203,7 @@
       "title": "The 2015 BridgewatersFinest Movie Awards -- Top 30 Best Movies of 2015 (#30 to #21)",
       "year": 2015,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 47.3,
       "speaker_times": {},
       "word_frequency": [
@@ -19716,6 +19753,7 @@
       "title": "The 2015 BridgewatersFinest Movie Awards -- Top 5 Worst Movies of 2015",
       "year": 2015,
       "category": "Worst Movies",
+      "upload_date": null,
       "duration_min": 21.1,
       "speaker_times": {},
       "word_frequency": [
@@ -20260,6 +20298,7 @@
       "title": "The 2016 BridgewatersFinest Movie Awards -- Miscellaneous Movie Awards",
       "year": 2016,
       "category": "Miscellaneous",
+      "upload_date": null,
       "duration_min": 22.1,
       "speaker_times": {},
       "word_frequency": [
@@ -20780,6 +20819,7 @@
       "title": "The 2016 BridgewatersFinest Movie Awards -- Opening Ceremony",
       "year": 2016,
       "category": "Opening Ceremony",
+      "upload_date": null,
       "duration_min": 3.9,
       "speaker_times": {},
       "word_frequency": [
@@ -21219,6 +21259,7 @@
       "title": "The 2016 BridgewatersFinest Movie Awards -- Top 20 Best Movies of 2016 (#10 to #1)",
       "year": 2016,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 27.6,
       "speaker_times": {},
       "word_frequency": [
@@ -21780,6 +21821,7 @@
       "title": "The 2016 BridgewatersFinest Movie Awards -- Top 20 Best Movies of 2016 (#20 to #11)",
       "year": 2016,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 25.9,
       "speaker_times": {},
       "word_frequency": [
@@ -22341,6 +22383,7 @@
       "title": "The 2016 BridgewatersFinest Movie Awards -- Top 5 Worst Movies of 2016",
       "year": 2016,
       "category": "Worst Movies",
+      "upload_date": null,
       "duration_min": 18.9,
       "speaker_times": {},
       "word_frequency": [
@@ -22852,6 +22895,7 @@
       "title": "The 2017 BridgewatersFinest Movie Awards -- Best Actors, Actresses, and Directors",
       "year": 2017,
       "category": "Best Actresses",
+      "upload_date": null,
       "duration_min": 62.4,
       "speaker_times": {},
       "word_frequency": [
@@ -23421,6 +23465,7 @@
       "title": "The 2017 BridgewatersFinest Movie Awards -- Miscellaneous Movie Awards",
       "year": 2017,
       "category": "Miscellaneous",
+      "upload_date": null,
       "duration_min": 53.7,
       "speaker_times": {},
       "word_frequency": [
@@ -24011,6 +24056,7 @@
       "title": "The 2017 BridgewatersFinest Movie Awards -- Opening Ceremony",
       "year": 2017,
       "category": "Opening Ceremony",
+      "upload_date": null,
       "duration_min": 4.6,
       "speaker_times": {},
       "word_frequency": [
@@ -24433,6 +24479,7 @@
       "title": "The 2017 BridgewatersFinest Movie Awards -- Top 30 Best Movies (#10 to #1)",
       "year": 2017,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 88.8,
       "speaker_times": {},
       "word_frequency": [
@@ -25030,6 +25077,7 @@
       "title": "The 2017 BridgewatersFinest Movie Awards -- Top 30 Best Movies (#30 to #11)",
       "year": 2017,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 122.4,
       "speaker_times": {},
       "word_frequency": [
@@ -25639,6 +25687,7 @@
       "title": "The 2017 BridgewatersFinest Movie Awards -- Top 5 Worst Movies",
       "year": 2017,
       "category": "Worst Movies",
+      "upload_date": null,
       "duration_min": 43.9,
       "speaker_times": {},
       "word_frequency": [
@@ -26190,6 +26239,7 @@
       "title": "Best Actors of 2019 | The 2019 Justin & Tyler Movie Awards",
       "year": 2019,
       "category": "Best Actors",
+      "upload_date": null,
       "duration_min": 23.4,
       "speaker_times": {},
       "word_frequency": [
@@ -26739,6 +26789,7 @@
       "title": "Best Actresses of 2019 | The 2019 Justin & Tyler Movie Awards",
       "year": 2019,
       "category": "Best Actresses",
+      "upload_date": null,
       "duration_min": 18.7,
       "speaker_times": {},
       "word_frequency": [
@@ -27274,6 +27325,7 @@
       "title": "Best Directors of 2019 | The 2019 Justin & Tyler Movie Awards",
       "year": 2019,
       "category": "Best Directors",
+      "upload_date": null,
       "duration_min": 24.4,
       "speaker_times": {},
       "word_frequency": [
@@ -27845,6 +27897,7 @@
       "title": "Miscellaneous Movie Awards | The 2019 Justin & Tyler Movie Awards",
       "year": 2019,
       "category": "Miscellaneous",
+      "upload_date": null,
       "duration_min": 38.2,
       "speaker_times": {},
       "word_frequency": [
@@ -28437,6 +28490,7 @@
       "title": "Opening Ceremony | The 2019 Justin & Tyler Movie Awards",
       "year": 2019,
       "category": "Opening Ceremony",
+      "upload_date": null,
       "duration_min": 5.8,
       "speaker_times": {},
       "word_frequency": [
@@ -28889,6 +28943,7 @@
       "title": "Top 10 Best Movies of 2019! | The 2019 Justin & Tyler Movie Awards",
       "year": 2019,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 52.7,
       "speaker_times": {},
       "word_frequency": [
@@ -29458,6 +29513,7 @@
       "title": "Top 30 Best Movies of 2019, Part 1 | The 2019 Justin & Tyler Movie Awards",
       "year": 2019,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 57.9,
       "speaker_times": {},
       "word_frequency": [
@@ -30028,6 +30084,7 @@
       "title": "Top 30 Best Movies of 2019, Part 2 | The 2019 Justin & Tyler Movie Awards",
       "year": 2019,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 39.2,
       "speaker_times": {},
       "word_frequency": [
@@ -30594,6 +30651,7 @@
       "title": "Top 5 Worst Movies of 2019 | The 2019 Justin & Tyler Movie Awards",
       "year": 2019,
       "category": "Worst Movies",
+      "upload_date": null,
       "duration_min": 35.7,
       "speaker_times": {},
       "word_frequency": [
@@ -31124,6 +31182,7 @@
       "title": "BONUS VIDEO! 2020 Fan's Choice! | The 2020 Justin & Tyler Movie Awards",
       "year": 2020,
       "category": "Fan's Choice",
+      "upload_date": null,
       "duration_min": 17.9,
       "speaker_times": {},
       "word_frequency": [
@@ -31588,6 +31647,7 @@
       "title": "Best Actors of 2020! | The 2020 Justin & Tyler Movie Awards",
       "year": 2020,
       "category": "Best Actors",
+      "upload_date": null,
       "duration_min": 16.2,
       "speaker_times": {},
       "word_frequency": [
@@ -32071,6 +32131,7 @@
       "title": "Best Actresses of 2020! | The 2020 Justin & Tyler Movie Awards",
       "year": 2020,
       "category": "Best Actresses",
+      "upload_date": null,
       "duration_min": 17.1,
       "speaker_times": {},
       "word_frequency": [
@@ -32557,6 +32618,7 @@
       "title": "Best Directors of 2020! | The 2020 Justin & Tyler Movie Awards",
       "year": 2020,
       "category": "Best Directors",
+      "upload_date": null,
       "duration_min": 20.3,
       "speaker_times": {},
       "word_frequency": [
@@ -33040,6 +33102,7 @@
       "title": "Miscellaneous Awards! | The 2020 Justin & Tyler Movie Awards",
       "year": 2020,
       "category": "Miscellaneous",
+      "upload_date": null,
       "duration_min": 44.6,
       "speaker_times": {},
       "word_frequency": [
@@ -33554,6 +33617,7 @@
       "title": "Opening Ceremony | The 2020 Justin & Tyler Movie Awards",
       "year": 2020,
       "category": "Opening Ceremony",
+      "upload_date": null,
       "duration_min": 4.1,
       "speaker_times": {},
       "word_frequency": [
@@ -34007,6 +34071,7 @@
       "title": "TOP TEN Best Movies of 2020! | The 2020 Justin & Tyler Movie Awards",
       "year": 2020,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 48.9,
       "speaker_times": {},
       "word_frequency": [
@@ -34519,6 +34584,7 @@
       "title": "Top 30 Best Movies of 2020 (Part 1)! | The 2020 Justin & Tyler Movie Awards",
       "year": 2020,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 49.0,
       "speaker_times": {},
       "word_frequency": [
@@ -35031,6 +35097,7 @@
       "title": "Top 30 Best Movies of 2020 (Part 2)! | The 2020 Justin & Tyler Movie Awards",
       "year": 2020,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 40.4,
       "speaker_times": {},
       "word_frequency": [
@@ -35530,6 +35597,7 @@
       "title": "Top 5 Worst Movies of 2020! | The 2020 Justin & Tyler Movie Awards",
       "year": 2020,
       "category": "Worst Movies",
+      "upload_date": null,
       "duration_min": 26.3,
       "speaker_times": {},
       "word_frequency": [
@@ -36011,6 +36079,7 @@
       "title": "Best Actors of 2021 | The 2021 Justin & Tyler Movie Awards",
       "year": 2021,
       "category": "Best Actors",
+      "upload_date": null,
       "duration_min": 21.3,
       "speaker_times": {},
       "word_frequency": [
@@ -36515,6 +36584,7 @@
       "title": "Best Actresses of 2021 | The 2021 Justin & Tyler Movie Awards",
       "year": 2021,
       "category": "Best Actresses",
+      "upload_date": null,
       "duration_min": 22.0,
       "speaker_times": {},
       "word_frequency": [
@@ -36994,6 +37064,7 @@
       "title": "Best Directors of 2021 | The 2021 Justin & Tyler Movie Awards",
       "year": 2021,
       "category": "Best Directors",
+      "upload_date": null,
       "duration_min": 21.6,
       "speaker_times": {},
       "word_frequency": [
@@ -37462,6 +37533,7 @@
       "title": "Miscellaneous Awards | The 2021 Justin & Tyler Movie Awards",
       "year": 2021,
       "category": "Miscellaneous",
+      "upload_date": null,
       "duration_min": 49.3,
       "speaker_times": {},
       "word_frequency": [
@@ -37993,6 +38065,7 @@
       "title": "Opening Ceremony + Hall of Fame??? | The 2021 Justin & Tyler Movie Awards",
       "year": 2021,
       "category": "Opening Ceremony",
+      "upload_date": null,
       "duration_min": 9.8,
       "speaker_times": {},
       "word_frequency": [
@@ -38479,6 +38552,7 @@
       "title": "People's Choice & Best Movies Honourable Mentions | The 2021 Justin & Tyler Movie Awards",
       "year": 2021,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 22.2,
       "speaker_times": {},
       "word_frequency": [
@@ -38962,6 +39036,7 @@
       "title": "Top 10 Best Movies of 2021! | The 2021 Justin & Tyler Movie Awards",
       "year": 2021,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 61.0,
       "speaker_times": {},
       "word_frequency": [
@@ -39493,6 +39568,7 @@
       "title": "Top 30 Best Movies of 2021, Part 1 | The 2021 Justin & Tyler Movie Awards",
       "year": 2021,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 46.8,
       "speaker_times": {},
       "word_frequency": [
@@ -40005,6 +40081,7 @@
       "title": "Top 30 Best Movies of 2021, Part 2 | The 2021 Justin & Tyler Movie Awards",
       "year": 2021,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 44.5,
       "speaker_times": {},
       "word_frequency": [
@@ -40519,6 +40596,7 @@
       "title": "Top 5 Worst Movies of 2021 | The 2021 Justin & Tyler Movie Awards",
       "year": 2021,
       "category": "Worst Movies",
+      "upload_date": null,
       "duration_min": 43.0,
       "speaker_times": {},
       "word_frequency": [
@@ -41047,6 +41125,7 @@
       "title": "2022 Fan's Choice & Hall of Fame! | 9th Justin & Tyler Movie Awards",
       "year": 2022,
       "category": "Fan's Choice",
+      "upload_date": null,
       "duration_min": 25.2,
       "speaker_times": {},
       "word_frequency": [
@@ -41595,6 +41674,7 @@
       "title": "Best Actors of 2022! | 9th Justin & Tyler Movie Awards",
       "year": 2022,
       "category": "Best Actors",
+      "upload_date": null,
       "duration_min": 24.0,
       "speaker_times": {},
       "word_frequency": [
@@ -42136,6 +42216,7 @@
       "title": "Best Actresses of 2022! | 9th Justin & Tyler Movie Awards",
       "year": 2022,
       "category": "Best Actresses",
+      "upload_date": null,
       "duration_min": 21.1,
       "speaker_times": {},
       "word_frequency": [
@@ -42705,6 +42786,7 @@
       "title": "Best Directors of 2022! | 9th Justin & Tyler Movie Awards",
       "year": 2022,
       "category": "Best Directors",
+      "upload_date": null,
       "duration_min": 29.0,
       "speaker_times": {},
       "word_frequency": [
@@ -43257,6 +43339,7 @@
       "title": "Best Movies of 2022, Part 1 | 9th Justin & Tyler Movie Awards",
       "year": 2022,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 55.4,
       "speaker_times": {},
       "word_frequency": [
@@ -43847,6 +43930,7 @@
       "title": "Best Movies of 2022, Part 2 | 9th Justin & Tyler Movie Awards",
       "year": 2022,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 52.5,
       "speaker_times": {},
       "word_frequency": [
@@ -44450,6 +44534,7 @@
       "title": "PART 1 | The 2022 Justin & Tyler MID-YEAR Movie Awards",
       "year": 2022,
       "category": "Mid-Year Awards",
+      "upload_date": null,
       "duration_min": 84.4,
       "speaker_times": {},
       "word_frequency": [
@@ -45031,6 +45116,7 @@
       "title": "PART 2 | The 2022 Justin & Tyler MID-YEAR Movie Awards",
       "year": 2022,
       "category": "Mid-Year Awards",
+      "upload_date": null,
       "duration_min": 68.8,
       "speaker_times": {},
       "word_frequency": [
@@ -45590,6 +45676,7 @@
       "title": "Top Ten Best Movies of 2022! | 9th Justin & Tyler Movie Awards",
       "year": 2022,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 70.7,
       "speaker_times": {},
       "word_frequency": [
@@ -46191,6 +46278,7 @@
       "title": "Worst Movies of 2022! | 9th Justin & Tyler Movie Awards",
       "year": 2022,
       "category": "Worst Movies",
+      "upload_date": null,
       "duration_min": 40.6,
       "speaker_times": {},
       "word_frequency": [
@@ -46755,6 +46843,7 @@
       "title": "BONUS! PART 3! | The 2023 Justin & Tyler MID-YEAR Movie Awards",
       "year": 2023,
       "category": "Mid-Year Awards",
+      "upload_date": null,
       "duration_min": 43.1,
       "speaker_times": {},
       "word_frequency": [
@@ -47386,6 +47475,7 @@
       "title": "Best Actors of 2023! [SP] | 10th Justin & Tyler Movie Awards",
       "year": 2023,
       "category": "Best Actors",
+      "upload_date": null,
       "duration_min": 29.9,
       "speaker_times": {},
       "word_frequency": [
@@ -47978,6 +48068,7 @@
       "title": "Best Actresses of 2023! [SP] | 10th Justin & Tyler Movie Awards",
       "year": 2023,
       "category": "Best Actresses",
+      "upload_date": null,
       "duration_min": 28.3,
       "speaker_times": {},
       "word_frequency": [
@@ -48527,6 +48618,7 @@
       "title": "Best Directors of 2023! [SP] | 10th Justin & Tyler Movie Awards",
       "year": 2023,
       "category": "Best Directors",
+      "upload_date": null,
       "duration_min": 22.7,
       "speaker_times": {},
       "word_frequency": [
@@ -49073,6 +49165,7 @@
       "title": "Fan's Choice! Best Movies of 2023! [SP] | 10th Justin & Tyler Movie Awards",
       "year": 2023,
       "category": "Fan's Choice",
+      "upload_date": null,
       "duration_min": 23.7,
       "speaker_times": {},
       "word_frequency": [
@@ -49613,6 +49706,7 @@
       "title": "PART 1 | The 2023 Justin & Tyler MID-YEAR Movie Awards",
       "year": 2023,
       "category": "Mid-Year Awards",
+      "upload_date": null,
       "duration_min": 74.0,
       "speaker_times": {},
       "word_frequency": [
@@ -50228,6 +50322,7 @@
       "title": "PART 2 | The 2023 Justin & Tyler MID-YEAR Movie Awards",
       "year": 2023,
       "category": "Mid-Year Awards",
+      "upload_date": null,
       "duration_min": 109.0,
       "speaker_times": {},
       "word_frequency": [
@@ -50871,6 +50966,7 @@
       "title": "The Justin & Tyler Movie Awards - A Retrospective (2023 Edition)",
       "year": 2023,
       "category": "Retrospective",
+      "upload_date": null,
       "duration_min": 225.4,
       "speaker_times": {},
       "word_frequency": [
@@ -51570,6 +51666,7 @@
       "title": "Top 30 Best Movies of 2023, Part 1! [SP] | 10th Justin & Tyler Movie Awards",
       "year": 2023,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 84.6,
       "speaker_times": {},
       "word_frequency": [
@@ -52176,6 +52273,7 @@
       "title": "Top 30 Best Movies of 2023, Part 2! [SP] | 10th Justin & Tyler Movie Awards",
       "year": 2023,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 68.2,
       "speaker_times": {},
       "word_frequency": [
@@ -52806,6 +52904,7 @@
       "title": "Top 30 Best Movies of 2023, Part 3! [SP] | 10th Justin & Tyler Movie Awards",
       "year": 2023,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 81.2,
       "speaker_times": {},
       "word_frequency": [
@@ -53416,6 +53515,7 @@
       "title": "Top 5 \"Other Media\" of 2023! [SP] | 10th Justin & Tyler Movie Awards",
       "year": 2023,
       "category": "Other Media",
+      "upload_date": null,
       "duration_min": 37.2,
       "speaker_times": {},
       "word_frequency": [
@@ -54011,6 +54111,7 @@
       "title": "Worst Movies of 2023! [SP] | 10th Justin & Tyler Movie Awards",
       "year": 2023,
       "category": "Worst Movies",
+      "upload_date": null,
       "duration_min": 41.9,
       "speaker_times": {},
       "word_frequency": [
@@ -54587,6 +54688,7 @@
       "title": "Best Actors of 2024! | 11th Justin & Tyler Movie Awards",
       "year": 2024,
       "category": "Best Actors",
+      "upload_date": null,
       "duration_min": 22.6,
       "speaker_times": {},
       "word_frequency": [
@@ -55180,6 +55282,7 @@
       "title": "Best Actresses of 2024! | 11th Justin & Tyler Movie Awards",
       "year": 2024,
       "category": "Best Actresses",
+      "upload_date": null,
       "duration_min": 22.4,
       "speaker_times": {},
       "word_frequency": [
@@ -55750,6 +55853,7 @@
       "title": "Best Directors of 2024! | 11th Justin & Tyler Movie Awards",
       "year": 2024,
       "category": "Best Directors",
+      "upload_date": null,
       "duration_min": 26.0,
       "speaker_times": {},
       "word_frequency": [
@@ -56302,6 +56406,7 @@
       "title": "FAN'S CHOICE Best Movies of 2024! | 11th Justin & Tyler Movie Awards",
       "year": 2024,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 18.6,
       "speaker_times": {},
       "word_frequency": [
@@ -56824,6 +56929,7 @@
       "title": "PART 1 | The 2024 Justin & Tyler MID-YEAR Movie Awards",
       "year": 2024,
       "category": "Mid-Year Awards",
+      "upload_date": null,
       "duration_min": 31.4,
       "speaker_times": {},
       "word_frequency": [
@@ -57403,6 +57509,7 @@
       "title": "PART 2 | The 2024 Justin & Tyler MID-YEAR Movie Awards",
       "year": 2024,
       "category": "Mid-Year Awards",
+      "upload_date": null,
       "duration_min": 80.2,
       "speaker_times": {},
       "word_frequency": [
@@ -58007,6 +58114,7 @@
       "title": "PART 3 | The 2024 Justin & Tyler MID-YEAR Movie Awards",
       "year": 2024,
       "category": "Mid-Year Awards",
+      "upload_date": null,
       "duration_min": 93.7,
       "speaker_times": {},
       "word_frequency": [
@@ -58649,6 +58757,7 @@
       "title": "Top 30 Best Movies of 2024, Part 1! | 11th Justin & Tyler Movie Awards",
       "year": 2024,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 59.7,
       "speaker_times": {},
       "word_frequency": [
@@ -59237,6 +59346,7 @@
       "title": "Top 30 Best Movies of 2024, Part 2! | 11th Justin & Tyler Movie Awards",
       "year": 2024,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 52.2,
       "speaker_times": {},
       "word_frequency": [
@@ -59849,6 +59959,7 @@
       "title": "Top 30 Best Movies of 2024, Part 3! | 11th Justin & Tyler Movie Awards",
       "year": 2024,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 69.7,
       "speaker_times": {},
       "word_frequency": [
@@ -60457,6 +60568,7 @@
       "title": "Top 5 Worst Movies of 2024! | 11th Justin & Tyler Movie Awards",
       "year": 2024,
       "category": "Worst Movies",
+      "upload_date": null,
       "duration_min": 43.1,
       "speaker_times": {},
       "word_frequency": [
@@ -61066,8 +61178,12 @@
       "title": "Best Actors of 2025 | 12th Justin & Tyler Movie Awards",
       "year": 2025,
       "category": "Best Actors",
+      "upload_date": null,
       "duration_min": 22.9,
-      "speaker_times": {},
+      "speaker_times": {
+        "Justin": 705.9,
+        "Tyler": 518.4
+      },
       "word_frequency": [
         [
           "best",
@@ -61310,8 +61426,8 @@
           "words_per_minute": 137.7,
           "superlatives": 3,
           "fillers": 11,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 27.9,
+          "wpm_tyler": 100.7
         },
         {
           "chunk": 2,
@@ -61319,8 +61435,8 @@
           "words_per_minute": 179.5,
           "superlatives": 1,
           "fillers": 23,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 111.5,
+          "wpm_tyler": 62.7
         },
         {
           "chunk": 3,
@@ -61328,8 +61444,8 @@
           "words_per_minute": 200.9,
           "superlatives": 2,
           "fillers": 31,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 161.2,
+          "wpm_tyler": 31.4
         },
         {
           "chunk": 4,
@@ -61337,8 +61453,8 @@
           "words_per_minute": 201.7,
           "superlatives": 1,
           "fillers": 31,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 49.2,
+          "wpm_tyler": 145.1
         },
         {
           "chunk": 5,
@@ -61346,8 +61462,8 @@
           "words_per_minute": 173.0,
           "superlatives": 3,
           "fillers": 19,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 115.0,
+          "wpm_tyler": 45.8
         },
         {
           "chunk": 6,
@@ -61355,8 +61471,8 @@
           "words_per_minute": 197.8,
           "superlatives": 6,
           "fillers": 13,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 22.7,
+          "wpm_tyler": 147.7
         },
         {
           "chunk": 7,
@@ -61364,7 +61480,7 @@
           "words_per_minute": 169.9,
           "superlatives": 1,
           "fillers": 14,
-          "wpm_justin": 0.0,
+          "wpm_justin": 151.6,
           "wpm_tyler": 0.0
         },
         {
@@ -61373,8 +61489,8 @@
           "words_per_minute": 197.8,
           "superlatives": 2,
           "fillers": 19,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 63.2,
+          "wpm_tyler": 120.7
         },
         {
           "chunk": 9,
@@ -61382,8 +61498,8 @@
           "words_per_minute": 198.7,
           "superlatives": 1,
           "fillers": 16,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 119.8,
+          "wpm_tyler": 70.6
         },
         {
           "chunk": 10,
@@ -61391,8 +61507,8 @@
           "words_per_minute": 152.1,
           "superlatives": 3,
           "fillers": 18,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 59.7,
+          "wpm_tyler": 74.1
         }
       ],
       "reactions": {
@@ -61616,15 +61732,449 @@
           }
         ]
       },
-      "has_speaker_data": false
+      "has_speaker_data": true,
+      "by_speaker": {
+        "Justin": {
+          "segment_count": 280,
+          "speaking_time_seconds": 705.9,
+          "word_frequency": [
+            [
+              "best",
+              16
+            ],
+            [
+              "feel",
+              8
+            ],
+            [
+              "basically",
+              7
+            ],
+            [
+              "actor",
+              7
+            ],
+            [
+              "russell",
+              7
+            ],
+            [
+              "year",
+              6
+            ],
+            [
+              "time",
+              6
+            ],
+            [
+              "performance",
+              6
+            ],
+            [
+              "nick",
+              6
+            ],
+            [
+              "offerman",
+              6
+            ],
+            [
+              "michael",
+              6
+            ],
+            [
+              "actors",
+              5
+            ],
+            [
+              "honorable",
+              5
+            ],
+            [
+              "mentions",
+              5
+            ],
+            [
+              "stuff",
+              5
+            ],
+            [
+              "laughter",
+              5
+            ],
+            [
+              "three",
+              5
+            ],
+            [
+              "second",
+              5
+            ],
+            [
+              "jordan",
+              5
+            ],
+            [
+              "character",
+              4
+            ],
+            [
+              "man",
+              4
+            ],
+            [
+              "jesse",
+              4
+            ],
+            [
+              "beonia",
+              4
+            ],
+            [
+              "cuz",
+              4
+            ],
+            [
+              "made",
+              4
+            ],
+            [
+              "snorts",
+              4
+            ],
+            [
+              "crowe",
+              4
+            ],
+            [
+              "herman",
+              4
+            ],
+            [
+              "role",
+              4
+            ],
+            [
+              "accent",
+              4
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 5,
+              "per_minute": 0.42,
+              "pct_of_words": 0.247
+            },
+            "uh": {
+              "count": 18,
+              "per_minute": 1.53,
+              "pct_of_words": 0.889
+            },
+            "like": {
+              "count": 54,
+              "per_minute": 4.59,
+              "pct_of_words": 2.668
+            },
+            "basically": {
+              "count": 7,
+              "per_minute": 0.59,
+              "pct_of_words": 0.346
+            },
+            "obviously": {
+              "count": 2,
+              "per_minute": 0.17,
+              "pct_of_words": 0.099
+            },
+            "actually": {
+              "count": 1,
+              "per_minute": 0.08,
+              "pct_of_words": 0.049
+            },
+            "absolutely": {
+              "count": 4,
+              "per_minute": 0.34,
+              "pct_of_words": 0.198
+            },
+            "definitely": {
+              "count": 2,
+              "per_minute": 0.17,
+              "pct_of_words": 0.099
+            },
+            "totally": {
+              "count": 2,
+              "per_minute": 0.17,
+              "pct_of_words": 0.099
+            },
+            "incredible": {
+              "count": 1,
+              "per_minute": 0.08,
+              "pct_of_words": 0.049
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 16,
+                "per_minute": 1.36
+              },
+              "incredible": {
+                "count": 1,
+                "per_minute": 0.08
+              },
+              "fantastic": {
+                "count": 1,
+                "per_minute": 0.08
+              },
+              "brilliant": {
+                "count": 1,
+                "per_minute": 0.08
+              }
+            },
+            "total": 19,
+            "per_minute": 1.61,
+            "hyperbole_index": 9.39
+          },
+          "vocabulary": {
+            "ttr": 0.2559,
+            "unique_words": 518,
+            "total_words": 2024,
+            "words_per_minute": 172.0
+          },
+          "hot_takes": {
+            "count": 2,
+            "instances": [
+              {
+                "marker": "mid",
+                "context": "t saw it and obviously saw it in time for for the mid years. and uh nick offerman, i will give you a fist bump because we have consensus on nick offer"
+              },
+              {
+                "marker": "mid",
+                "context": "he king. he holds on to his championship from the midy years. ladies and gentlemen, my boyfriend, michael b. jordan for sinners. >> i forgot who that"
+              }
+            ]
+          },
+          "reactions": {
+            "laughter": 5,
+            "music": 0,
+            "crosstalk": 0
+          }
+        },
+        "Tyler": {
+          "segment_count": 255,
+          "speaking_time_seconds": 518.4,
+          "word_frequency": [
+            [
+              "performance",
+              11
+            ],
+            [
+              "love",
+              9
+            ],
+            [
+              "great",
+              7
+            ],
+            [
+              "superman",
+              7
+            ],
+            [
+              "guy",
+              7
+            ],
+            [
+              "time",
+              6
+            ],
+            [
+              "stuff",
+              6
+            ],
+            [
+              "cuz",
+              6
+            ],
+            [
+              "never",
+              6
+            ],
+            [
+              "cage",
+              5
+            ],
+            [
+              "actor",
+              5
+            ],
+            [
+              "years",
+              5
+            ],
+            [
+              "gave",
+              5
+            ],
+            [
+              "year",
+              5
+            ],
+            [
+              "maybe",
+              5
+            ],
+            [
+              "always",
+              5
+            ],
+            [
+              "dreams",
+              4
+            ],
+            [
+              "nicholas",
+              4
+            ],
+            [
+              "surfer",
+              4
+            ],
+            [
+              "clears",
+              4
+            ],
+            [
+              "throat",
+              4
+            ],
+            [
+              "best",
+              4
+            ],
+            [
+              "god",
+              4
+            ],
+            [
+              "favorite",
+              4
+            ],
+            [
+              "jared",
+              4
+            ],
+            [
+              "leto",
+              4
+            ],
+            [
+              "joel",
+              4
+            ],
+            [
+              "actors",
+              4
+            ],
+            [
+              "nick",
+              3
+            ],
+            [
+              "offerman",
+              3
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 5,
+              "per_minute": 0.58,
+              "pct_of_words": 0.273
+            },
+            "uh": {
+              "count": 3,
+              "per_minute": 0.35,
+              "pct_of_words": 0.164
+            },
+            "like": {
+              "count": 71,
+              "per_minute": 8.22,
+              "pct_of_words": 3.873
+            },
+            "honestly": {
+              "count": 1,
+              "per_minute": 0.12,
+              "pct_of_words": 0.055
+            },
+            "basically": {
+              "count": 1,
+              "per_minute": 0.12,
+              "pct_of_words": 0.055
+            },
+            "obviously": {
+              "count": 2,
+              "per_minute": 0.23,
+              "pct_of_words": 0.109
+            },
+            "actually": {
+              "count": 3,
+              "per_minute": 0.35,
+              "pct_of_words": 0.164
+            },
+            "definitely": {
+              "count": 1,
+              "per_minute": 0.12,
+              "pct_of_words": 0.055
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 4,
+                "per_minute": 0.46
+              }
+            },
+            "total": 4,
+            "per_minute": 0.46,
+            "hyperbole_index": 2.18
+          },
+          "vocabulary": {
+            "ttr": 0.2373,
+            "unique_words": 435,
+            "total_words": 1833,
+            "words_per_minute": 212.2
+          },
+          "hot_takes": {
+            "count": 2,
+            "instances": [
+              {
+                "marker": "underrated",
+                "context": "avorite actors. i also think he's one of the most underrated actors in hollywood. think that he is one of the best just purely physical actors because"
+              },
+              {
+                "marker": "mid",
+                "context": "majors, i mean, we talked about him before at the mid years. um >> he's a great actor and he was rising up both of our ranks, you know, then the stuff"
+              }
+            ]
+          },
+          "reactions": {
+            "laughter": 3,
+            "music": 0,
+            "crosstalk": 0
+          }
+        }
+      }
     },
     "93IarLepWx0": {
       "video_id": "93IarLepWx0",
       "title": "Best Actresses of 2025 | 12th Justin & Tyler Movie Awards",
       "year": 2025,
       "category": "Best Actresses",
+      "upload_date": null,
       "duration_min": 22.7,
-      "speaker_times": {},
+      "speaker_times": {
+        "Justin": 653.4,
+        "Tyler": 560.7
+      },
       "word_frequency": [
         [
           "best",
@@ -61895,7 +62445,7 @@
           "words_per_minute": 132.9,
           "superlatives": 3,
           "fillers": 6,
-          "wpm_justin": 0.0,
+          "wpm_justin": 129.4,
           "wpm_tyler": 0.0
         },
         {
@@ -61904,8 +62454,8 @@
           "words_per_minute": 194.6,
           "superlatives": 1,
           "fillers": 17,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 191.5,
+          "wpm_tyler": 0.4
         },
         {
           "chunk": 3,
@@ -61914,7 +62464,7 @@
           "superlatives": 5,
           "fillers": 22,
           "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_tyler": 220.5
         },
         {
           "chunk": 4,
@@ -61922,8 +62472,8 @@
           "words_per_minute": 228.0,
           "superlatives": 1,
           "fillers": 25,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 19.4,
+          "wpm_tyler": 208.7
         },
         {
           "chunk": 5,
@@ -61931,8 +62481,8 @@
           "words_per_minute": 194.6,
           "superlatives": 2,
           "fillers": 12,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 139.1,
+          "wpm_tyler": 41.8
         },
         {
           "chunk": 6,
@@ -61940,8 +62490,8 @@
           "words_per_minute": 166.8,
           "superlatives": 2,
           "fillers": 15,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 42.3,
+          "wpm_tyler": 109.6
         },
         {
           "chunk": 7,
@@ -61949,8 +62499,8 @@
           "words_per_minute": 187.1,
           "superlatives": 3,
           "fillers": 17,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 77.5,
+          "wpm_tyler": 98.2
         },
         {
           "chunk": 8,
@@ -61958,8 +62508,8 @@
           "words_per_minute": 160.2,
           "superlatives": 3,
           "fillers": 17,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 125.5,
+          "wpm_tyler": 13.6
         },
         {
           "chunk": 9,
@@ -61967,8 +62517,8 @@
           "words_per_minute": 184.9,
           "superlatives": 2,
           "fillers": 19,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 81.9,
+          "wpm_tyler": 83.6
         },
         {
           "chunk": 10,
@@ -61976,8 +62526,8 @@
           "words_per_minute": 141.7,
           "superlatives": 3,
           "fillers": 21,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 15.4,
+          "wpm_tyler": 110.5
         }
       ],
       "reactions": {
@@ -62201,15 +62751,471 @@
           }
         ]
       },
-      "has_speaker_data": false
+      "has_speaker_data": true,
+      "by_speaker": {
+        "Justin": {
+          "segment_count": 265,
+          "speaking_time_seconds": 653.4,
+          "word_frequency": [
+            [
+              "best",
+              12
+            ],
+            [
+              "year",
+              10
+            ],
+            [
+              "three",
+              8
+            ],
+            [
+              "actress",
+              8
+            ],
+            [
+              "performance",
+              7
+            ],
+            [
+              "actresses",
+              6
+            ],
+            [
+              "performances",
+              6
+            ],
+            [
+              "awards",
+              5
+            ],
+            [
+              "time",
+              5
+            ],
+            [
+              "honorable",
+              5
+            ],
+            [
+              "mentioned",
+              5
+            ],
+            [
+              "clears",
+              5
+            ],
+            [
+              "throat",
+              5
+            ],
+            [
+              "amanda",
+              5
+            ],
+            [
+              "seven",
+              5
+            ],
+            [
+              "veils",
+              5
+            ],
+            [
+              "emma",
+              5
+            ],
+            [
+              "stone",
+              5
+            ],
+            [
+              "give",
+              4
+            ],
+            [
+              "start",
+              4
+            ],
+            [
+              "mentions",
+              4
+            ],
+            [
+              "role",
+              4
+            ],
+            [
+              "talent",
+              4
+            ],
+            [
+              "saw",
+              4
+            ],
+            [
+              "point",
+              4
+            ],
+            [
+              "gets",
+              4
+            ],
+            [
+              "midy",
+              4
+            ],
+            [
+              "years",
+              4
+            ],
+            [
+              "odessa",
+              4
+            ],
+            [
+              "gentlemen",
+              3
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 9,
+              "per_minute": 0.83,
+              "pct_of_words": 0.482
+            },
+            "uh": {
+              "count": 9,
+              "per_minute": 0.83,
+              "pct_of_words": 0.482
+            },
+            "like": {
+              "count": 34,
+              "per_minute": 3.12,
+              "pct_of_words": 1.821
+            },
+            "obviously": {
+              "count": 3,
+              "per_minute": 0.28,
+              "pct_of_words": 0.161
+            },
+            "actually": {
+              "count": 2,
+              "per_minute": 0.18,
+              "pct_of_words": 0.107
+            },
+            "incredible": {
+              "count": 1,
+              "per_minute": 0.09,
+              "pct_of_words": 0.054
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 12,
+                "per_minute": 1.1
+              },
+              "incredible": {
+                "count": 1,
+                "per_minute": 0.09
+              },
+              "fantastic": {
+                "count": 1,
+                "per_minute": 0.09
+              }
+            },
+            "total": 14,
+            "per_minute": 1.29,
+            "hyperbole_index": 7.5
+          },
+          "vocabulary": {
+            "ttr": 0.2571,
+            "unique_words": 480,
+            "total_words": 1867,
+            "words_per_minute": 171.4
+          },
+          "hot_takes": {
+            "count": 8,
+            "instances": [
+              {
+                "marker": "mid",
+                "context": "tress. i didn't get a chance to see it. and amber mid thunder for novacane. >> oh, nice. >> who we i believe mentioned uh off camera. um, mia gooff in"
+              },
+              {
+                "marker": "mid",
+                "context": "features a really really talented cast. and amber mid thunder. i'm gonna i'm try to um limit my number of uses of this word, but i'm going to anyway."
+              },
+              {
+                "marker": "mid",
+                "context": "uses of this word, but i'm going to anyway. amber mid thunder [\u00a0__\u00a0] [laughter] she is so good in novacane. she is my and like i like jack quaid, but"
+              },
+              {
+                "marker": "mid",
+                "context": "en veils. talked a bunch about seven veils of the midyear. so, i don't really want to chew my food uh like a 12th time, but what i will say is again,"
+              },
+              {
+                "marker": "mid",
+                "context": "winner of my best actress so far in 2025 from the midy years. so we will crown a new champion from the midy years. >> y >> it is odessa young for the"
+              },
+              {
+                "marker": "mid",
+                "context": "y years. so we will crown a new champion from the midy years. >> y >> it is odessa young for the damned. now i again i find when i do these awards i t"
+              },
+              {
+                "marker": "mid",
+                "context": "ng's performance. again, she was my winner at the midy years. she does not hold on to that by the end of the year, but she is still my number two best"
+              },
+              {
+                "marker": "mid",
+                "context": "actress of 2025, dethroning odessa young from the midy years is emma stone in beonia. >> oh, so >> okay. >> i know the marriage between yorgos lantham"
+              }
+            ]
+          },
+          "reactions": {
+            "laughter": 1,
+            "music": 0,
+            "crosstalk": 0
+          }
+        },
+        "Tyler": {
+          "segment_count": 286,
+          "speaking_time_seconds": 560.7,
+          "word_frequency": [
+            [
+              "clears",
+              11
+            ],
+            [
+              "throat",
+              11
+            ],
+            [
+              "ever",
+              7
+            ],
+            [
+              "always",
+              7
+            ],
+            [
+              "best",
+              6
+            ],
+            [
+              "performance",
+              6
+            ],
+            [
+              "probably",
+              6
+            ],
+            [
+              "actress",
+              6
+            ],
+            [
+              "naomi",
+              6
+            ],
+            [
+              "three",
+              6
+            ],
+            [
+              "cuz",
+              6
+            ],
+            [
+              "quite",
+              6
+            ],
+            [
+              "might",
+              5
+            ],
+            [
+              "remember",
+              5
+            ],
+            [
+              "saw",
+              5
+            ],
+            [
+              "work",
+              5
+            ],
+            [
+              "watts",
+              5
+            ],
+            [
+              "top",
+              4
+            ],
+            [
+              "point",
+              4
+            ],
+            [
+              "love",
+              4
+            ],
+            [
+              "whatever",
+              4
+            ],
+            [
+              "vanessa",
+              4
+            ],
+            [
+              "kirby",
+              4
+            ],
+            [
+              "sally",
+              4
+            ],
+            [
+              "hawkins",
+              4
+            ],
+            [
+              "yes",
+              4
+            ],
+            [
+              "though",
+              4
+            ],
+            [
+              "play",
+              4
+            ],
+            [
+              "stuff",
+              4
+            ],
+            [
+              "pick",
+              4
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 3,
+              "per_minute": 0.32,
+              "pct_of_words": 0.149
+            },
+            "uh": {
+              "count": 6,
+              "per_minute": 0.64,
+              "pct_of_words": 0.298
+            },
+            "like": {
+              "count": 83,
+              "per_minute": 8.88,
+              "pct_of_words": 4.119
+            },
+            "literally": {
+              "count": 3,
+              "per_minute": 0.32,
+              "pct_of_words": 0.149
+            },
+            "basically": {
+              "count": 2,
+              "per_minute": 0.21,
+              "pct_of_words": 0.099
+            },
+            "obviously": {
+              "count": 1,
+              "per_minute": 0.11,
+              "pct_of_words": 0.05
+            },
+            "actually": {
+              "count": 5,
+              "per_minute": 0.54,
+              "pct_of_words": 0.248
+            },
+            "definitely": {
+              "count": 1,
+              "per_minute": 0.11,
+              "pct_of_words": 0.05
+            },
+            "totally": {
+              "count": 1,
+              "per_minute": 0.11,
+              "pct_of_words": 0.05
+            },
+            "amazing": {
+              "count": 1,
+              "per_minute": 0.11,
+              "pct_of_words": 0.05
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 6,
+                "per_minute": 0.64
+              },
+              "amazing": {
+                "count": 1,
+                "per_minute": 0.11
+              },
+              "fantastic": {
+                "count": 2,
+                "per_minute": 0.21
+              },
+              "perfect": {
+                "count": 1,
+                "per_minute": 0.11
+              }
+            },
+            "total": 10,
+            "per_minute": 1.07,
+            "hyperbole_index": 4.96
+          },
+          "vocabulary": {
+            "ttr": 0.2337,
+            "unique_words": 471,
+            "total_words": 2015,
+            "words_per_minute": 215.6
+          },
+          "hot_takes": {
+            "count": 2,
+            "instances": [
+              {
+                "marker": "mid",
+                "context": "mention. >> yeah. amber mid thunder, you said we're both big fans. i don't know that i call myself a big fan, but she's like"
+              },
+              {
+                "marker": "mid",
+                "context": "member liking her. i watched that movie after the midy years cuz you saw it, so i gave her a watch. but i'm sure later. maybe we won't. but yeah, that"
+              }
+            ]
+          },
+          "reactions": {
+            "laughter": 3,
+            "music": 0,
+            "crosstalk": 0
+          }
+        }
+      }
     },
     "16onOrCsvKI": {
       "video_id": "16onOrCsvKI",
       "title": "Best Directors of 2025 | 12th Justin & Tyler Movie Awards",
       "year": 2025,
       "category": "Best Directors",
+      "upload_date": null,
       "duration_min": 22.4,
-      "speaker_times": {},
+      "speaker_times": {
+        "Justin": 649.9,
+        "Tyler": 500.0
+      },
       "word_frequency": [
         [
           "best",
@@ -62455,7 +63461,7 @@
           "words_per_minute": 133.7,
           "superlatives": 2,
           "fillers": 6,
-          "wpm_justin": 0.0,
+          "wpm_justin": 130.6,
           "wpm_tyler": 0.0
         },
         {
@@ -62464,8 +63470,8 @@
           "words_per_minute": 190.8,
           "superlatives": 2,
           "fillers": 24,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 102.5,
+          "wpm_tyler": 72.2
         },
         {
           "chunk": 3,
@@ -62473,8 +63479,8 @@
           "words_per_minute": 172.5,
           "superlatives": 2,
           "fillers": 24,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 84.7,
+          "wpm_tyler": 78.9
         },
         {
           "chunk": 4,
@@ -62482,8 +63488,8 @@
           "words_per_minute": 185.4,
           "superlatives": 3,
           "fillers": 22,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 27.6,
+          "wpm_tyler": 142.2
         },
         {
           "chunk": 5,
@@ -62491,8 +63497,8 @@
           "words_per_minute": 155.1,
           "superlatives": 1,
           "fillers": 19,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 83.4,
+          "wpm_tyler": 53.0
         },
         {
           "chunk": 6,
@@ -62500,8 +63506,8 @@
           "words_per_minute": 192.6,
           "superlatives": 2,
           "fillers": 33,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 64.6,
+          "wpm_tyler": 114.6
         },
         {
           "chunk": 7,
@@ -62509,8 +63515,8 @@
           "words_per_minute": 140.0,
           "superlatives": 2,
           "fillers": 11,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 105.6,
+          "wpm_tyler": 18.7
         },
         {
           "chunk": 8,
@@ -62518,8 +63524,8 @@
           "words_per_minute": 160.0,
           "superlatives": 3,
           "fillers": 20,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 77.6,
+          "wpm_tyler": 63.3
         },
         {
           "chunk": 9,
@@ -62527,8 +63533,8 @@
           "words_per_minute": 184.5,
           "superlatives": 2,
           "fillers": 34,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 9.8,
+          "wpm_tyler": 156.0
         },
         {
           "chunk": 10,
@@ -62536,8 +63542,8 @@
           "words_per_minute": 120.4,
           "superlatives": 2,
           "fillers": 8,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 88.7,
+          "wpm_tyler": 8.0
         }
       ],
       "reactions": {
@@ -62761,15 +63767,436 @@
           }
         ]
       },
-      "has_speaker_data": false
+      "has_speaker_data": true,
+      "by_speaker": {
+        "Justin": {
+          "segment_count": 261,
+          "speaking_time_seconds": 649.9,
+          "word_frequency": [
+            [
+              "best",
+              9
+            ],
+            [
+              "feel",
+              9
+            ],
+            [
+              "laughter",
+              7
+            ],
+            [
+              "three",
+              6
+            ],
+            [
+              "honorable",
+              6
+            ],
+            [
+              "year",
+              6
+            ],
+            [
+              "thought",
+              6
+            ],
+            [
+              "director",
+              6
+            ],
+            [
+              "cougler",
+              6
+            ],
+            [
+              "directors",
+              5
+            ],
+            [
+              "mentions",
+              5
+            ],
+            [
+              "top",
+              5
+            ],
+            [
+              "soderberg",
+              5
+            ],
+            [
+              "gmo",
+              5
+            ],
+            [
+              "del",
+              5
+            ],
+            [
+              "toro",
+              5
+            ],
+            [
+              "give",
+              5
+            ],
+            [
+              "visuals",
+              5
+            ],
+            [
+              "little",
+              5
+            ],
+            [
+              "particular",
+              5
+            ],
+            [
+              "pollson",
+              5
+            ],
+            [
+              "cuz",
+              4
+            ],
+            [
+              "enough",
+              4
+            ],
+            [
+              "saying",
+              4
+            ],
+            [
+              "years",
+              4
+            ],
+            [
+              "five",
+              4
+            ],
+            [
+              "weird",
+              4
+            ],
+            [
+              "man",
+              4
+            ],
+            [
+              "thor",
+              4
+            ],
+            [
+              "harmony",
+              4
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 7,
+              "per_minute": 0.65,
+              "pct_of_words": 0.403
+            },
+            "uh": {
+              "count": 7,
+              "per_minute": 0.65,
+              "pct_of_words": 0.403
+            },
+            "like": {
+              "count": 50,
+              "per_minute": 4.62,
+              "pct_of_words": 2.875
+            },
+            "honestly": {
+              "count": 1,
+              "per_minute": 0.09,
+              "pct_of_words": 0.058
+            },
+            "obviously": {
+              "count": 1,
+              "per_minute": 0.09,
+              "pct_of_words": 0.058
+            },
+            "absolutely": {
+              "count": 1,
+              "per_minute": 0.09,
+              "pct_of_words": 0.058
+            },
+            "definitely": {
+              "count": 2,
+              "per_minute": 0.18,
+              "pct_of_words": 0.115
+            },
+            "incredible": {
+              "count": 2,
+              "per_minute": 0.18,
+              "pct_of_words": 0.115
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 9,
+                "per_minute": 0.83
+              },
+              "worst": {
+                "count": 2,
+                "per_minute": 0.18
+              },
+              "incredible": {
+                "count": 2,
+                "per_minute": 0.18
+              }
+            },
+            "total": 13,
+            "per_minute": 1.2,
+            "hyperbole_index": 7.48
+          },
+          "vocabulary": {
+            "ttr": 0.2731,
+            "unique_words": 475,
+            "total_words": 1739,
+            "words_per_minute": 160.5
+          },
+          "hot_takes": {
+            "count": 4,
+            "instances": [
+              {
+                "marker": "mid",
+                "context": "esence is a movie that like i gushed about at the mid years. it was in my top five and or was it top five or honorable mention? no, it was in the top"
+              },
+              {
+                "marker": "mid",
+                "context": "f 2025. >> thor pollson for the damned. so at the mid years it was between cougler >> okay. >> and i think i gave it to cougler and gave pollson as my"
+              },
+              {
+                "marker": "mid",
+                "context": "> that's cool though. >> since i since we did the midy years, those movies have [clears throat] batted around in the background of my brain. edge. i a"
+              },
+              {
+                "marker": "mid",
+                "context": "freezing. like there these characters are in the middle of this and i feel every little ounce of this. and that is an unexpectedly but masterful dire"
+              }
+            ]
+          },
+          "reactions": {
+            "laughter": 7,
+            "music": 0,
+            "crosstalk": 0
+          }
+        },
+        "Tyler": {
+          "segment_count": 233,
+          "speaking_time_seconds": 500.0,
+          "word_frequency": [
+            [
+              "shots",
+              8
+            ],
+            [
+              "directing",
+              6
+            ],
+            [
+              "love",
+              6
+            ],
+            [
+              "people",
+              5
+            ],
+            [
+              "shackman",
+              4
+            ],
+            [
+              "whatever",
+              4
+            ],
+            [
+              "james",
+              4
+            ],
+            [
+              "visually",
+              4
+            ],
+            [
+              "turtle",
+              4
+            ],
+            [
+              "obviously",
+              4
+            ],
+            [
+              "knows",
+              4
+            ],
+            [
+              "stuff",
+              4
+            ],
+            [
+              "director",
+              4
+            ],
+            [
+              "mcu",
+              4
+            ],
+            [
+              "cuz",
+              4
+            ],
+            [
+              "snorts",
+              3
+            ],
+            [
+              "great",
+              3
+            ],
+            [
+              "superman",
+              3
+            ],
+            [
+              "everything",
+              3
+            ],
+            [
+              "clears",
+              3
+            ],
+            [
+              "throat",
+              3
+            ],
+            [
+              "best",
+              3
+            ],
+            [
+              "cool",
+              3
+            ],
+            [
+              "though",
+              3
+            ],
+            [
+              "start",
+              3
+            ],
+            [
+              "work",
+              3
+            ],
+            [
+              "sometimes",
+              2
+            ],
+            [
+              "steven",
+              2
+            ],
+            [
+              "solderberg",
+              2
+            ],
+            [
+              "works",
+              2
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 2,
+              "per_minute": 0.24,
+              "pct_of_words": 0.126
+            },
+            "uh": {
+              "count": 7,
+              "per_minute": 0.84,
+              "pct_of_words": 0.441
+            },
+            "like": {
+              "count": 96,
+              "per_minute": 11.52,
+              "pct_of_words": 6.053
+            },
+            "obviously": {
+              "count": 4,
+              "per_minute": 0.48,
+              "pct_of_words": 0.252
+            },
+            "actually": {
+              "count": 5,
+              "per_minute": 0.6,
+              "pct_of_words": 0.315
+            },
+            "amazing": {
+              "count": 1,
+              "per_minute": 0.12,
+              "pct_of_words": 0.063
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 3,
+                "per_minute": 0.36
+              },
+              "amazing": {
+                "count": 1,
+                "per_minute": 0.12
+              },
+              "fantastic": {
+                "count": 1,
+                "per_minute": 0.12
+              },
+              "beautiful": {
+                "count": 2,
+                "per_minute": 0.24
+              }
+            },
+            "total": 7,
+            "per_minute": 0.84,
+            "hyperbole_index": 4.41
+          },
+          "vocabulary": {
+            "ttr": 0.268,
+            "unique_words": 425,
+            "total_words": 1586,
+            "words_per_minute": 190.3
+          },
+          "hot_takes": {
+            "count": 0,
+            "instances": []
+          },
+          "reactions": {
+            "laughter": 1,
+            "music": 0,
+            "crosstalk": 0
+          }
+        }
+      }
     },
     "3A2CavrIEfY": {
       "video_id": "3A2CavrIEfY",
       "title": "Best Movies of 2025 PART ONE | 12th Justin & Tyler Movie Awards",
       "year": 2025,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 71.5,
-      "speaker_times": {},
+      "speaker_times": {
+        "Justin": 1840.2,
+        "Tyler": 2198.8
+      },
       "word_frequency": [
         [
           "people",
@@ -63060,8 +64487,8 @@
           "words_per_minute": 196.9,
           "superlatives": 2,
           "fillers": 79,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 169.6,
+          "wpm_tyler": 16.5
         },
         {
           "chunk": 2,
@@ -63069,8 +64496,8 @@
           "words_per_minute": 213.7,
           "superlatives": 3,
           "fillers": 78,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 9.4,
+          "wpm_tyler": 192.2
         },
         {
           "chunk": 3,
@@ -63078,8 +64505,8 @@
           "words_per_minute": 215.1,
           "superlatives": 9,
           "fillers": 89,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 71.8,
+          "wpm_tyler": 132.8
         },
         {
           "chunk": 4,
@@ -63087,8 +64514,8 @@
           "words_per_minute": 210.5,
           "superlatives": 9,
           "fillers": 70,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 83.7,
+          "wpm_tyler": 115.0
         },
         {
           "chunk": 5,
@@ -63096,8 +64523,8 @@
           "words_per_minute": 201.7,
           "superlatives": 4,
           "fillers": 75,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 86.4,
+          "wpm_tyler": 108.6
         },
         {
           "chunk": 6,
@@ -63105,8 +64532,8 @@
           "words_per_minute": 203.5,
           "superlatives": 4,
           "fillers": 73,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 64.5,
+          "wpm_tyler": 121.3
         },
         {
           "chunk": 7,
@@ -63114,8 +64541,8 @@
           "words_per_minute": 203.6,
           "superlatives": 7,
           "fillers": 86,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 44.8,
+          "wpm_tyler": 147.7
         },
         {
           "chunk": 8,
@@ -63123,8 +64550,8 @@
           "words_per_minute": 195.1,
           "superlatives": 7,
           "fillers": 61,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 75.7,
+          "wpm_tyler": 106.8
         },
         {
           "chunk": 9,
@@ -63132,8 +64559,8 @@
           "words_per_minute": 191.7,
           "superlatives": 5,
           "fillers": 74,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 107.1,
+          "wpm_tyler": 69.6
         },
         {
           "chunk": 10,
@@ -63141,8 +64568,8 @@
           "words_per_minute": 181.1,
           "superlatives": 5,
           "fillers": 51,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 67.9,
+          "wpm_tyler": 98.8
         }
       ],
       "reactions": {
@@ -63371,15 +64798,502 @@
           }
         ]
       },
-      "has_speaker_data": false
+      "has_speaker_data": true,
+      "by_speaker": {
+        "Justin": {
+          "segment_count": 783,
+          "speaking_time_seconds": 1840.2,
+          "word_frequency": [
+            [
+              "best",
+              21
+            ],
+            [
+              "laughter",
+              14
+            ],
+            [
+              "time",
+              13
+            ],
+            [
+              "feel",
+              12
+            ],
+            [
+              "love",
+              10
+            ],
+            [
+              "clears",
+              10
+            ],
+            [
+              "throat",
+              10
+            ],
+            [
+              "watch",
+              10
+            ],
+            [
+              "little",
+              9
+            ],
+            [
+              "year",
+              9
+            ],
+            [
+              "cuz",
+              9
+            ],
+            [
+              "snorts",
+              8
+            ],
+            [
+              "people",
+              8
+            ],
+            [
+              "never",
+              8
+            ],
+            [
+              "watched",
+              8
+            ],
+            [
+              "show",
+              8
+            ],
+            [
+              "top",
+              7
+            ],
+            [
+              "man",
+              7
+            ],
+            [
+              "ever",
+              7
+            ],
+            [
+              "maybe",
+              7
+            ],
+            [
+              "point",
+              7
+            ],
+            [
+              "captain",
+              7
+            ],
+            [
+              "work",
+              7
+            ],
+            [
+              "moments",
+              7
+            ],
+            [
+              "honorable",
+              6
+            ],
+            [
+              "bit",
+              6
+            ],
+            [
+              "years",
+              6
+            ],
+            [
+              "ton",
+              6
+            ],
+            [
+              "gets",
+              6
+            ],
+            [
+              "goes",
+              6
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 38,
+              "per_minute": 1.24,
+              "pct_of_words": 0.681
+            },
+            "uh": {
+              "count": 26,
+              "per_minute": 0.85,
+              "pct_of_words": 0.466
+            },
+            "like": {
+              "count": 179,
+              "per_minute": 5.84,
+              "pct_of_words": 3.208
+            },
+            "literally": {
+              "count": 2,
+              "per_minute": 0.07,
+              "pct_of_words": 0.036
+            },
+            "honestly": {
+              "count": 2,
+              "per_minute": 0.07,
+              "pct_of_words": 0.036
+            },
+            "basically": {
+              "count": 1,
+              "per_minute": 0.03,
+              "pct_of_words": 0.018
+            },
+            "obviously": {
+              "count": 5,
+              "per_minute": 0.16,
+              "pct_of_words": 0.09
+            },
+            "actually": {
+              "count": 8,
+              "per_minute": 0.26,
+              "pct_of_words": 0.143
+            },
+            "absolutely": {
+              "count": 1,
+              "per_minute": 0.03,
+              "pct_of_words": 0.018
+            },
+            "definitely": {
+              "count": 2,
+              "per_minute": 0.07,
+              "pct_of_words": 0.036
+            },
+            "totally": {
+              "count": 2,
+              "per_minute": 0.07,
+              "pct_of_words": 0.036
+            },
+            "essentially": {
+              "count": 1,
+              "per_minute": 0.03,
+              "pct_of_words": 0.018
+            },
+            "incredible": {
+              "count": 2,
+              "per_minute": 0.07,
+              "pct_of_words": 0.036
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 21,
+                "per_minute": 0.68
+              },
+              "greatest": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "incredible": {
+                "count": 2,
+                "per_minute": 0.07
+              },
+              "genius": {
+                "count": 1,
+                "per_minute": 0.03
+              }
+            },
+            "total": 25,
+            "per_minute": 0.82,
+            "hyperbole_index": 4.48
+          },
+          "vocabulary": {
+            "ttr": 0.1782,
+            "unique_words": 994,
+            "total_words": 5579,
+            "words_per_minute": 181.9
+          },
+          "hot_takes": {
+            "count": 1,
+            "instances": [
+              {
+                "marker": "mid",
+                "context": "d about this movie a bunch so i won't i won't the mid years. [laughter] do it. do it now. um, yeah, seven veils, tremendous. i dig adam mcggoyan stuff"
+              }
+            ]
+          },
+          "reactions": {
+            "laughter": 13,
+            "music": 0,
+            "crosstalk": 0
+          }
+        },
+        "Tyler": {
+          "segment_count": 1146,
+          "speaking_time_seconds": 2198.8,
+          "word_frequency": [
+            [
+              "people",
+              25
+            ],
+            [
+              "little",
+              22
+            ],
+            [
+              "remember",
+              21
+            ],
+            [
+              "clears",
+              19
+            ],
+            [
+              "throat",
+              19
+            ],
+            [
+              "watch",
+              19
+            ],
+            [
+              "love",
+              19
+            ],
+            [
+              "stuff",
+              18
+            ],
+            [
+              "year",
+              17
+            ],
+            [
+              "always",
+              17
+            ],
+            [
+              "maybe",
+              16
+            ],
+            [
+              "cuz",
+              15
+            ],
+            [
+              "bit",
+              13
+            ],
+            [
+              "great",
+              13
+            ],
+            [
+              "best",
+              13
+            ],
+            [
+              "yes",
+              12
+            ],
+            [
+              "feel",
+              12
+            ],
+            [
+              "whatever",
+              12
+            ],
+            [
+              "bad",
+              12
+            ],
+            [
+              "time",
+              12
+            ],
+            [
+              "captain",
+              11
+            ],
+            [
+              "america",
+              11
+            ],
+            [
+              "watching",
+              11
+            ],
+            [
+              "snorts",
+              11
+            ],
+            [
+              "though",
+              11
+            ],
+            [
+              "better",
+              11
+            ],
+            [
+              "talk",
+              10
+            ],
+            [
+              "never",
+              10
+            ],
+            [
+              "probably",
+              10
+            ],
+            [
+              "long",
+              9
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 16,
+              "per_minute": 0.44,
+              "pct_of_words": 0.202
+            },
+            "uh": {
+              "count": 8,
+              "per_minute": 0.22,
+              "pct_of_words": 0.101
+            },
+            "like": {
+              "count": 367,
+              "per_minute": 10.01,
+              "pct_of_words": 4.63
+            },
+            "literally": {
+              "count": 1,
+              "per_minute": 0.03,
+              "pct_of_words": 0.013
+            },
+            "obviously": {
+              "count": 6,
+              "per_minute": 0.16,
+              "pct_of_words": 0.076
+            },
+            "actually": {
+              "count": 20,
+              "per_minute": 0.55,
+              "pct_of_words": 0.252
+            },
+            "seriously": {
+              "count": 1,
+              "per_minute": 0.03,
+              "pct_of_words": 0.013
+            },
+            "totally": {
+              "count": 1,
+              "per_minute": 0.03,
+              "pct_of_words": 0.013
+            },
+            "essentially": {
+              "count": 1,
+              "per_minute": 0.03,
+              "pct_of_words": 0.013
+            },
+            "amazing": {
+              "count": 1,
+              "per_minute": 0.03,
+              "pct_of_words": 0.013
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 13,
+                "per_minute": 0.35
+              },
+              "amazing": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "terrible": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "fantastic": {
+                "count": 3,
+                "per_minute": 0.08
+              },
+              "perfect": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "phenomenal": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "garbage": {
+                "count": 6,
+                "per_minute": 0.16
+              },
+              "trash": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "goat": {
+                "count": 1,
+                "per_minute": 0.03
+              }
+            },
+            "total": 28,
+            "per_minute": 0.76,
+            "hyperbole_index": 3.53
+          },
+          "vocabulary": {
+            "ttr": 0.1418,
+            "unique_words": 1124,
+            "total_words": 7926,
+            "words_per_minute": 216.3
+          },
+          "hot_takes": {
+            "count": 2,
+            "instances": [
+              {
+                "marker": "underrated",
+                "context": "honest, i blame sympathetic [snorts] and such an underrated actor as i said in the best actors, one of the better actors working today. mhm. >> and m"
+              },
+              {
+                "marker": "mid",
+                "context": "n about this mo regarding this movie even for the mid >> you guys just doomed it to failure just with your negativity and like you never you never gav"
+              }
+            ]
+          },
+          "reactions": {
+            "laughter": 8,
+            "music": 0,
+            "crosstalk": 0
+          }
+        }
+      }
     },
     "m1kAMUamEMM": {
       "video_id": "m1kAMUamEMM",
       "title": "Best Movies of 2025 PART THREE | 12th Justin & Tyler Movie Awards",
       "year": 2025,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 77.2,
-      "speaker_times": {},
+      "speaker_times": {
+        "Justin": 1918.8,
+        "Tyler": 2344.8
+      },
       "word_frequency": [
         [
           "cuz",
@@ -63692,8 +65606,8 @@
           "words_per_minute": 183.4,
           "superlatives": 8,
           "fillers": 74,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 81.9,
+          "wpm_tyler": 89.3
         },
         {
           "chunk": 2,
@@ -63701,8 +65615,8 @@
           "words_per_minute": 204.4,
           "superlatives": 8,
           "fillers": 85,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 54.6,
+          "wpm_tyler": 138.4
         },
         {
           "chunk": 3,
@@ -63710,8 +65624,8 @@
           "words_per_minute": 186.8,
           "superlatives": 8,
           "fillers": 68,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 80.4,
+          "wpm_tyler": 90.6
         },
         {
           "chunk": 4,
@@ -63719,8 +65633,8 @@
           "words_per_minute": 196.2,
           "superlatives": 9,
           "fillers": 89,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 71.7,
+          "wpm_tyler": 111.8
         },
         {
           "chunk": 5,
@@ -63728,8 +65642,8 @@
           "words_per_minute": 201.8,
           "superlatives": 8,
           "fillers": 71,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 87.1,
+          "wpm_tyler": 101.5
         },
         {
           "chunk": 6,
@@ -63737,8 +65651,8 @@
           "words_per_minute": 210.0,
           "superlatives": 8,
           "fillers": 80,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 108.6,
+          "wpm_tyler": 85.8
         },
         {
           "chunk": 7,
@@ -63746,8 +65660,8 @@
           "words_per_minute": 168.4,
           "superlatives": 16,
           "fillers": 61,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 59.4,
+          "wpm_tyler": 90.4
         },
         {
           "chunk": 8,
@@ -63755,8 +65669,8 @@
           "words_per_minute": 192.8,
           "superlatives": 13,
           "fillers": 101,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 70.4,
+          "wpm_tyler": 105.8
         },
         {
           "chunk": 9,
@@ -63764,8 +65678,8 @@
           "words_per_minute": 197.4,
           "superlatives": 6,
           "fillers": 98,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 54.9,
+          "wpm_tyler": 124.5
         },
         {
           "chunk": 10,
@@ -63773,8 +65687,8 @@
           "words_per_minute": 195.2,
           "superlatives": 1,
           "fillers": 85,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 66.3,
+          "wpm_tyler": 113.1
         }
       ],
       "reactions": {
@@ -63998,15 +65912,551 @@
           }
         ]
       },
-      "has_speaker_data": false
+      "has_speaker_data": true,
+      "by_speaker": {
+        "Justin": {
+          "segment_count": 810,
+          "speaking_time_seconds": 1918.8,
+          "word_frequency": [
+            [
+              "best",
+              26
+            ],
+            [
+              "year",
+              19
+            ],
+            [
+              "feel",
+              18
+            ],
+            [
+              "time",
+              13
+            ],
+            [
+              "pop",
+              12
+            ],
+            [
+              "stuff",
+              11
+            ],
+            [
+              "probably",
+              11
+            ],
+            [
+              "loved",
+              10
+            ],
+            [
+              "love",
+              10
+            ],
+            [
+              "great",
+              10
+            ],
+            [
+              "little",
+              9
+            ],
+            [
+              "whole",
+              9
+            ],
+            [
+              "list",
+              8
+            ],
+            [
+              "zootopia",
+              8
+            ],
+            [
+              "yes",
+              8
+            ],
+            [
+              "point",
+              8
+            ],
+            [
+              "continental",
+              8
+            ],
+            [
+              "give",
+              8
+            ],
+            [
+              "demon",
+              8
+            ],
+            [
+              "hunters",
+              8
+            ],
+            [
+              "end",
+              7
+            ],
+            [
+              "miss",
+              7
+            ],
+            [
+              "big",
+              7
+            ],
+            [
+              "different",
+              7
+            ],
+            [
+              "favorite",
+              7
+            ],
+            [
+              "totally",
+              7
+            ],
+            [
+              "high",
+              7
+            ],
+            [
+              "top",
+              6
+            ],
+            [
+              "exactly",
+              6
+            ],
+            [
+              "seen",
+              6
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 26,
+              "per_minute": 0.81,
+              "pct_of_words": 0.458
+            },
+            "uh": {
+              "count": 28,
+              "per_minute": 0.88,
+              "pct_of_words": 0.493
+            },
+            "like": {
+              "count": 179,
+              "per_minute": 5.6,
+              "pct_of_words": 3.151
+            },
+            "literally": {
+              "count": 1,
+              "per_minute": 0.03,
+              "pct_of_words": 0.018
+            },
+            "basically": {
+              "count": 3,
+              "per_minute": 0.09,
+              "pct_of_words": 0.053
+            },
+            "obviously": {
+              "count": 4,
+              "per_minute": 0.13,
+              "pct_of_words": 0.07
+            },
+            "actually": {
+              "count": 6,
+              "per_minute": 0.19,
+              "pct_of_words": 0.106
+            },
+            "definitely": {
+              "count": 2,
+              "per_minute": 0.06,
+              "pct_of_words": 0.035
+            },
+            "totally": {
+              "count": 7,
+              "per_minute": 0.22,
+              "pct_of_words": 0.123
+            },
+            "incredible": {
+              "count": 2,
+              "per_minute": 0.06,
+              "pct_of_words": 0.035
+            },
+            "insane": {
+              "count": 1,
+              "per_minute": 0.03,
+              "pct_of_words": 0.018
+            },
+            "amazing": {
+              "count": 1,
+              "per_minute": 0.03,
+              "pct_of_words": 0.018
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 26,
+                "per_minute": 0.81
+              },
+              "worst": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "amazing": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "incredible": {
+                "count": 2,
+                "per_minute": 0.06
+              },
+              "fantastic": {
+                "count": 6,
+                "per_minute": 0.19
+              },
+              "perfect": {
+                "count": 2,
+                "per_minute": 0.06
+              },
+              "genius": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "beautiful": {
+                "count": 4,
+                "per_minute": 0.13
+              },
+              "insane": {
+                "count": 1,
+                "per_minute": 0.03
+              }
+            },
+            "total": 44,
+            "per_minute": 1.38,
+            "hyperbole_index": 7.75
+          },
+          "vocabulary": {
+            "ttr": 0.1788,
+            "unique_words": 1016,
+            "total_words": 5681,
+            "words_per_minute": 177.6
+          },
+          "hot_takes": {
+            "count": 3,
+            "instances": [
+              {
+                "marker": "underrated",
+                "context": "florence pew i think is a a performer that i have underrated personally. like i feel like i should give florence more credit. >> i give her credit. i'"
+              },
+              {
+                "marker": "mid",
+                "context": "like i say, lyrical gothic screenplay presented amidst the rich visuals that you know you expect from somebody like del toro. again, there were some"
+              },
+              {
+                "marker": "mid",
+                "context": "6 months time when we are back here for the 2026 midyear awards. they'll be here before basically is a weird construct that no one understands anymor"
+              }
+            ]
+          },
+          "reactions": {
+            "laughter": 0,
+            "music": 0,
+            "crosstalk": 0
+          }
+        },
+        "Tyler": {
+          "segment_count": 1138,
+          "speaking_time_seconds": 2344.8,
+          "word_frequency": [
+            [
+              "cuz",
+              39
+            ],
+            [
+              "watch",
+              24
+            ],
+            [
+              "time",
+              20
+            ],
+            [
+              "seen",
+              16
+            ],
+            [
+              "maybe",
+              15
+            ],
+            [
+              "little",
+              15
+            ],
+            [
+              "probably",
+              15
+            ],
+            [
+              "great",
+              15
+            ],
+            [
+              "action",
+              14
+            ],
+            [
+              "year",
+              14
+            ],
+            [
+              "anything",
+              13
+            ],
+            [
+              "bit",
+              13
+            ],
+            [
+              "cool",
+              13
+            ],
+            [
+              "yes",
+              13
+            ],
+            [
+              "watched",
+              13
+            ],
+            [
+              "best",
+              12
+            ],
+            [
+              "liked",
+              12
+            ],
+            [
+              "different",
+              12
+            ],
+            [
+              "might",
+              11
+            ],
+            [
+              "obviously",
+              11
+            ],
+            [
+              "man",
+              11
+            ],
+            [
+              "fighting",
+              11
+            ],
+            [
+              "thought",
+              11
+            ],
+            [
+              "fantastic",
+              11
+            ],
+            [
+              "whatever",
+              10
+            ],
+            [
+              "never",
+              10
+            ],
+            [
+              "people",
+              10
+            ],
+            [
+              "love",
+              10
+            ],
+            [
+              "remember",
+              10
+            ],
+            [
+              "though",
+              10
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 21,
+              "per_minute": 0.54,
+              "pct_of_words": 0.259
+            },
+            "uh": {
+              "count": 14,
+              "per_minute": 0.36,
+              "pct_of_words": 0.172
+            },
+            "like": {
+              "count": 402,
+              "per_minute": 10.29,
+              "pct_of_words": 4.95
+            },
+            "literally": {
+              "count": 3,
+              "per_minute": 0.08,
+              "pct_of_words": 0.037
+            },
+            "basically": {
+              "count": 1,
+              "per_minute": 0.03,
+              "pct_of_words": 0.012
+            },
+            "obviously": {
+              "count": 11,
+              "per_minute": 0.28,
+              "pct_of_words": 0.135
+            },
+            "actually": {
+              "count": 20,
+              "per_minute": 0.51,
+              "pct_of_words": 0.246
+            },
+            "absolutely": {
+              "count": 6,
+              "per_minute": 0.15,
+              "pct_of_words": 0.074
+            },
+            "definitely": {
+              "count": 2,
+              "per_minute": 0.05,
+              "pct_of_words": 0.025
+            },
+            "totally": {
+              "count": 3,
+              "per_minute": 0.08,
+              "pct_of_words": 0.037
+            },
+            "insane": {
+              "count": 1,
+              "per_minute": 0.03,
+              "pct_of_words": 0.012
+            },
+            "amazing": {
+              "count": 3,
+              "per_minute": 0.08,
+              "pct_of_words": 0.037
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 12,
+                "per_minute": 0.31
+              },
+              "worst": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "greatest": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "amazing": {
+                "count": 3,
+                "per_minute": 0.08
+              },
+              "fantastic": {
+                "count": 11,
+                "per_minute": 0.28
+              },
+              "perfect": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "genius": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "horrible": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "insane": {
+                "count": 1,
+                "per_minute": 0.03
+              }
+            },
+            "total": 32,
+            "per_minute": 0.82,
+            "hyperbole_index": 3.94
+          },
+          "vocabulary": {
+            "ttr": 0.1377,
+            "unique_words": 1118,
+            "total_words": 8121,
+            "words_per_minute": 207.8
+          },
+          "hot_takes": {
+            "count": 6,
+            "instances": [
+              {
+                "marker": "underrated",
+                "context": "but it is aged super well. i think this movie is underrated and obviously overlooked >> and whatever reason that is you know [\u00a0__\u00a0] i don't care, rig"
+              },
+              {
+                "marker": "underrated",
+                "context": "like, this is a great like soundtrack. one of the underrated parts of this movie is when roomie freaks out and runs away >> and it's playing like thei"
+              },
+              {
+                "marker": "mid",
+                "context": "s was my second favorite movie of the year at the mid years. >> um i actually rewatched this one. i don't i didn't rewatch the other ones, but i thoug"
+              },
+              {
+                "marker": "mid",
+                "context": "an you know i like thunderbolts >> cuz we had the mid years so that's not a spoiler but where is it on my list? >> and we'll go right into my number f"
+              },
+              {
+                "marker": "mid",
+                "context": "nd he's like doing his thing and there's like the middle fingers are going off and flipping tanks and stuff and it was dude, this movie was just pure"
+              },
+              {
+                "marker": "mid",
+                "context": "t know maybe probably i think like when i did the middle of the year list on facebook, i think i might had it at like sixth or something, right? >> ok"
+              }
+            ]
+          },
+          "reactions": {
+            "laughter": 0,
+            "music": 0,
+            "crosstalk": 0
+          }
+        }
+      }
     },
     "gcBaFBeq5Qs": {
       "video_id": "gcBaFBeq5Qs",
       "title": "Best Movies of 2025 PART TWO | 12th Justin & Tyler Movie Awards",
       "year": 2025,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 51.5,
-      "speaker_times": {},
+      "speaker_times": {
+        "Justin": 1760.9,
+        "Tyler": 1103.7
+      },
       "word_frequency": [
         [
           "cuz",
@@ -64291,8 +66741,8 @@
           "words_per_minute": 152.7,
           "superlatives": 4,
           "fillers": 44,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 86.5,
+          "wpm_tyler": 56.5
         },
         {
           "chunk": 2,
@@ -64300,8 +66750,8 @@
           "words_per_minute": 196.2,
           "superlatives": 1,
           "fillers": 42,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 160.1,
+          "wpm_tyler": 18.8
         },
         {
           "chunk": 3,
@@ -64309,8 +66759,8 @@
           "words_per_minute": 194.9,
           "superlatives": 4,
           "fillers": 60,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 107.4,
+          "wpm_tyler": 82.4
         },
         {
           "chunk": 4,
@@ -64318,8 +66768,8 @@
           "words_per_minute": 195.5,
           "superlatives": 4,
           "fillers": 59,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 122.2,
+          "wpm_tyler": 66.1
         },
         {
           "chunk": 5,
@@ -64327,8 +66777,8 @@
           "words_per_minute": 185.8,
           "superlatives": 3,
           "fillers": 50,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 104.1,
+          "wpm_tyler": 66.6
         },
         {
           "chunk": 6,
@@ -64336,8 +66786,8 @@
           "words_per_minute": 205.0,
           "superlatives": 5,
           "fillers": 59,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 99.3,
+          "wpm_tyler": 86.5
         },
         {
           "chunk": 7,
@@ -64345,8 +66795,8 @@
           "words_per_minute": 183.2,
           "superlatives": 5,
           "fillers": 44,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 107.8,
+          "wpm_tyler": 67.4
         },
         {
           "chunk": 8,
@@ -64354,8 +66804,8 @@
           "words_per_minute": 215.7,
           "superlatives": 4,
           "fillers": 75,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 44.1,
+          "wpm_tyler": 165.0
         },
         {
           "chunk": 9,
@@ -64363,8 +66813,8 @@
           "words_per_minute": 197.8,
           "superlatives": 3,
           "fillers": 51,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 137.2,
+          "wpm_tyler": 49.2
         },
         {
           "chunk": 10,
@@ -64372,8 +66822,8 @@
           "words_per_minute": 177.0,
           "superlatives": 7,
           "fillers": 43,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 70.1,
+          "wpm_tyler": 95.8
         }
       ],
       "reactions": {
@@ -64597,15 +67047,495 @@
           }
         ]
       },
-      "has_speaker_data": false
+      "has_speaker_data": true,
+      "by_speaker": {
+        "Justin": {
+          "segment_count": 747,
+          "speaking_time_seconds": 1760.9,
+          "word_frequency": [
+            [
+              "best",
+              16
+            ],
+            [
+              "throat",
+              12
+            ],
+            [
+              "point",
+              12
+            ],
+            [
+              "laughter",
+              12
+            ],
+            [
+              "clears",
+              11
+            ],
+            [
+              "year",
+              11
+            ],
+            [
+              "whatever",
+              10
+            ],
+            [
+              "maybe",
+              10
+            ],
+            [
+              "stuff",
+              9
+            ],
+            [
+              "might",
+              8
+            ],
+            [
+              "time",
+              8
+            ],
+            [
+              "cool",
+              8
+            ],
+            [
+              "bit",
+              8
+            ],
+            [
+              "cuz",
+              8
+            ],
+            [
+              "end",
+              8
+            ],
+            [
+              "need",
+              8
+            ],
+            [
+              "another",
+              7
+            ],
+            [
+              "ending",
+              7
+            ],
+            [
+              "love",
+              6
+            ],
+            [
+              "baseball",
+              6
+            ],
+            [
+              "people",
+              6
+            ],
+            [
+              "nothing",
+              6
+            ],
+            [
+              "remember",
+              6
+            ],
+            [
+              "everybody",
+              6
+            ],
+            [
+              "give",
+              6
+            ],
+            [
+              "character",
+              6
+            ],
+            [
+              "fact",
+              6
+            ],
+            [
+              "top",
+              5
+            ],
+            [
+              "snorts",
+              5
+            ],
+            [
+              "happen",
+              5
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 41,
+              "per_minute": 1.4,
+              "pct_of_words": 0.767
+            },
+            "uh": {
+              "count": 8,
+              "per_minute": 0.27,
+              "pct_of_words": 0.15
+            },
+            "like": {
+              "count": 183,
+              "per_minute": 6.24,
+              "pct_of_words": 3.422
+            },
+            "literally": {
+              "count": 5,
+              "per_minute": 0.17,
+              "pct_of_words": 0.094
+            },
+            "honestly": {
+              "count": 2,
+              "per_minute": 0.07,
+              "pct_of_words": 0.037
+            },
+            "basically": {
+              "count": 2,
+              "per_minute": 0.07,
+              "pct_of_words": 0.037
+            },
+            "obviously": {
+              "count": 2,
+              "per_minute": 0.07,
+              "pct_of_words": 0.037
+            },
+            "actually": {
+              "count": 18,
+              "per_minute": 0.61,
+              "pct_of_words": 0.337
+            },
+            "absolutely": {
+              "count": 3,
+              "per_minute": 0.1,
+              "pct_of_words": 0.056
+            },
+            "definitely": {
+              "count": 1,
+              "per_minute": 0.03,
+              "pct_of_words": 0.019
+            },
+            "totally": {
+              "count": 2,
+              "per_minute": 0.07,
+              "pct_of_words": 0.037
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 16,
+                "per_minute": 0.55
+              },
+              "worst": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "fantastic": {
+                "count": 5,
+                "per_minute": 0.17
+              },
+              "brilliant": {
+                "count": 2,
+                "per_minute": 0.07
+              },
+              "genius": {
+                "count": 1,
+                "per_minute": 0.03
+              },
+              "phenomenal": {
+                "count": 1,
+                "per_minute": 0.03
+              }
+            },
+            "total": 26,
+            "per_minute": 0.89,
+            "hyperbole_index": 4.86
+          },
+          "vocabulary": {
+            "ttr": 0.1866,
+            "unique_words": 998,
+            "total_words": 5347,
+            "words_per_minute": 182.2
+          },
+          "hot_takes": {
+            "count": 4,
+            "instances": [
+              {
+                "marker": "mid",
+                "context": "to our top 30 best movies of 2025. we are in the middle stanza here. our number 20 to number 11 best movies of 2025 as part of the 12th justin and ty"
+              },
+              {
+                "marker": "mid",
+                "context": "se you can't see up there and it's, you know, the middle of the night at this point. and the final pitch comes through and at him because if he calls"
+              },
+              {
+                "marker": "mid",
+                "context": "tion. uh, yeah, one battle after another. kind of middle of the >> do we know when chapter 3? >> i don't know. i forgot this one was coming out until"
+              },
+              {
+                "marker": "mid",
+                "context": "killian fights so hard for a while to be normal amidst social ineptitude, obsession, violence, and an inability to find belonging. eventually delving"
+              }
+            ]
+          },
+          "reactions": {
+            "laughter": 12,
+            "music": 0,
+            "crosstalk": 0
+          }
+        },
+        "Tyler": {
+          "segment_count": 568,
+          "speaking_time_seconds": 1103.7,
+          "word_frequency": [
+            [
+              "cuz",
+              21
+            ],
+            [
+              "clears",
+              12
+            ],
+            [
+              "throat",
+              12
+            ],
+            [
+              "time",
+              11
+            ],
+            [
+              "love",
+              10
+            ],
+            [
+              "feel",
+              10
+            ],
+            [
+              "though",
+              10
+            ],
+            [
+              "little",
+              10
+            ],
+            [
+              "probably",
+              9
+            ],
+            [
+              "best",
+              8
+            ],
+            [
+              "great",
+              8
+            ],
+            [
+              "watching",
+              8
+            ],
+            [
+              "laughter",
+              7
+            ],
+            [
+              "snorts",
+              7
+            ],
+            [
+              "action",
+              7
+            ],
+            [
+              "obviously",
+              6
+            ],
+            [
+              "jokes",
+              6
+            ],
+            [
+              "maybe",
+              6
+            ],
+            [
+              "bit",
+              6
+            ],
+            [
+              "stuff",
+              6
+            ],
+            [
+              "might",
+              6
+            ],
+            [
+              "part",
+              5
+            ],
+            [
+              "funny",
+              5
+            ],
+            [
+              "felt",
+              5
+            ],
+            [
+              "together",
+              5
+            ],
+            [
+              "yes",
+              5
+            ],
+            [
+              "boy",
+              5
+            ],
+            [
+              "ultimately",
+              5
+            ],
+            [
+              "least",
+              5
+            ],
+            [
+              "never",
+              5
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 7,
+              "per_minute": 0.38,
+              "pct_of_words": 0.18
+            },
+            "uh": {
+              "count": 2,
+              "per_minute": 0.11,
+              "pct_of_words": 0.052
+            },
+            "like": {
+              "count": 190,
+              "per_minute": 10.33,
+              "pct_of_words": 4.894
+            },
+            "basically": {
+              "count": 3,
+              "per_minute": 0.16,
+              "pct_of_words": 0.077
+            },
+            "obviously": {
+              "count": 6,
+              "per_minute": 0.33,
+              "pct_of_words": 0.155
+            },
+            "actually": {
+              "count": 11,
+              "per_minute": 0.6,
+              "pct_of_words": 0.283
+            },
+            "absolutely": {
+              "count": 3,
+              "per_minute": 0.16,
+              "pct_of_words": 0.077
+            },
+            "totally": {
+              "count": 2,
+              "per_minute": 0.11,
+              "pct_of_words": 0.052
+            },
+            "essentially": {
+              "count": 1,
+              "per_minute": 0.05,
+              "pct_of_words": 0.026
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 8,
+                "per_minute": 0.43
+              },
+              "fantastic": {
+                "count": 1,
+                "per_minute": 0.05
+              },
+              "awful": {
+                "count": 1,
+                "per_minute": 0.05
+              },
+              "brilliant": {
+                "count": 1,
+                "per_minute": 0.05
+              },
+              "beautiful": {
+                "count": 1,
+                "per_minute": 0.05
+              }
+            },
+            "total": 12,
+            "per_minute": 0.65,
+            "hyperbole_index": 3.09
+          },
+          "vocabulary": {
+            "ttr": 0.1963,
+            "unique_words": 762,
+            "total_words": 3882,
+            "words_per_minute": 211.0
+          },
+          "hot_takes": {
+            "count": 3,
+            "instances": [
+              {
+                "marker": "underrated",
+                "context": "were like pretty much all awesome. red sparrow is underrated. i am legend's good. i kind of liked constantine way back in the day. >> this is really g"
+              },
+              {
+                "marker": "mid",
+                "context": "oy, too. you just pretend not >> yeah, cuz at the mid series you were like, oh, you know, you were receptive, >> you know, you were like, oh, that's i"
+              },
+              {
+                "marker": "mid",
+                "context": "you know? like i actually i i think it was at the mid years i said this that um i actually really loved the like first say half or so of them just kin"
+              }
+            ]
+          },
+          "reactions": {
+            "laughter": 7,
+            "music": 0,
+            "crosstalk": 0
+          }
+        }
+      }
     },
     "L9rH0tOR-Rc": {
       "video_id": "L9rH0tOR-Rc",
       "title": "FAN'S CHOICE! Best Movies of 2025 | 12th Justin & Tyler Movie Awards",
       "year": 2025,
       "category": "Best Movies",
+      "upload_date": null,
       "duration_min": 21.6,
-      "speaker_times": {},
+      "speaker_times": {
+        "Justin": 794.4,
+        "Tyler": 357.7
+      },
       "word_frequency": [
         [
           "five",
@@ -64818,8 +67748,8 @@
           "words_per_minute": 137.1,
           "superlatives": 0,
           "fillers": 8,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 106.6,
+          "wpm_tyler": 17.1
         },
         {
           "chunk": 2,
@@ -64827,8 +67757,8 @@
           "words_per_minute": 175.6,
           "superlatives": 0,
           "fillers": 5,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 86.2,
+          "wpm_tyler": 78.8
         },
         {
           "chunk": 3,
@@ -64836,8 +67766,8 @@
           "words_per_minute": 208.0,
           "superlatives": 0,
           "fillers": 13,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 145.5,
+          "wpm_tyler": 56.5
         },
         {
           "chunk": 4,
@@ -64845,8 +67775,8 @@
           "words_per_minute": 213.6,
           "superlatives": 1,
           "fillers": 29,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 146.9,
+          "wpm_tyler": 61.6
         },
         {
           "chunk": 5,
@@ -64854,8 +67784,8 @@
           "words_per_minute": 199.7,
           "superlatives": 0,
           "fillers": 21,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 135.3,
+          "wpm_tyler": 55.6
         },
         {
           "chunk": 6,
@@ -64863,8 +67793,8 @@
           "words_per_minute": 187.6,
           "superlatives": 0,
           "fillers": 16,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 77.8,
+          "wpm_tyler": 86.6
         },
         {
           "chunk": 7,
@@ -64872,8 +67802,8 @@
           "words_per_minute": 172.4,
           "superlatives": 1,
           "fillers": 16,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 86.6,
+          "wpm_tyler": 79.7
         },
         {
           "chunk": 8,
@@ -64881,8 +67811,8 @@
           "words_per_minute": 172.8,
           "superlatives": 0,
           "fillers": 7,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 90.8,
+          "wpm_tyler": 60.7
         },
         {
           "chunk": 9,
@@ -64890,8 +67820,8 @@
           "words_per_minute": 195.1,
           "superlatives": 1,
           "fillers": 6,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 97.8,
+          "wpm_tyler": 76.9
         },
         {
           "chunk": 10,
@@ -64899,7 +67829,7 @@
           "words_per_minute": 124.6,
           "superlatives": 1,
           "fillers": 6,
-          "wpm_justin": 0.0,
+          "wpm_justin": 113.5,
           "wpm_tyler": 0.0
         }
       ],
@@ -65129,15 +68059,404 @@
           }
         ]
       },
-      "has_speaker_data": false
+      "has_speaker_data": true,
+      "by_speaker": {
+        "Justin": {
+          "segment_count": 373,
+          "speaking_time_seconds": 794.4,
+          "word_frequency": [
+            [
+              "five",
+              20
+            ],
+            [
+              "top",
+              17
+            ],
+            [
+              "year",
+              12
+            ],
+            [
+              "three",
+              12
+            ],
+            [
+              "honorable",
+              11
+            ],
+            [
+              "mentions",
+              11
+            ],
+            [
+              "tyler",
+              9
+            ],
+            [
+              "people",
+              9
+            ],
+            [
+              "demon",
+              8
+            ],
+            [
+              "man",
+              7
+            ],
+            [
+              "every",
+              6
+            ],
+            [
+              "tiers",
+              6
+            ],
+            [
+              "interesting",
+              6
+            ],
+            [
+              "pop",
+              6
+            ],
+            [
+              "tier",
+              6
+            ],
+            [
+              "liked",
+              6
+            ],
+            [
+              "laughter",
+              6
+            ],
+            [
+              "papa",
+              6
+            ],
+            [
+              "clears",
+              5
+            ],
+            [
+              "throat",
+              5
+            ],
+            [
+              "four",
+              5
+            ],
+            [
+              "thunderbolts",
+              5
+            ],
+            [
+              "fans",
+              4
+            ],
+            [
+              "competition",
+              4
+            ],
+            [
+              "predict",
+              4
+            ],
+            [
+              "always",
+              4
+            ],
+            [
+              "zootopia",
+              4
+            ],
+            [
+              "sinners",
+              4
+            ],
+            [
+              "barely",
+              4
+            ],
+            [
+              "cuz",
+              4
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 16,
+              "per_minute": 1.21,
+              "pct_of_words": 0.682
+            },
+            "uh": {
+              "count": 15,
+              "per_minute": 1.13,
+              "pct_of_words": 0.639
+            },
+            "like": {
+              "count": 35,
+              "per_minute": 2.64,
+              "pct_of_words": 1.492
+            },
+            "literally": {
+              "count": 1,
+              "per_minute": 0.08,
+              "pct_of_words": 0.043
+            },
+            "obviously": {
+              "count": 2,
+              "per_minute": 0.15,
+              "pct_of_words": 0.085
+            },
+            "actually": {
+              "count": 4,
+              "per_minute": 0.3,
+              "pct_of_words": 0.171
+            },
+            "definitely": {
+              "count": 1,
+              "per_minute": 0.08,
+              "pct_of_words": 0.043
+            },
+            "totally": {
+              "count": 1,
+              "per_minute": 0.08,
+              "pct_of_words": 0.043
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 3,
+                "per_minute": 0.23
+              },
+              "fantastic": {
+                "count": 1,
+                "per_minute": 0.08
+              }
+            },
+            "total": 4,
+            "per_minute": 0.3,
+            "hyperbole_index": 1.71
+          },
+          "vocabulary": {
+            "ttr": 0.2289,
+            "unique_words": 537,
+            "total_words": 2346,
+            "words_per_minute": 177.2
+          },
+          "hot_takes": {
+            "count": 1,
+            "instances": [
+              {
+                "marker": "mid",
+                "context": "blic at large. >> yay. tyler every year and every midyear tries to predict your top five favorite movies of 2025 and every year and this obviously is"
+              }
+            ]
+          },
+          "reactions": {
+            "laughter": 6,
+            "music": 0,
+            "crosstalk": 0
+          }
+        },
+        "Tyler": {
+          "segment_count": 202,
+          "speaking_time_seconds": 357.7,
+          "word_frequency": [
+            [
+              "weapons",
+              8
+            ],
+            [
+              "five",
+              7
+            ],
+            [
+              "laughter",
+              7
+            ],
+            [
+              "thought",
+              5
+            ],
+            [
+              "hate",
+              5
+            ],
+            [
+              "probably",
+              4
+            ],
+            [
+              "year",
+              4
+            ],
+            [
+              "never",
+              4
+            ],
+            [
+              "though",
+              4
+            ],
+            [
+              "clears",
+              4
+            ],
+            [
+              "throat",
+              4
+            ],
+            [
+              "top",
+              4
+            ],
+            [
+              "cuz",
+              4
+            ],
+            [
+              "demon",
+              3
+            ],
+            [
+              "consider",
+              3
+            ],
+            [
+              "sinners",
+              3
+            ],
+            [
+              "hope",
+              3
+            ],
+            [
+              "might",
+              3
+            ],
+            [
+              "whatever",
+              3
+            ],
+            [
+              "man",
+              3
+            ],
+            [
+              "cool",
+              3
+            ],
+            [
+              "wrong",
+              3
+            ],
+            [
+              "damn",
+              2
+            ],
+            [
+              "three",
+              2
+            ],
+            [
+              "audible",
+              2
+            ],
+            [
+              "thunderbolts",
+              2
+            ],
+            [
+              "hunters",
+              2
+            ],
+            [
+              "earlier",
+              2
+            ],
+            [
+              "predict",
+              2
+            ],
+            [
+              "percentage",
+              2
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 1,
+              "per_minute": 0.17,
+              "pct_of_words": 0.081
+            },
+            "uh": {
+              "count": 5,
+              "per_minute": 0.84,
+              "pct_of_words": 0.404
+            },
+            "like": {
+              "count": 32,
+              "per_minute": 5.37,
+              "pct_of_words": 2.585
+            },
+            "actually": {
+              "count": 1,
+              "per_minute": 0.17,
+              "pct_of_words": 0.081
+            },
+            "absolutely": {
+              "count": 2,
+              "per_minute": 0.34,
+              "pct_of_words": 0.162
+            },
+            "totally": {
+              "count": 2,
+              "per_minute": 0.34,
+              "pct_of_words": 0.162
+            }
+          },
+          "superlatives": {
+            "words": {},
+            "total": 0,
+            "per_minute": 0.0,
+            "hyperbole_index": 0.0
+          },
+          "vocabulary": {
+            "ttr": 0.2569,
+            "unique_words": 318,
+            "total_words": 1238,
+            "words_per_minute": 207.7
+          },
+          "hot_takes": {
+            "count": 0,
+            "instances": []
+          },
+          "reactions": {
+            "laughter": 7,
+            "music": 0,
+            "crosstalk": 0
+          }
+        }
+      }
     },
     "GR-HcaZjoH4": {
       "video_id": "GR-HcaZjoH4",
       "title": "PART 1 | The 2025 Justin & Tyler MID-YEAR Movie Awards",
       "year": 2025,
       "category": "Mid-Year Awards",
+      "upload_date": null,
       "duration_min": 103.1,
-      "speaker_times": {},
+      "speaker_times": {
+        "Justin": 45.0,
+        "Other": 2903.7,
+        "Tyler": 2672.8
+      },
       "word_frequency": [
         [
           "year",
@@ -65452,8 +68771,8 @@
           "words_per_minute": 153.7,
           "superlatives": 6,
           "fillers": 64,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 0.5,
+          "wpm_tyler": 98.4
         },
         {
           "chunk": 2,
@@ -65461,8 +68780,8 @@
           "words_per_minute": 205.8,
           "superlatives": 11,
           "fillers": 94,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 2.5,
+          "wpm_tyler": 54.1
         },
         {
           "chunk": 3,
@@ -65471,7 +68790,7 @@
           "superlatives": 6,
           "fillers": 74,
           "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_tyler": 75.7
         },
         {
           "chunk": 4,
@@ -65480,7 +68799,7 @@
           "superlatives": 5,
           "fillers": 127,
           "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_tyler": 61.5
         },
         {
           "chunk": 5,
@@ -65489,7 +68808,7 @@
           "superlatives": 8,
           "fillers": 140,
           "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_tyler": 65.5
         },
         {
           "chunk": 6,
@@ -65497,8 +68816,8 @@
           "words_per_minute": 184.5,
           "superlatives": 3,
           "fillers": 81,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 0.9,
+          "wpm_tyler": 77.2
         },
         {
           "chunk": 7,
@@ -65507,7 +68826,7 @@
           "superlatives": 7,
           "fillers": 95,
           "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_tyler": 102.2
         },
         {
           "chunk": 8,
@@ -65516,7 +68835,7 @@
           "superlatives": 4,
           "fillers": 95,
           "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_tyler": 96.2
         },
         {
           "chunk": 9,
@@ -65525,7 +68844,7 @@
           "superlatives": 3,
           "fillers": 98,
           "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_tyler": 78.1
         },
         {
           "chunk": 10,
@@ -65533,8 +68852,8 @@
           "words_per_minute": 174.7,
           "superlatives": 4,
           "fillers": 105,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 0.6,
+          "wpm_tyler": 73.2
         }
       ],
       "reactions": {
@@ -65758,15 +69077,401 @@
           }
         ]
       },
-      "has_speaker_data": false
+      "has_speaker_data": true,
+      "by_speaker": {
+        "Justin": {
+          "segment_count": 7,
+          "speaking_time_seconds": 45.0,
+          "word_frequency": [
+            [
+              "moment",
+              1
+            ],
+            [
+              "willingly",
+              1
+            ],
+            [
+              "continuing",
+              1
+            ],
+            [
+              "talk",
+              1
+            ],
+            [
+              "entire",
+              1
+            ],
+            [
+              "world",
+              1
+            ],
+            [
+              "hollywood",
+              1
+            ],
+            [
+              "follows",
+              1
+            ],
+            [
+              "instagram",
+              1
+            ],
+            [
+              "fantastic",
+              1
+            ],
+            [
+              "trailer",
+              1
+            ],
+            [
+              "used",
+              1
+            ],
+            [
+              "play",
+              1
+            ],
+            [
+              "popeye",
+              1
+            ],
+            [
+              "quite",
+              1
+            ],
+            [
+              "feel",
+              1
+            ],
+            [
+              "necessarily",
+              1
+            ],
+            [
+              "explain",
+              1
+            ]
+          ],
+          "filler_words": {},
+          "superlatives": {
+            "words": {
+              "fantastic": {
+                "count": 1,
+                "per_minute": 1.0
+              }
+            },
+            "total": 1,
+            "per_minute": 1.0,
+            "hyperbole_index": 21.74
+          },
+          "vocabulary": {
+            "ttr": 0.8913,
+            "unique_words": 41,
+            "total_words": 46,
+            "words_per_minute": 46.0
+          },
+          "hot_takes": {
+            "count": 0,
+            "instances": []
+          },
+          "reactions": {
+            "laughter": 0,
+            "music": 0,
+            "crosstalk": 0
+          }
+        },
+        "Tyler": {
+          "segment_count": 1051,
+          "speaking_time_seconds": 2672.8,
+          "word_frequency": [
+            [
+              "year",
+              32
+            ],
+            [
+              "feel",
+              21
+            ],
+            [
+              "awards",
+              18
+            ],
+            [
+              "little",
+              17
+            ],
+            [
+              "selection",
+              14
+            ],
+            [
+              "time",
+              13
+            ],
+            [
+              "far",
+              13
+            ],
+            [
+              "end",
+              13
+            ],
+            [
+              "fact",
+              13
+            ],
+            [
+              "people",
+              13
+            ],
+            [
+              "better",
+              13
+            ],
+            [
+              "tyler",
+              12
+            ],
+            [
+              "character",
+              12
+            ],
+            [
+              "best",
+              12
+            ],
+            [
+              "cuz",
+              12
+            ],
+            [
+              "cool",
+              12
+            ],
+            [
+              "made",
+              12
+            ],
+            [
+              "wrestling",
+              12
+            ],
+            [
+              "bad",
+              11
+            ],
+            [
+              "whole",
+              11
+            ],
+            [
+              "every",
+              10
+            ],
+            [
+              "years",
+              10
+            ],
+            [
+              "whatever",
+              10
+            ],
+            [
+              "day",
+              10
+            ],
+            [
+              "exists",
+              10
+            ],
+            [
+              "monkey",
+              10
+            ],
+            [
+              "give",
+              9
+            ],
+            [
+              "done",
+              9
+            ],
+            [
+              "perry",
+              9
+            ],
+            [
+              "looking",
+              9
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 46,
+              "per_minute": 1.03,
+              "pct_of_words": 0.57
+            },
+            "uh": {
+              "count": 32,
+              "per_minute": 0.72,
+              "pct_of_words": 0.397
+            },
+            "like": {
+              "count": 239,
+              "per_minute": 5.37,
+              "pct_of_words": 2.964
+            },
+            "literally": {
+              "count": 6,
+              "per_minute": 0.13,
+              "pct_of_words": 0.074
+            },
+            "basically": {
+              "count": 7,
+              "per_minute": 0.16,
+              "pct_of_words": 0.087
+            },
+            "obviously": {
+              "count": 4,
+              "per_minute": 0.09,
+              "pct_of_words": 0.05
+            },
+            "actually": {
+              "count": 10,
+              "per_minute": 0.22,
+              "pct_of_words": 0.124
+            },
+            "absolutely": {
+              "count": 2,
+              "per_minute": 0.04,
+              "pct_of_words": 0.025
+            },
+            "definitely": {
+              "count": 4,
+              "per_minute": 0.09,
+              "pct_of_words": 0.05
+            },
+            "totally": {
+              "count": 1,
+              "per_minute": 0.02,
+              "pct_of_words": 0.012
+            },
+            "incredible": {
+              "count": 1,
+              "per_minute": 0.02,
+              "pct_of_words": 0.012
+            },
+            "amazing": {
+              "count": 1,
+              "per_minute": 0.02,
+              "pct_of_words": 0.012
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 12,
+                "per_minute": 0.27
+              },
+              "worst": {
+                "count": 6,
+                "per_minute": 0.13
+              },
+              "amazing": {
+                "count": 1,
+                "per_minute": 0.02
+              },
+              "terrible": {
+                "count": 2,
+                "per_minute": 0.04
+              },
+              "incredible": {
+                "count": 1,
+                "per_minute": 0.02
+              },
+              "fantastic": {
+                "count": 3,
+                "per_minute": 0.07
+              },
+              "perfect": {
+                "count": 1,
+                "per_minute": 0.02
+              },
+              "genius": {
+                "count": 1,
+                "per_minute": 0.02
+              },
+              "horrible": {
+                "count": 1,
+                "per_minute": 0.02
+              },
+              "beautiful": {
+                "count": 1,
+                "per_minute": 0.02
+              }
+            },
+            "total": 29,
+            "per_minute": 0.65,
+            "hyperbole_index": 3.6
+          },
+          "vocabulary": {
+            "ttr": 0.1415,
+            "unique_words": 1141,
+            "total_words": 8064,
+            "words_per_minute": 181.0
+          },
+          "hot_takes": {
+            "count": 6,
+            "instances": [
+              {
+                "marker": "mid",
+                "context": "are here and it is time for the justin and tyler midyear movie awards for 2025. we sit here on the 8th of june in the year of our lord 2025. i'm pret"
+              },
+              {
+                "marker": "mid",
+                "context": "ind of get kicked off with the way that we do the midyears every year, which is going back over miscellaneous awards of years past, and uh we haven't"
+              },
+              {
+                "marker": "mid",
+                "context": "little more selective with what we include in the midyears because again, we just keep adding awards every year and eventually this will be like longe"
+              },
+              {
+                "marker": "mid",
+                "context": "said and without further ado, let's get into the midyear movie awards justin and tyler so to kick things off with the massive list of miscellaneous a"
+              },
+              {
+                "marker": "mid",
+                "context": "list of miscellaneous awards that we give in the midyear movie awards this year for 2025, we are starting off with hollywood's dumbest moment. we're"
+              },
+              {
+                "marker": "mid",
+                "context": "iscellaneous awards for the 2025 justin and tyler midyear movie awards. and when we come back on the next video will be part two where we give out bas"
+              }
+            ]
+          },
+          "reactions": {
+            "laughter": 0,
+            "music": 0,
+            "crosstalk": 0
+          }
+        }
+      }
     },
     "r8ts36Eg1Xc": {
       "video_id": "r8ts36Eg1Xc",
       "title": "PART 2 | The 2025 Justin & Tyler MID-YEAR Movie Awards",
       "year": 2025,
       "category": "Mid-Year Awards",
+      "upload_date": null,
       "duration_min": 121.0,
-      "speaker_times": {},
+      "speaker_times": {
+        "Justin": 3512.7,
+        "Tyler": 3083.5
+      },
       "word_frequency": [
         [
           "year",
@@ -66081,8 +69786,8 @@
           "words_per_minute": 170.0,
           "superlatives": 17,
           "fillers": 123,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 62.6,
+          "wpm_tyler": 86.1
         },
         {
           "chunk": 2,
@@ -66090,8 +69795,8 @@
           "words_per_minute": 192.6,
           "superlatives": 21,
           "fillers": 129,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 73.5,
+          "wpm_tyler": 103.5
         },
         {
           "chunk": 3,
@@ -66099,8 +69804,8 @@
           "words_per_minute": 177.7,
           "superlatives": 10,
           "fillers": 130,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 52.4,
+          "wpm_tyler": 107.6
         },
         {
           "chunk": 4,
@@ -66108,8 +69813,8 @@
           "words_per_minute": 171.5,
           "superlatives": 13,
           "fillers": 110,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 113.0,
+          "wpm_tyler": 46.1
         },
         {
           "chunk": 5,
@@ -66117,8 +69822,8 @@
           "words_per_minute": 185.8,
           "superlatives": 8,
           "fillers": 117,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 101.7,
+          "wpm_tyler": 70.5
         },
         {
           "chunk": 6,
@@ -66126,8 +69831,8 @@
           "words_per_minute": 194.5,
           "superlatives": 10,
           "fillers": 146,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 92.8,
+          "wpm_tyler": 89.3
         },
         {
           "chunk": 7,
@@ -66135,8 +69840,8 @@
           "words_per_minute": 195.2,
           "superlatives": 4,
           "fillers": 189,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 92.4,
+          "wpm_tyler": 83.9
         },
         {
           "chunk": 8,
@@ -66144,8 +69849,8 @@
           "words_per_minute": 193.7,
           "superlatives": 18,
           "fillers": 128,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 62.3,
+          "wpm_tyler": 116.0
         },
         {
           "chunk": 9,
@@ -66153,8 +69858,8 @@
           "words_per_minute": 166.1,
           "superlatives": 6,
           "fillers": 68,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 98.1,
+          "wpm_tyler": 44.1
         },
         {
           "chunk": 10,
@@ -66162,8 +69867,8 @@
           "words_per_minute": 177.2,
           "superlatives": 19,
           "fillers": 110,
-          "wpm_justin": 0.0,
-          "wpm_tyler": 0.0
+          "wpm_justin": 44.3,
+          "wpm_tyler": 117.3
         }
       ],
       "reactions": {
@@ -66387,13 +70092,561 @@
           }
         ]
       },
-      "has_speaker_data": false
+      "has_speaker_data": true,
+      "by_speaker": {
+        "Justin": {
+          "segment_count": 1296,
+          "speaking_time_seconds": 3512.7,
+          "word_frequency": [
+            [
+              "best",
+              43
+            ],
+            [
+              "people",
+              33
+            ],
+            [
+              "year",
+              31
+            ],
+            [
+              "far",
+              31
+            ],
+            [
+              "feel",
+              26
+            ],
+            [
+              "little",
+              24
+            ],
+            [
+              "three",
+              18
+            ],
+            [
+              "give",
+              15
+            ],
+            [
+              "five",
+              15
+            ],
+            [
+              "man",
+              15
+            ],
+            [
+              "time",
+              15
+            ],
+            [
+              "different",
+              14
+            ],
+            [
+              "stuff",
+              14
+            ],
+            [
+              "end",
+              13
+            ],
+            [
+              "might",
+              13
+            ],
+            [
+              "director",
+              12
+            ],
+            [
+              "performance",
+              12
+            ],
+            [
+              "film",
+              12
+            ],
+            [
+              "maybe",
+              12
+            ],
+            [
+              "ever",
+              12
+            ],
+            [
+              "probably",
+              11
+            ],
+            [
+              "done",
+              11
+            ],
+            [
+              "sinners",
+              11
+            ],
+            [
+              "place",
+              11
+            ],
+            [
+              "love",
+              11
+            ],
+            [
+              "rest",
+              10
+            ],
+            [
+              "dark",
+              10
+            ],
+            [
+              "four",
+              10
+            ],
+            [
+              "watch",
+              10
+            ],
+            [
+              "tyler",
+              9
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 42,
+              "per_minute": 0.72,
+              "pct_of_words": 0.438
+            },
+            "uh": {
+              "count": 40,
+              "per_minute": 0.68,
+              "pct_of_words": 0.417
+            },
+            "like": {
+              "count": 282,
+              "per_minute": 4.82,
+              "pct_of_words": 2.94
+            },
+            "literally": {
+              "count": 2,
+              "per_minute": 0.03,
+              "pct_of_words": 0.021
+            },
+            "honestly": {
+              "count": 1,
+              "per_minute": 0.02,
+              "pct_of_words": 0.01
+            },
+            "basically": {
+              "count": 6,
+              "per_minute": 0.1,
+              "pct_of_words": 0.063
+            },
+            "obviously": {
+              "count": 9,
+              "per_minute": 0.15,
+              "pct_of_words": 0.094
+            },
+            "actually": {
+              "count": 19,
+              "per_minute": 0.32,
+              "pct_of_words": 0.198
+            },
+            "absolutely": {
+              "count": 2,
+              "per_minute": 0.03,
+              "pct_of_words": 0.021
+            },
+            "definitely": {
+              "count": 5,
+              "per_minute": 0.09,
+              "pct_of_words": 0.052
+            },
+            "totally": {
+              "count": 7,
+              "per_minute": 0.12,
+              "pct_of_words": 0.073
+            },
+            "essentially": {
+              "count": 3,
+              "per_minute": 0.05,
+              "pct_of_words": 0.031
+            },
+            "incredible": {
+              "count": 3,
+              "per_minute": 0.05,
+              "pct_of_words": 0.031
+            },
+            "insane": {
+              "count": 1,
+              "per_minute": 0.02,
+              "pct_of_words": 0.01
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 43,
+                "per_minute": 0.73
+              },
+              "worst": {
+                "count": 6,
+                "per_minute": 0.1
+              },
+              "greatest": {
+                "count": 1,
+                "per_minute": 0.02
+              },
+              "incredible": {
+                "count": 3,
+                "per_minute": 0.05
+              },
+              "fantastic": {
+                "count": 5,
+                "per_minute": 0.09
+              },
+              "perfect": {
+                "count": 2,
+                "per_minute": 0.03
+              },
+              "masterpiece": {
+                "count": 1,
+                "per_minute": 0.02
+              },
+              "brilliant": {
+                "count": 3,
+                "per_minute": 0.05
+              },
+              "garbage": {
+                "count": 3,
+                "per_minute": 0.05
+              },
+              "trash": {
+                "count": 1,
+                "per_minute": 0.02
+              },
+              "flawless": {
+                "count": 1,
+                "per_minute": 0.02
+              },
+              "insane": {
+                "count": 1,
+                "per_minute": 0.02
+              }
+            },
+            "total": 70,
+            "per_minute": 1.2,
+            "hyperbole_index": 7.3
+          },
+          "vocabulary": {
+            "ttr": 0.1428,
+            "unique_words": 1370,
+            "total_words": 9593,
+            "words_per_minute": 163.9
+          },
+          "hot_takes": {
+            "count": 4,
+            "instances": [
+              {
+                "marker": "mid",
+                "context": "ladies and gentlemen to the 2025 justin and tyler midyear movie awards where we get into our people awards, worst movie of the year so far, best movie"
+              },
+              {
+                "marker": "mid",
+                "context": "or of 2025 so far. and the way we do this for the midyears, if you are new, is we have a dark horse candidate for each of those. and then we also give"
+              },
+              {
+                "marker": "mid",
+                "context": "s in terms of overall support. and really for the midy years, these i feel are like less consequential than for the end of year. for the end of the ye"
+              },
+              {
+                "marker": "mid",
+                "context": "and with that, we bring the 2025 justin and tyler midyear movie awards to a close. we will see you again in january of 2026 to bring you the next inst"
+              }
+            ]
+          },
+          "reactions": {
+            "laughter": 0,
+            "music": 0,
+            "crosstalk": 0
+          }
+        },
+        "Tyler": {
+          "segment_count": 1346,
+          "speaking_time_seconds": 3083.5,
+          "word_frequency": [
+            [
+              "year",
+              40
+            ],
+            [
+              "cuz",
+              40
+            ],
+            [
+              "people",
+              35
+            ],
+            [
+              "little",
+              28
+            ],
+            [
+              "love",
+              27
+            ],
+            [
+              "great",
+              27
+            ],
+            [
+              "though",
+              23
+            ],
+            [
+              "time",
+              22
+            ],
+            [
+              "watch",
+              22
+            ],
+            [
+              "probably",
+              19
+            ],
+            [
+              "maybe",
+              19
+            ],
+            [
+              "might",
+              18
+            ],
+            [
+              "bit",
+              18
+            ],
+            [
+              "action",
+              17
+            ],
+            [
+              "stuff",
+              16
+            ],
+            [
+              "end",
+              16
+            ],
+            [
+              "top",
+              16
+            ],
+            [
+              "best",
+              16
+            ],
+            [
+              "always",
+              13
+            ],
+            [
+              "dark",
+              13
+            ],
+            [
+              "give",
+              13
+            ],
+            [
+              "man",
+              12
+            ],
+            [
+              "mcu",
+              12
+            ],
+            [
+              "awesome",
+              12
+            ],
+            [
+              "whatever",
+              11
+            ],
+            [
+              "black",
+              11
+            ],
+            [
+              "five",
+              10
+            ],
+            [
+              "cool",
+              10
+            ],
+            [
+              "three",
+              10
+            ],
+            [
+              "guy",
+              9
+            ]
+          ],
+          "filler_words": {
+            "um": {
+              "count": 35,
+              "per_minute": 0.68,
+              "pct_of_words": 0.335
+            },
+            "uh": {
+              "count": 32,
+              "per_minute": 0.62,
+              "pct_of_words": 0.306
+            },
+            "like": {
+              "count": 583,
+              "per_minute": 11.34,
+              "pct_of_words": 5.576
+            },
+            "literally": {
+              "count": 1,
+              "per_minute": 0.02,
+              "pct_of_words": 0.01
+            },
+            "honestly": {
+              "count": 2,
+              "per_minute": 0.04,
+              "pct_of_words": 0.019
+            },
+            "basically": {
+              "count": 5,
+              "per_minute": 0.1,
+              "pct_of_words": 0.048
+            },
+            "obviously": {
+              "count": 8,
+              "per_minute": 0.16,
+              "pct_of_words": 0.077
+            },
+            "actually": {
+              "count": 33,
+              "per_minute": 0.64,
+              "pct_of_words": 0.316
+            },
+            "absolutely": {
+              "count": 5,
+              "per_minute": 0.1,
+              "pct_of_words": 0.048
+            },
+            "definitely": {
+              "count": 1,
+              "per_minute": 0.02,
+              "pct_of_words": 0.01
+            },
+            "totally": {
+              "count": 5,
+              "per_minute": 0.1,
+              "pct_of_words": 0.048
+            },
+            "incredible": {
+              "count": 1,
+              "per_minute": 0.02,
+              "pct_of_words": 0.01
+            },
+            "amazing": {
+              "count": 6,
+              "per_minute": 0.12,
+              "pct_of_words": 0.057
+            }
+          },
+          "superlatives": {
+            "words": {
+              "best": {
+                "count": 16,
+                "per_minute": 0.31
+              },
+              "worst": {
+                "count": 4,
+                "per_minute": 0.08
+              },
+              "amazing": {
+                "count": 6,
+                "per_minute": 0.12
+              },
+              "terrible": {
+                "count": 1,
+                "per_minute": 0.02
+              },
+              "incredible": {
+                "count": 1,
+                "per_minute": 0.02
+              },
+              "fantastic": {
+                "count": 6,
+                "per_minute": 0.12
+              },
+              "perfect": {
+                "count": 4,
+                "per_minute": 0.08
+              },
+              "masterpiece": {
+                "count": 1,
+                "per_minute": 0.02
+              },
+              "beautiful": {
+                "count": 1,
+                "per_minute": 0.02
+              },
+              "atrocious": {
+                "count": 1,
+                "per_minute": 0.02
+              }
+            },
+            "total": 41,
+            "per_minute": 0.8,
+            "hyperbole_index": 3.92
+          },
+          "vocabulary": {
+            "ttr": 0.1207,
+            "unique_words": 1262,
+            "total_words": 10455,
+            "words_per_minute": 203.4
+          },
+          "hot_takes": {
+            "count": 1,
+            "instances": [
+              {
+                "marker": "controversial",
+                "context": "ert fans, karine, this isn't going to be the one. controversial too though because like he's embraced ai in a way that like even i'm kind of like he's"
+              }
+            ]
+          },
+          "reactions": {
+            "laughter": 0,
+            "music": 0,
+            "crosstalk": 0
+          }
+        }
+      }
     },
     "f-jVRbxvJzI": {
       "video_id": "f-jVRbxvJzI",
       "title": "Top 5 Worst Movies of 2025 | 12th Justin & Tyler Movie Awards",
       "year": 2025,
       "category": "Worst Movies",
+      "upload_date": null,
       "duration_min": 41.0,
       "speaker_times": {},
       "word_frequency": [
@@ -67316,10 +71569,10 @@
       "harmony_ratio": 12.0,
       "hot_takes": 2,
       "categories": [
-        "Hated & Loved",
         "Worst Movies",
         "Best Movies",
-        "Best Actresses"
+        "Best Actresses",
+        "Hated & Loved"
       ],
       "by_speaker": {}
     },
@@ -67505,11 +71758,11 @@
       "harmony_ratio": 3.33,
       "hot_takes": 4,
       "categories": [
+        "Worst Movies",
+        "Best Genre Movies",
         "Hated & Loved",
         "Best Movies",
-        "Worst Movies",
-        "Best Actresses",
-        "Best Genre Movies"
+        "Best Actresses"
       ],
       "by_speaker": {}
     },
@@ -67695,12 +71948,12 @@
       "harmony_ratio": 7.43,
       "hot_takes": 16,
       "categories": [
+        "Worst Movies",
+        "Best Genre Movies",
         "Hated & Loved",
         "Opening Ceremony",
         "Best Movies",
-        "Worst Movies",
-        "Best Actresses",
-        "Best Genre Movies"
+        "Best Actresses"
       ],
       "by_speaker": {}
     },
@@ -67886,12 +72139,12 @@
       "harmony_ratio": 5.19,
       "hot_takes": 10,
       "categories": [
+        "Best Genre Movies",
+        "Worst Movies",
         "Opening Ceremony",
         "Best Movies",
-        "Miscellaneous",
-        "Worst Movies",
         "Best Actresses",
-        "Best Genre Movies"
+        "Miscellaneous"
       ],
       "by_speaker": {}
     },
@@ -68077,10 +72330,10 @@
       "harmony_ratio": 3.0,
       "hot_takes": 8,
       "categories": [
+        "Best Movies",
         "Miscellaneous",
         "Worst Movies",
-        "Opening Ceremony",
-        "Best Movies"
+        "Opening Ceremony"
       ],
       "by_speaker": {}
     },
@@ -68266,11 +72519,11 @@
       "harmony_ratio": 5.9,
       "hot_takes": 9,
       "categories": [
+        "Worst Movies",
         "Opening Ceremony",
         "Best Movies",
-        "Miscellaneous",
-        "Worst Movies",
-        "Best Actresses"
+        "Best Actresses",
+        "Miscellaneous"
       ],
       "by_speaker": {}
     },
@@ -68456,13 +72709,13 @@
       "harmony_ratio": 2.45,
       "hot_takes": 17,
       "categories": [
+        "Worst Movies",
         "Opening Ceremony",
         "Best Movies",
         "Miscellaneous",
-        "Worst Movies",
-        "Best Actors",
         "Best Actresses",
-        "Best Directors"
+        "Best Directors",
+        "Best Actors"
       ],
       "by_speaker": {}
     },
@@ -68648,14 +72901,14 @@
       "harmony_ratio": 5.27,
       "hot_takes": 13,
       "categories": [
+        "Worst Movies",
         "Opening Ceremony",
         "Best Movies",
+        "Fan's Choice",
         "Miscellaneous",
-        "Worst Movies",
-        "Best Actors",
         "Best Actresses",
         "Best Directors",
-        "Fan's Choice"
+        "Best Actors"
       ],
       "by_speaker": {}
     },
@@ -68841,13 +73094,13 @@
       "harmony_ratio": 2.36,
       "hot_takes": 19,
       "categories": [
+        "Worst Movies",
         "Opening Ceremony",
         "Best Movies",
         "Miscellaneous",
-        "Worst Movies",
-        "Best Actors",
         "Best Actresses",
-        "Best Directors"
+        "Best Directors",
+        "Best Actors"
       ],
       "by_speaker": {}
     },
@@ -69033,13 +73286,13 @@
       "harmony_ratio": 3.52,
       "hot_takes": 43,
       "categories": [
-        "Best Movies",
         "Worst Movies",
-        "Best Actors",
-        "Best Actresses",
         "Mid-Year Awards",
+        "Best Movies",
+        "Fan's Choice",
+        "Best Actresses",
         "Best Directors",
-        "Fan's Choice"
+        "Best Actors"
       ],
       "by_speaker": {}
     },
@@ -69225,15 +73478,15 @@
       "harmony_ratio": 3.21,
       "hot_takes": 90,
       "categories": [
-        "Best Movies",
         "Worst Movies",
-        "Retrospective",
-        "Best Actors",
-        "Best Actresses",
-        "Mid-Year Awards",
         "Other Media",
+        "Mid-Year Awards",
+        "Best Movies",
+        "Fan's Choice",
+        "Retrospective",
+        "Best Actresses",
         "Best Directors",
-        "Fan's Choice"
+        "Best Actors"
       ],
       "by_speaker": {}
     },
@@ -69419,12 +73672,12 @@
       "harmony_ratio": 2.61,
       "hot_takes": 73,
       "categories": [
-        "Best Movies",
         "Worst Movies",
-        "Best Actors",
+        "Best Movies",
+        "Best Directors",
         "Best Actresses",
         "Mid-Year Awards",
-        "Best Directors"
+        "Best Actors"
       ],
       "by_speaker": {}
     },
@@ -69610,17 +73863,393 @@
       "harmony_ratio": 2.41,
       "hot_takes": 54,
       "categories": [
-        "Best Movies",
         "Worst Movies",
-        "Best Actors",
+        "Best Movies",
+        "Best Directors",
         "Best Actresses",
         "Mid-Year Awards",
-        "Best Directors"
+        "Best Actors"
       ],
-      "by_speaker": {}
+      "by_speaker": {
+        "Justin": {
+          "total_words": 34222,
+          "words_per_minute": 172.8,
+          "ttr": 0.0873,
+          "filler_per_minute": 7.67,
+          "superlative_per_minute": 1.09,
+          "speaking_time_min": 198.0
+        },
+        "Tyler": {
+          "total_words": 45120,
+          "words_per_minute": 202.9,
+          "ttr": 0.0708,
+          "filler_per_minute": 11.49,
+          "superlative_per_minute": 0.73,
+          "speaking_time_min": 222.3
+        }
+      }
     }
   },
-  "by_speaker": {},
+  "by_speaker": {
+    "Justin": {
+      "total_words": 34222,
+      "unique_words": 2987,
+      "ttr": 0.0873,
+      "words_per_minute": 172.8,
+      "total_speaking_time_min": 198.0,
+      "videos_with_data": 9,
+      "top_words": [
+        [
+          "best",
+          146
+        ],
+        [
+          "year",
+          104
+        ],
+        [
+          "feel",
+          83
+        ],
+        [
+          "people",
+          66
+        ],
+        [
+          "time",
+          63
+        ],
+        [
+          "three",
+          55
+        ],
+        [
+          "little",
+          54
+        ],
+        [
+          "top",
+          53
+        ],
+        [
+          "stuff",
+          47
+        ],
+        [
+          "man",
+          47
+        ],
+        [
+          "love",
+          47
+        ],
+        [
+          "give",
+          46
+        ],
+        [
+          "cuz",
+          46
+        ],
+        [
+          "point",
+          46
+        ],
+        [
+          "laughter",
+          45
+        ],
+        [
+          "five",
+          45
+        ],
+        [
+          "honorable",
+          40
+        ],
+        [
+          "watch",
+          39
+        ],
+        [
+          "throat",
+          37
+        ],
+        [
+          "probably",
+          37
+        ]
+      ],
+      "top_fillers": [
+        [
+          "like",
+          996
+        ],
+        [
+          "um",
+          184
+        ],
+        [
+          "uh",
+          151
+        ],
+        [
+          "actually",
+          58
+        ],
+        [
+          "obviously",
+          28
+        ],
+        [
+          "totally",
+          21
+        ],
+        [
+          "basically",
+          19
+        ],
+        [
+          "definitely",
+          15
+        ],
+        [
+          "literally",
+          11
+        ],
+        [
+          "absolutely",
+          11
+        ]
+      ],
+      "total_fillers": 1518,
+      "filler_per_minute": 7.67,
+      "top_superlatives": [
+        [
+          "best",
+          146
+        ],
+        [
+          "fantastic",
+          20
+        ],
+        [
+          "incredible",
+          11
+        ],
+        [
+          "worst",
+          10
+        ],
+        [
+          "brilliant",
+          6
+        ],
+        [
+          "perfect",
+          4
+        ],
+        [
+          "beautiful",
+          4
+        ],
+        [
+          "genius",
+          3
+        ],
+        [
+          "garbage",
+          3
+        ],
+        [
+          "greatest",
+          2
+        ]
+      ],
+      "total_superlatives": 216,
+      "superlative_per_minute": 1.09,
+      "hot_takes": 27
+    },
+    "Tyler": {
+      "total_words": 45120,
+      "unique_words": 3196,
+      "ttr": 0.0708,
+      "words_per_minute": 202.9,
+      "total_speaking_time_min": 222.3,
+      "videos_with_data": 9,
+      "top_words": [
+        [
+          "cuz",
+          147
+        ],
+        [
+          "year",
+          119
+        ],
+        [
+          "little",
+          99
+        ],
+        [
+          "people",
+          98
+        ],
+        [
+          "love",
+          92
+        ],
+        [
+          "time",
+          87
+        ],
+        [
+          "great",
+          82
+        ],
+        [
+          "watch",
+          79
+        ],
+        [
+          "best",
+          74
+        ],
+        [
+          "probably",
+          73
+        ],
+        [
+          "maybe",
+          72
+        ],
+        [
+          "though",
+          72
+        ],
+        [
+          "stuff",
+          69
+        ],
+        [
+          "might",
+          64
+        ],
+        [
+          "bit",
+          63
+        ],
+        [
+          "feel",
+          59
+        ],
+        [
+          "always",
+          58
+        ],
+        [
+          "remember",
+          56
+        ],
+        [
+          "whatever",
+          56
+        ],
+        [
+          "clears",
+          53
+        ]
+      ],
+      "top_fillers": [
+        [
+          "like",
+          2063
+        ],
+        [
+          "um",
+          136
+        ],
+        [
+          "uh",
+          109
+        ],
+        [
+          "actually",
+          108
+        ],
+        [
+          "obviously",
+          42
+        ],
+        [
+          "basically",
+          19
+        ],
+        [
+          "absolutely",
+          18
+        ],
+        [
+          "totally",
+          15
+        ],
+        [
+          "literally",
+          14
+        ],
+        [
+          "amazing",
+          13
+        ]
+      ],
+      "total_fillers": 2555,
+      "filler_per_minute": 11.49,
+      "top_superlatives": [
+        [
+          "best",
+          74
+        ],
+        [
+          "fantastic",
+          27
+        ],
+        [
+          "amazing",
+          13
+        ],
+        [
+          "worst",
+          11
+        ],
+        [
+          "perfect",
+          8
+        ],
+        [
+          "garbage",
+          6
+        ],
+        [
+          "beautiful",
+          5
+        ],
+        [
+          "terrible",
+          4
+        ],
+        [
+          "incredible",
+          2
+        ],
+        [
+          "genius",
+          2
+        ]
+      ],
+      "total_superlatives": 163,
+      "superlative_per_minute": 0.73,
+      "hot_takes": 22
+    }
+  },
   "all_time_records": {
     "longest_video": {
       "title": "The Justin & Tyler Movie Awards - A Retrospective (2023 Edition)",

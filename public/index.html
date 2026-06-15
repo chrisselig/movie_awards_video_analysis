@@ -620,12 +620,6 @@
             <select id="filter-year"><option value="all">All Years</option></select>
             <label>Video:</label>
             <select id="filter-video"><option value="all">All Videos</option></select>
-            <label>Speaker:</label>
-            <div class="speaker-toggle" id="speaker-toggle">
-                <button class="speaker-btn active" data-speaker="all">Both</button>
-                <button class="speaker-btn" data-speaker="Justin">Justin</button>
-                <button class="speaker-btn" data-speaker="Tyler">Tyler</button>
-            </div>
             <span class="active-filter" id="active-filter-label"></span>
         </div>
     </div>
@@ -684,24 +678,28 @@ function initFilters() {
         render();
     });
 
-    d3.selectAll(".speaker-btn").on("click", function() {
-        d3.selectAll(".speaker-btn").classed("active", false);
-        d3.select(this).classed("active", true);
-        currentSpeaker = this.dataset.speaker;
-        render();
-    });
-
     updateVideoFilter();
+}
+
+function formatUploadDate(dateStr) {
+    if (!dateStr) return "";
+    const d = new Date(dateStr);
+    if (isNaN(d)) return "";
+    return d.toLocaleDateString("en-US", {month:"short", day:"numeric", year:"numeric"});
 }
 
 function updateVideoFilter() {
     const sel = d3.select("#filter-video");
     sel.selectAll("option").remove();
     sel.append("option").attr("value", "all").text("All Videos");
-    getFilteredVideos().sort((a,b) => (a.title||"").localeCompare(b.title||"")).forEach(v => {
-        sel.append("option").attr("value", v.video_id)
-            .text(v.title.length > 55 ? v.title.slice(0,52)+"..." : v.title);
-    });
+    getFilteredVideos()
+        .sort((a,b) => (b.upload_date||"").localeCompare(a.upload_date||""))
+        .forEach(v => {
+            const date = formatUploadDate(v.upload_date);
+            const title = v.title.length > 45 ? v.title.slice(0,42)+"..." : v.title;
+            const label = date ? `${title}  (${date})` : title;
+            sel.append("option").attr("value", v.video_id).text(label);
+        });
 }
 
 function getFilteredVideos() {

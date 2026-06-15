@@ -731,6 +731,7 @@ def analyze_video(vdata):
         "title": vdata["title"],
         "year": vdata["year"],
         "category": vdata["category"],
+        "upload_date": vdata.get("upload_date"),
         "duration_min": round(duration / 60, 1),
         "speaker_times": vdata.get("speaker_times", {}),
         # Aggregate analysis (both speakers combined)
