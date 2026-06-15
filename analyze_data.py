@@ -6,6 +6,7 @@ Supports per-speaker analysis when diarization data is available.
 """
 import json
 import os
+import random
 import re
 import sys
 from collections import Counter, defaultdict
@@ -15,12 +16,17 @@ import libsql_experimental as libsql
 import nltk
 from dotenv import load_dotenv
 from nltk.corpus import stopwords
+from nltk.sentiment import SentimentIntensityAnalyzer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
 
 load_dotenv()
 
 nltk.download("stopwords", quiet=True)
 nltk.download("punkt", quiet=True)
 nltk.download("punkt_tab", quiet=True)
+nltk.download("vader_lexicon", quiet=True)
 
 TURSO_URL = os.getenv("TURSO_DATABASE_URL")
 TURSO_TOKEN = os.getenv("TURSO_AUTH_TOKEN")
@@ -32,7 +38,7 @@ EXTRA_STOPS = {"like", "know", "yeah", "okay", "oh", "well", "go", "going",
                "think", "much", "good", "even", "way", "lot", "say", "said",
                "see", "still", "actually", "pretty", "make", "take", "come",
                "back", "something", "kind", "mean", "want", "let", "put",
-               "look", "two", "first", "next", "number"}
+               "look", "two", "first", "next", "number", "movie", "movies"}
 
 FILLER_WORDS = ["um", "uh", "like", "literally", "honestly", "basically",
                 "obviously", "actually", "seriously", "absolutely",
@@ -338,6 +344,380 @@ def analyze_castle(segments):
     }
 
 
+def analyze_sentiment(segments, duration_seconds):
+    """Sentiment analysis using VADER. Returns overall scores, timeline, and extreme moments."""
+    sia = SentimentIntensityAnalyzer()
+    if not segments:
+        return {"compound": 0, "pos": 0, "neg": 0, "neu": 0, "timeline": [], "most_positive": None, "most_negative": None}
+
+    # Overall scores
+    full_text = " ".join(s["text"] for s in segments)
+    overall = sia.polarity_scores(full_text)
+
+    # 10-chunk timeline
+    duration = max(duration_seconds, 1)
+    n_chunks = 10
+    chunk_size = duration / n_chunks
+    timeline = []
+    for i in range(n_chunks):
+        chunk_start = i * chunk_size
+        chunk_end = (i + 1) * chunk_size
+        chunk_text = " ".join(s["text"] for s in segments if chunk_start <= s["start"] < chunk_end)
+        if chunk_text.strip():
+            scores = sia.polarity_scores(chunk_text)
+            timeline.append({
+                "chunk": i + 1,
+                "pct_through": round((i + 0.5) / n_chunks * 100),
+                "compound": round(scores["compound"], 3),
+                "pos": round(scores["pos"], 3),
+                "neg": round(scores["neg"], 3),
+            })
+        else:
+            timeline.append({"chunk": i + 1, "pct_through": round((i + 0.5) / n_chunks * 100), "compound": 0, "pos": 0, "neg": 0})
+
+    # Most positive and negative moments (per-segment)
+    seg_scores = []
+    for s in segments:
+        if s["text"].strip():
+            score = sia.polarity_scores(s["text"])
+            seg_scores.append({"start": s["start"], "text": s["text"], "compound": score["compound"]})
+
+    most_positive = max(seg_scores, key=lambda x: x["compound"]) if seg_scores else None
+    most_negative = min(seg_scores, key=lambda x: x["compound"]) if seg_scores else None
+
+    return {
+        "compound": round(overall["compound"], 3),
+        "pos": round(overall["pos"], 3),
+        "neg": round(overall["neg"], 3),
+        "neu": round(overall["neu"], 3),
+        "timeline": timeline,
+        "most_positive": most_positive,
+        "most_negative": most_negative,
+    }
+
+
+def analyze_rants(segments, duration_seconds, sentiment_data):
+    """Detect rants using 30-second sliding window with composite score."""
+    if not segments or duration_seconds <= 0:
+        return {"rant_index": 0, "top_rants": []}
+
+    sia = SentimentIntensityAnalyzer()
+    window_size = 30  # seconds
+    step = 10  # seconds
+    duration = max(duration_seconds, 1)
+
+    windows = []
+    t = 0
+    while t + window_size <= duration + step:
+        window_end = min(t + window_size, duration)
+        window_segs = [s for s in segments if t <= s["start"] < window_end]
+        window_text = " ".join(s["text"] for s in window_segs)
+        words = tokenize(window_text)
+        word_count = len(words)
+
+        if word_count < 5:
+            t += step
+            continue
+
+        # WPM for this window
+        window_dur_min = window_size / 60
+        wpm = word_count / window_dur_min
+
+        # Negative sentiment
+        sentiment = sia.polarity_scores(window_text)
+        neg_score = sentiment["neg"]
+
+        # Superlative density
+        sup_count = sum(words.count(s) for s in SUPERLATIVES)
+        sup_density = sup_count / max(word_count, 1) * 100
+
+        # Filler density
+        filler_count = sum(words.count(f) for f in FILLER_WORDS)
+        filler_density = filler_count / max(word_count, 1) * 100
+
+        windows.append({
+            "start": t,
+            "end": window_end,
+            "wpm": wpm,
+            "neg": neg_score,
+            "sup_density": sup_density,
+            "filler_density": filler_density,
+            "text_preview": window_text[:200],
+            "word_count": word_count,
+        })
+        t += step
+
+    if not windows:
+        return {"rant_index": 0, "top_rants": []}
+
+    # Z-score normalization for composite score
+    import numpy as np
+    wpms = [w["wpm"] for w in windows]
+    negs = [w["neg"] for w in windows]
+    sups = [w["sup_density"] for w in windows]
+    fillers = [w["filler_density"] for w in windows]
+
+    def z_scores(values):
+        arr = np.array(values, dtype=float)
+        mean = arr.mean()
+        std = arr.std()
+        if std == 0:
+            return np.zeros_like(arr)
+        return (arr - mean) / std
+
+    wpm_z = z_scores(wpms)
+    neg_z = z_scores(negs)
+    sup_z = z_scores(sups)
+    filler_z = z_scores(fillers)
+
+    for i, w in enumerate(windows):
+        w["rant_score"] = round(
+            0.35 * wpm_z[i] + 0.30 * neg_z[i] + 0.20 * sup_z[i] + 0.15 * filler_z[i], 3
+        )
+
+    windows.sort(key=lambda x: -x["rant_score"])
+    top_rants = []
+    for w in windows[:5]:
+        top_rants.append({
+            "start": w["start"],
+            "end": w["end"],
+            "score": w["rant_score"],
+            "wpm": round(w["wpm"], 1),
+            "neg": round(w["neg"], 3),
+            "sup_density": round(w["sup_density"], 2),
+            "filler_density": round(w["filler_density"], 2),
+            "text_preview": w["text_preview"],
+        })
+
+    rant_index = round(windows[0]["rant_score"], 3) if windows else 0
+
+    return {"rant_index": rant_index, "top_rants": top_rants}
+
+
+def compute_greatest_rants(all_video_analyses):
+    """Find the top 10 greatest rants across all videos."""
+    all_rants = []
+    for vid_id, va in all_video_analyses.items():
+        rants = va.get("rants", {}).get("top_rants", [])
+        for r in rants:
+            all_rants.append({**r, "video_id": vid_id, "title": va["title"], "year": va["year"]})
+    all_rants.sort(key=lambda x: -x["score"])
+    return all_rants[:10]
+
+
+def generate_llm_quotes(sample_text):
+    """Generate fake movie critic quotes using Google Gemini Flash."""
+    api_key = os.getenv("GOOGLE_API_KEY")
+    if not api_key:
+        log("  GOOGLE_API_KEY not set, skipping LLM quotes")
+        return None
+
+    try:
+        from google import genai
+
+        client = genai.Client(api_key=api_key)
+
+        prompt = f"""You are a comedy writer. Two brothers named Justin and Tyler run a YouTube movie awards show.
+They're passionate, opinionated, and love hyperbole. Based on how they actually talk (samples below),
+generate 20 funny fake quotes that sound like they COULD have said them but didn't.
+
+Rules:
+- Each quote should be 1-2 sentences, punchy and quotable
+- Mix of positive and negative opinions about movies
+- Include their verbal tics: "literally", "honestly", "like", "insane"
+- Some should be absurd hot takes, some should be weirdly profound
+- Don't reference specific real movies — keep them generic enough to be timeless
+- Format: return ONLY a JSON array of 20 strings, no other text
+
+Sample transcript excerpts:
+{sample_text[:3000]}"""
+
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt,
+        )
+        text = response.text.strip()
+        # Extract JSON array from response
+        if text.startswith("```"):
+            text = text.split("```")[1]
+            if text.startswith("json"):
+                text = text[4:]
+        return json.loads(text)
+    except Exception as e:
+        log(f"  Gemini quote generation failed: {e}")
+        return None
+
+
+def build_markov_chain(all_segments, order=2):
+    """Build a 2nd-order Markov chain and generate fake quotes (fallback if LLM unavailable)."""
+    # Build chain from all text
+    chain = defaultdict(list)
+    for seg in all_segments:
+        words = seg["text"].split()
+        for i in range(len(words) - order):
+            key = tuple(words[i:i + order])
+            chain[key].append(words[i + order])
+
+    if not chain:
+        return []
+
+    # Generate quotes with seed for reproducibility
+    rng = random.Random(42)
+    all_text = " ".join(s["text"] for s in all_segments).lower()
+    quotes = []
+    keys = list(chain.keys())
+    attempts = 0
+
+    while len(quotes) < 20 and attempts < 200:
+        attempts += 1
+        # Pick a random starting key
+        key = rng.choice(keys)
+        words = list(key)
+        target_len = rng.randint(15, 40)
+
+        for _ in range(target_len - order):
+            current_key = tuple(words[-order:])
+            if current_key not in chain:
+                break
+            next_word = rng.choice(chain[current_key])
+            words.append(next_word)
+
+        if len(words) < 15:
+            continue
+
+        quote = " ".join(words)
+        # Filter out exact substring matches
+        if quote.lower() in all_text:
+            continue
+        quotes.append(quote)
+
+    return quotes
+
+
+def compute_tfidf_fingerprints(all_video_data):
+    """Compute TF-IDF signatures per year and track specific words over time."""
+    year_texts = defaultdict(list)
+    for vid_id, vdata in all_video_data.items():
+        year = vdata.get("year")
+        if not year:
+            continue
+        text = " ".join(s["text"] for s in vdata["segments"])
+        year_texts[year].append(text)
+
+    if not year_texts:
+        return {"year_signatures": {}, "word_trends": {}}
+
+    # One document per year
+    years_sorted = sorted(year_texts.keys())
+    documents = [" ".join(year_texts[y]) for y in years_sorted]
+
+    vectorizer = TfidfVectorizer(
+        max_features=5000, stop_words="english", min_df=1, max_df=0.9,
+        token_pattern=r'\b[a-z]{3,}\b'
+    )
+    tfidf_matrix = vectorizer.fit_transform(documents)
+    feature_names = vectorizer.get_feature_names_out()
+
+    # Top 10 signature words per year
+    year_signatures = {}
+    for i, year in enumerate(years_sorted):
+        row = tfidf_matrix[i].toarray().flatten()
+        top_indices = row.argsort()[-10:][::-1]
+        year_signatures[year] = [
+            {"word": feature_names[idx], "score": round(float(row[idx]), 4)}
+            for idx in top_indices if row[idx] > 0
+        ]
+
+    # Track specific words across years
+    tracked_words = ["literally", "amazing", "incredible", "masterpiece", "terrible", "insane", "honestly"]
+    word_trends = {}
+    for word in tracked_words:
+        if word in feature_names:
+            word_idx = list(feature_names).index(word)
+            trend = {}
+            for i, year in enumerate(years_sorted):
+                score = float(tfidf_matrix[i, word_idx])
+                if score > 0:
+                    trend[year] = round(score, 4)
+            if trend:
+                word_trends[word] = trend
+
+    return {"year_signatures": year_signatures, "word_trends": word_trends}
+
+
+def train_castle_predictor(all_video_analyses):
+    """Train logistic regression to predict Castle mentions."""
+    features = []
+    targets = []
+    video_ids = []
+
+    for vid_id, va in all_video_analyses.items():
+        castle = va.get("castle", {})
+        rabbit_mentions = castle.get("rabbit_mentions", 0)
+        vocab = va.get("vocabulary", {})
+        sups = va.get("superlatives", {})
+        fillers = va.get("filler_words", {})
+        hot_takes = va.get("hot_takes", {})
+
+        total_words = vocab.get("total_words", 0)
+        if total_words == 0:
+            continue
+
+        duration_min = va.get("duration_min", 1) or 1
+        total_filler = sum(f["count"] for f in fillers.values()) if isinstance(fillers, dict) else 0
+        filler_density = total_filler / max(total_words, 1) * 100
+
+        feature_row = [
+            float(va.get("year", 2020) or 2020),
+            float(duration_min),
+            float(total_words),
+            float(vocab.get("words_per_minute", 0) or 0),
+            float(filler_density),
+            float(sups.get("hyperbole_index", 0) or 0),
+            float(hot_takes.get("count", 0) or 0),
+        ]
+        # Skip rows with any NaN/None
+        if any(v != v for v in feature_row):
+            continue
+        features.append(feature_row)
+        targets.append(1 if rabbit_mentions > 0 else 0)
+        video_ids.append(vid_id)
+
+    if len(features) < 10 or sum(targets) < 2:
+        return {"error": "Not enough data for training", "coefficients": [], "accuracy": 0, "probabilities": {}}
+
+    import numpy as np
+    X = np.array(features)
+    y = np.array(targets)
+
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+
+    model = LogisticRegression(random_state=42, max_iter=1000)
+    model.fit(X_scaled, y)
+
+    feature_names = ["year", "duration_min", "word_count", "wpm", "filler_density", "hyperbole_index", "hot_takes"]
+    coefficients = [
+        {"feature": name, "coefficient": round(float(coef), 4)}
+        for name, coef in zip(feature_names, model.coef_[0])
+    ]
+    coefficients.sort(key=lambda x: -abs(x["coefficient"]))
+
+    accuracy = round(float(model.score(X_scaled, y)), 3)
+
+    # Per-video probabilities
+    probs = model.predict_proba(X_scaled)[:, 1]
+    probabilities = {video_ids[i]: round(float(probs[i]), 3) for i in range(len(video_ids))}
+
+    return {
+        "coefficients": coefficients,
+        "accuracy": accuracy,
+        "probabilities": probabilities,
+        "n_positive": int(sum(targets)),
+        "n_total": len(targets),
+    }
+
+
 def analyze_video(vdata):
     """Run all analyses for a single video, including per-speaker breakdowns."""
     segments = vdata["segments"]
@@ -364,7 +744,11 @@ def analyze_video(vdata):
         "reactions": analyze_reactions(segments),
         "movie_mentions": analyze_movie_mentions(segments),
         "castle": analyze_castle(segments),
+        "sentiment": analyze_sentiment(segments, duration),
     }
+
+    # Rant detection (depends on sentiment)
+    result["rants"] = analyze_rants(segments, duration, result["sentiment"])
 
     # Per-speaker analysis (if diarization data exists)
     has_speaker_data = any(s.get("speaker") for s in segments)
@@ -646,6 +1030,12 @@ def main():
         log("No data found! Run extract_data.py first.")
         sys.exit(1)
 
+    # Identify videos without transcripts
+    missing_videos = []
+    for vid_id, vdata in all_data.items():
+        if not vdata["segments"]:
+            missing_videos.append({"video_id": vid_id, "title": vdata["title"], "year": vdata["year"]})
+
     # Check diarization coverage
     diarized = sum(1 for v in all_data.values() if v.get("speaker_times"))
     log(f"Speaker diarization available for {diarized}/{len(all_data)} videos")
@@ -669,6 +1059,59 @@ def main():
     # All-time records
     log("Finding all-time records...")
     all_time = compute_all_time_stats(all_data)
+
+    # Sentiment year aggregates
+    log("Computing sentiment aggregates...")
+    sentiment_by_year = {}
+    for year, ydata in year_stats.items():
+        year_videos = [va for va in video_analyses.values() if va.get("year") == year]
+        if year_videos:
+            compounds = [v["sentiment"]["compound"] for v in year_videos if v.get("sentiment")]
+            if compounds:
+                avg_compound = round(sum(compounds) / len(compounds), 3)
+                angriest = min(year_videos, key=lambda v: v.get("sentiment", {}).get("compound", 0))
+                most_wholesome = max(year_videos, key=lambda v: v.get("sentiment", {}).get("compound", 0))
+                sentiment_by_year[year] = {
+                    "avg_compound": avg_compound,
+                    "angriest_video": {"title": angriest["title"], "compound": angriest["sentiment"]["compound"]},
+                    "most_wholesome_video": {"title": most_wholesome["title"], "compound": most_wholesome["sentiment"]["compound"]},
+                }
+
+    # All-time sentiment records
+    all_sentiments = [(va["title"], va["year"], va["sentiment"]["compound"])
+                      for va in video_analyses.values() if va.get("sentiment")]
+    angriest_video = min(all_sentiments, key=lambda x: x[2]) if all_sentiments else None
+    most_wholesome_video = max(all_sentiments, key=lambda x: x[2]) if all_sentiments else None
+
+    # Greatest rants
+    log("Finding greatest rants...")
+    greatest_rants = compute_greatest_rants(video_analyses)
+
+    # TF-IDF fingerprints
+    log("Computing TF-IDF fingerprints...")
+    tfidf = compute_tfidf_fingerprints(all_data)
+
+    # AI-generated quotes (Gemini Flash, with Markov fallback)
+    log("Generating AI movie critic quotes...")
+    all_segments_flat = []
+    for vdata in all_data.values():
+        all_segments_flat.extend(vdata["segments"])
+    sample_text = " ".join(s["text"] for s in all_segments_flat[:200])
+    llm_quotes = generate_llm_quotes(sample_text)
+    if llm_quotes:
+        markov_quotes = llm_quotes
+        quote_source = "gemini"
+        log(f"  Generated {len(markov_quotes)} quotes via Gemini Flash")
+    else:
+        markov_quotes = build_markov_chain(all_segments_flat, order=2)
+        quote_source = "markov"
+        log(f"  Generated {len(markov_quotes)} quotes via Markov chain (fallback)")
+
+    # Castle predictor
+    log("Training Castle mention predictor...")
+    castle_predictor = train_castle_predictor(video_analyses)
+    if castle_predictor.get("accuracy"):
+        log(f"  Predictor accuracy: {castle_predictor['accuracy']}")
 
     # Castle the Rabbit aggregate stats
     log("Tracking Castle the Rabbit...")
@@ -707,6 +1150,15 @@ def main():
         "by_speaker": speaker_stats,
         "all_time_records": all_time,
         "castle": castle_stats,
+        "sentiment_by_year": sentiment_by_year,
+        "angriest_video": {"title": angriest_video[0], "year": angriest_video[1], "compound": angriest_video[2]} if angriest_video else None,
+        "most_wholesome_video": {"title": most_wholesome_video[0], "year": most_wholesome_video[1], "compound": most_wholesome_video[2]} if most_wholesome_video else None,
+        "greatest_rants": greatest_rants,
+        "tfidf": tfidf,
+        "markov_quotes": markov_quotes,
+        "quote_source": quote_source,
+        "castle_predictor": castle_predictor,
+        "missing_videos": missing_videos,
     }
 
     output_path = os.path.join(os.path.dirname(__file__), "public", "data.json")

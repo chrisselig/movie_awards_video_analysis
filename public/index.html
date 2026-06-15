@@ -400,6 +400,182 @@
             color: var(--muted);
         }
 
+        /* Sentiment section */
+        .sentiment-callout {
+            display: flex;
+            gap: 16px;
+            margin: 16px 0;
+        }
+        .sentiment-callout .sc-card {
+            flex: 1;
+            padding: 16px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+        }
+        .sentiment-callout .sc-card.positive { border-left: 4px solid #27ae60; }
+        .sentiment-callout .sc-card.negative { border-left: 4px solid #c0392b; }
+        .sentiment-callout .sc-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+        .sentiment-callout .sc-quote {
+            font-style: italic;
+            font-size: 14px;
+            color: #333;
+        }
+        .sentiment-callout .sc-meta {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+
+        /* Rant section */
+        .rant-leaderboard { margin: 24px 0; }
+        .rant-entry {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            margin-bottom: 12px;
+        }
+        .rant-entry .rant-rank {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--accent);
+            min-width: 40px;
+            text-align: center;
+        }
+        .rant-entry .rant-body { flex: 1; }
+        .rant-entry .rant-title {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .rant-entry .rant-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+        .rant-entry .rant-quote {
+            font-style: italic;
+            font-size: 13px;
+            color: #555;
+            border-left: 3px solid var(--accent);
+            padding-left: 12px;
+        }
+        .rant-score-bar {
+            width: 80px;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+        .rant-score-bar .fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        /* Markov section */
+        .markov-card {
+            background: var(--card-bg);
+            border: 2px solid var(--accent2);
+            padding: 40px;
+            text-align: center;
+            margin: 24px 0;
+            position: relative;
+        }
+        .markov-card .markov-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-style: italic;
+            color: var(--accent2);
+            line-height: 1.5;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.4s ease;
+        }
+        .markov-card .markov-btn {
+            margin-top: 20px;
+            padding: 10px 24px;
+            background: var(--accent2);
+            color: #fff;
+            border: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .markov-card .markov-btn:hover { background: #1a252f; }
+
+        /* TF-IDF section */
+        .tfidf-year-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .tfidf-year-row .tfidf-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            min-width: 50px;
+            color: var(--accent2);
+        }
+        .tfidf-year-row .tfidf-words {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .tfidf-word-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            background: #ecf0f1;
+            border-radius: 3px;
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Castle predictor */
+        .predictor-coeff-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 6px 0;
+        }
+        .predictor-coeff-bar .pcb-label {
+            min-width: 130px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            text-align: right;
+        }
+        .predictor-coeff-bar .pcb-bar {
+            flex: 1;
+            height: 20px;
+            position: relative;
+            background: #f5f5f5;
+        }
+        .predictor-coeff-bar .pcb-fill {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            border-radius: 2px;
+        }
+
         .no-speaker-note {
             background: #fff3cd;
             border: 1px solid #ffc107;
@@ -627,6 +803,10 @@ function render() {
     if (videos.length === 1) renderEnergyTimeline(container, videos[0]);
     renderHarmonyMeter(container, videos);
     renderHotTakes(container, videos, sp);
+    renderSentiment(container, videos);
+    renderRants(container);
+    renderTfidf(container);
+    renderMarkovQuotes(container);
     renderCastle(container, videos);
     if (currentVideo === "all") renderRecords(container);
     if (currentVideo === "all") renderFillerEvolution(container, sp);
@@ -654,7 +834,7 @@ function renderBigNumbers(container, videos, speaker) {
     const avgWpm = totalMin > 0 ? Math.round(totalWords / totalMin) : 0;
 
     const nums = section.append("div").attr("class","big-numbers");
-    [[fmt(videos.length), "Videos"],
+    [[fmt(videos.length), "Videos Analyzed"],
      [fmt(totalWords), "Words Spoken"],
      [fmtDec(totalMin / 60), "Hours"],
      [fmt(avgWpm), "Avg Words/Min"],
@@ -665,6 +845,24 @@ function renderBigNumbers(container, videos, speaker) {
         card.append("div").attr("class","number").text(num);
         card.append("div").attr("class","label").text(lbl);
     });
+
+    // Add tooltip to Videos card if some videos lack transcripts
+    if (DATA.total_videos && DATA.total_with_transcripts && DATA.total_videos > DATA.total_with_transcripts) {
+        const missing = DATA.total_videos - DATA.total_with_transcripts;
+        const missingInfo = DATA.missing_videos || [];
+        let tipHtml = `<div class="tt-title">${DATA.total_videos} Total Videos</div>` +
+            `<div style="margin-bottom:6px">${missing} had no transcript available:</div>`;
+        if (missingInfo.length) {
+            tipHtml += missingInfo.map(v =>
+                `<div style="padding:2px 0;border-top:1px solid rgba(255,255,255,0.15)">` +
+                `<strong>${v.title}</strong> <span style="opacity:0.7">(${v.year || "unknown"})</span></div>`
+            ).join("");
+        }
+        const videoCard = nums.select(".big-number");
+        videoCard.style("cursor","help")
+            .on("mouseover", (event) => showTooltip(event, tipHtml))
+            .on("mouseout", hideTooltip);
+    }
 }
 
 function renderNarrative(container, videos, speaker) {
@@ -759,27 +957,62 @@ function renderWordCloud(container, videos, speaker) {
     header.append("h2").text(speaker !== "all" ? `What ${speaker} Can't Stop Saying` : "What They Can't Stop Talking About");
     header.append("div").attr("class","section-sub").text("Most frequently used words, stop words removed. Size = frequency.");
 
-    const wordData = aggWordFreq(videos, speaker).slice(0, 60);
+    const skipWords = new Set(["movie","movies","film","films"]);
+    const wordData = aggWordFreq(videos, speaker).filter(d=>!skipWords.has(d[0])).slice(0, 60);
     if (!wordData.length) return;
 
     const chart = section.append("div").attr("class","chart-container");
-    const width = 900, height = 400;
+    const width = 900, height = 480;
     const svg = chart.append("svg").attr("viewBox",`0 0 ${width} ${height}`).attr("class","word-cloud");
 
+    // VHS tape shell (background shape)
+    const vhsG = svg.append("g").attr("class","vhs-shell");
+    const pad = 16;
+    // Outer shell
+    vhsG.append("rect").attr("x",pad).attr("y",pad).attr("width",width-pad*2).attr("height",height-pad*2)
+        .attr("rx",12).attr("fill","#1a1a1a").attr("stroke","#333").attr("stroke-width",2);
+    // Label area (center rectangle)
+    const lx=80, ly=60, lw=width-160, lh=height-120;
+    vhsG.append("rect").attr("x",lx).attr("y",ly).attr("width",lw).attr("height",lh)
+        .attr("rx",4).attr("fill","#faf7f2").attr("stroke","#999").attr("stroke-width",1);
+    // Two reel windows at bottom
+    const reelY = height - 50, reelR = 18;
+    [width*0.3, width*0.7].forEach(rx => {
+        vhsG.append("circle").attr("cx",rx).attr("cy",reelY).attr("r",reelR)
+            .attr("fill","#111").attr("stroke","#444").attr("stroke-width",1.5);
+        vhsG.append("circle").attr("cx",rx).attr("cy",reelY).attr("r",reelR*0.4)
+            .attr("fill","#222").attr("stroke","#555").attr("stroke-width",1);
+        // Spokes
+        for (let a = 0; a < Math.PI*2; a += Math.PI/3) {
+            vhsG.append("line").attr("x1",rx).attr("y1",reelY)
+                .attr("x2",rx+reelR*0.85*Math.cos(a)).attr("y2",reelY+reelR*0.85*Math.sin(a))
+                .attr("stroke","#444").attr("stroke-width",0.5);
+        }
+    });
+    // Tape window between reels
+    vhsG.append("rect").attr("x",width*0.3+reelR+4).attr("y",reelY-8)
+        .attr("width",width*0.4-reelR*2-8).attr("height",16).attr("rx",2)
+        .attr("fill","#2a1a0a").attr("opacity",0.6);
+    // "VHS" label
+    vhsG.append("text").attr("x",width-50).attr("y",height-30)
+        .attr("font-family","'JetBrains Mono', monospace").attr("font-size","10px")
+        .attr("fill","#555").attr("letter-spacing","2px").text("VHS");
+
+    // Place words inside the label area
     const maxCount = wordData[0][1];
-    const fontSize = d3.scaleSqrt().domain([wordData[wordData.length-1][1], maxCount]).range([10, 52]);
+    const fontSize = d3.scaleSqrt().domain([wordData[wordData.length-1][1], maxCount]).range([9, 46]);
     const color = d3.scaleOrdinal().range(["#c0392b","#2c3e50","#e67e22","#27ae60","#8e44ad","#2980b9","#d35400"]);
-    const cx = width/2, cy = height/2;
+    const cx = lx + lw/2, cy = ly + lh/2;
 
     wordData.forEach(([word, count], i) => {
         const size = fontSize(count);
         const angle = i * 0.7;
-        const radius = Math.sqrt(i) * 28;
-        let x = Math.max(size*2, Math.min(width-size*2, cx + radius*Math.cos(angle)));
-        let y = Math.max(size, Math.min(height-size/2, cy + radius*Math.sin(angle)));
+        const radius = Math.sqrt(i) * 22;
+        let wx = Math.max(lx+size*1.5, Math.min(lx+lw-size*1.5, cx + radius*Math.cos(angle)));
+        let wy = Math.max(ly+size, Math.min(ly+lh-size*0.3, cy + radius*Math.sin(angle)));
 
-        svg.append("text").attr("x",x).attr("y",y).attr("text-anchor","middle")
-            .attr("font-size",size+"px").attr("font-weight",size>30?700:400)
+        svg.append("text").attr("x",wx).attr("y",wy).attr("text-anchor","middle")
+            .attr("font-size",size+"px").attr("font-weight",size>28?700:400)
             .attr("fill",color(i%7)).attr("opacity",0.85).text(word)
             .on("mouseover", function(event) {
                 showTooltip(event, `<div class="tt-title">"${word}"</div>Used ${fmt(count)} times`);
@@ -854,14 +1087,14 @@ function renderSuperlativeChart(container, videos, speaker) {
     );
 
     const chart = section.append("div").attr("class","chart-container");
-    const margin = {top:10,right:20,bottom:60,left:50};
+    const margin = {top:30,right:20,bottom:60,left:20};
     const width = 900-margin.left-margin.right, height = 300-margin.top-margin.bottom;
     const svg = chart.append("svg")
         .attr("viewBox",`0 0 ${width+margin.left+margin.right} ${height+margin.top+margin.bottom}`)
         .append("g").attr("transform",`translate(${margin.left},${margin.top})`);
 
     const x = d3.scaleBand().domain(supData.map(d=>d[0])).range([0,width]).padding(0.2);
-    const yS = d3.scaleLinear().domain([0,d3.max(supData,d=>d[1])]).range([height,0]);
+    const yS = d3.scaleLinear().domain([0,d3.max(supData,d=>d[1])*1.12]).range([height,0]);
 
     const positive = new Set(["best","greatest","amazing","incredible","fantastic","perfect",
         "masterpiece","brilliant","genius","beautiful","stunning","phenomenal","outstanding","flawless","insane","goat"]);
@@ -872,9 +1105,15 @@ function renderSuperlativeChart(container, videos, speaker) {
         .on("mouseover",function(event,d){showTooltip(event,`<div class="tt-title">"${d[0]}"</div>${fmt(d[1])} uses`);d3.select(this).attr("opacity",1);})
         .on("mouseout",function(){hideTooltip();d3.select(this).attr("opacity",0.8);});
 
-    svg.append("g").attr("transform",`translate(0,${height})`).call(d3.axisBottom(x))
+    // Labels on top of bars
+    svg.selectAll(".bar-label").data(supData).join("text")
+        .attr("x",d=>x(d[0])+x.bandwidth()/2).attr("y",d=>yS(d[1])-6)
+        .attr("text-anchor","middle").attr("font-size","12px").attr("font-weight","600")
+        .attr("fill",d=>positive.has(d[0])?"#27ae60":"#c0392b").text(d=>fmt(d[1]));
+
+    svg.append("g").attr("transform",`translate(0,${height})`).call(d3.axisBottom(x).tickSize(0))
         .selectAll("text").attr("transform","rotate(-35)").attr("text-anchor","end").attr("font-size","12px");
-    svg.append("g").call(d3.axisLeft(yS).ticks(5));
+    svg.select(".domain").remove();
 }
 
 function renderVocabularyEvolution(container, speaker) {
@@ -1125,6 +1364,386 @@ function renderFillerEvolution(container, speaker) {
     legend.append("text").attr("x",25).attr("y",24).attr("font-size","12px").text("Superlatives / Minute");
 }
 
+function renderSentiment(container, videos) {
+    const section = container.append("div").attr("class","section");
+    const header = section.append("div").attr("class","section-header");
+    header.append("div").attr("class","section-kicker").text("Emotional Intelligence");
+    header.append("h2").text("The Emotional Rollercoaster");
+    header.append("div").attr("class","section-sub").text("VADER sentiment analysis reveals how they really feel about movies.");
+
+    if (currentVideo !== "all") {
+        // Single video: area chart timeline
+        const v = DATA.videos[currentVideo];
+        if (!v || !v.sentiment) return;
+        const s = v.sentiment;
+
+        section.append("div").attr("class","narrative").html(
+            `Overall sentiment: <strong>${s.compound > 0 ? "Positive" : s.compound < 0 ? "Negative" : "Neutral"}</strong> (compound: ${s.compound}). ` +
+            `Positivity: ${(s.pos*100).toFixed(0)}% | Negativity: ${(s.neg*100).toFixed(0)}% | Neutral: ${(s.neu*100).toFixed(0)}%`
+        );
+
+        // Sentiment timeline area chart
+        const timeline = s.timeline || [];
+        if (timeline.length > 1) {
+            const chart = section.append("div").attr("class","chart-container");
+            const margin = {top:20,right:30,bottom:40,left:50};
+            const width = 900-margin.left-margin.right, height = 220-margin.top-margin.bottom;
+            const svg = chart.append("svg")
+                .attr("viewBox",`0 0 ${width+margin.left+margin.right} ${height+margin.top+margin.bottom}`)
+                .append("g").attr("transform",`translate(${margin.left},${margin.top})`);
+
+            const x = d3.scaleLinear().domain([0,100]).range([0,width]);
+            const y = d3.scaleLinear().domain([-1,1]).range([height,0]);
+
+            // Zero line
+            svg.append("line").attr("x1",0).attr("x2",width).attr("y1",y(0)).attr("y2",y(0))
+                .attr("stroke","#999").attr("stroke-dasharray","4,4");
+
+            // Positive area
+            svg.append("path").datum(timeline)
+                .attr("d",d3.area().x(d=>x(d.pct_through)).y0(y(0)).y1(d=>y(Math.max(d.compound,0))).curve(d3.curveMonotoneX))
+                .attr("fill","#27ae60").attr("opacity",0.3);
+            // Negative area
+            svg.append("path").datum(timeline)
+                .attr("d",d3.area().x(d=>x(d.pct_through)).y0(y(0)).y1(d=>y(Math.min(d.compound,0))).curve(d3.curveMonotoneX))
+                .attr("fill","#c0392b").attr("opacity",0.3);
+            // Line
+            svg.append("path").datum(timeline)
+                .attr("d",d3.line().x(d=>x(d.pct_through)).y(d=>y(d.compound)).curve(d3.curveMonotoneX))
+                .attr("fill","none").attr("stroke","var(--accent2)").attr("stroke-width",2);
+            // Dots
+            svg.selectAll(".sd").data(timeline).join("circle")
+                .attr("cx",d=>x(d.pct_through)).attr("cy",d=>y(d.compound)).attr("r",4).attr("fill","var(--accent2)")
+                .on("mouseover",(event,d)=>showTooltip(event,`<div class="tt-title">${d.pct_through}% through</div>Sentiment: ${d.compound}`))
+                .on("mouseout",hideTooltip);
+
+            svg.append("g").attr("transform",`translate(0,${height})`).call(d3.axisBottom(x).tickFormat(d=>d+"%"));
+            svg.append("g").call(d3.axisLeft(y).ticks(5));
+            svg.append("text").attr("x",width/2).attr("y",height+35).attr("text-anchor","middle").attr("font-size","12px").attr("fill","#666").text("% Through Video");
+        }
+
+        // Quote callouts
+        const callouts = section.append("div").attr("class","sentiment-callout");
+        if (s.most_positive) {
+            const card = callouts.append("div").attr("class","sc-card positive");
+            card.append("div").attr("class","sc-label").text("Most Positive Moment");
+            card.append("div").attr("class","sc-quote").text(`"${s.most_positive.text}"`);
+            const mins = Math.floor(s.most_positive.start/60), secs = Math.floor(s.most_positive.start%60);
+            card.append("div").attr("class","sc-meta").text(`Score: ${s.most_positive.compound} | ${mins}:${String(secs).padStart(2,'0')}`);
+        }
+        if (s.most_negative) {
+            const card = callouts.append("div").attr("class","sc-card negative");
+            card.append("div").attr("class","sc-label").text("Most Negative Moment");
+            card.append("div").attr("class","sc-quote").text(`"${s.most_negative.text}"`);
+            const mins = Math.floor(s.most_negative.start/60), secs = Math.floor(s.most_negative.start%60);
+            card.append("div").attr("class","sc-meta").text(`Score: ${s.most_negative.compound} | ${mins}:${String(secs).padStart(2,'0')}`);
+        }
+    } else {
+        // Year view: line chart of avg sentiment by year
+        const sentByYear = DATA.sentiment_by_year;
+        if (!sentByYear || !Object.keys(sentByYear).length) {
+            section.append("div").attr("class","narrative").text("No sentiment data available.");
+            return;
+        }
+        const years = Object.entries(sentByYear).map(([y,d])=>({year:+y,...d})).sort((a,b)=>a.year-b.year);
+
+        // Narrative
+        const avgAll = d3.mean(years, d=>d.avg_compound);
+        section.append("div").attr("class","narrative").html(
+            `Average sentiment across all years: <strong>${avgAll.toFixed(3)}</strong>. ` +
+            (avgAll > 0.1 ? "Overall positive — they actually like movies!" :
+             avgAll < -0.1 ? "Overall negative — maybe they should watch different movies." :
+             "Hovering near neutral — the mark of true critics (or extreme ambivalence).")
+        );
+
+        if (years.length > 1) {
+            const chart = section.append("div").attr("class","chart-container");
+            chart.append("div").attr("class","chart-title").text("Average Sentiment by Year");
+            const margin = {top:20,right:30,bottom:40,left:50};
+            const width = 900-margin.left-margin.right, height = 260-margin.top-margin.bottom;
+            const svg = chart.append("svg")
+                .attr("viewBox",`0 0 ${width+margin.left+margin.right} ${height+margin.top+margin.bottom}`)
+                .append("g").attr("transform",`translate(${margin.left},${margin.top})`);
+
+            const x = d3.scaleLinear().domain(d3.extent(years,d=>d.year)).range([0,width]);
+            const yMax = Math.max(0.5, d3.max(years,d=>Math.abs(d.avg_compound))*1.3);
+            const y = d3.scaleLinear().domain([-yMax,yMax]).range([height,0]);
+
+            // Zero line
+            svg.append("line").attr("x1",0).attr("x2",width).attr("y1",y(0)).attr("y2",y(0))
+                .attr("stroke","#999").attr("stroke-dasharray","4,4");
+
+            // Area fills
+            svg.append("path").datum(years)
+                .attr("d",d3.area().x(d=>x(d.year)).y0(y(0)).y1(d=>y(Math.max(d.avg_compound,0))).curve(d3.curveMonotoneX))
+                .attr("fill","#27ae60").attr("opacity",0.2);
+            svg.append("path").datum(years)
+                .attr("d",d3.area().x(d=>x(d.year)).y0(y(0)).y1(d=>y(Math.min(d.avg_compound,0))).curve(d3.curveMonotoneX))
+                .attr("fill","#c0392b").attr("opacity",0.2);
+
+            svg.append("path").datum(years)
+                .attr("d",d3.line().x(d=>x(d.year)).y(d=>y(d.avg_compound)).curve(d3.curveMonotoneX))
+                .attr("fill","none").attr("stroke","var(--accent2)").attr("stroke-width",2.5);
+
+            svg.selectAll(".sd").data(years).join("circle")
+                .attr("cx",d=>x(d.year)).attr("cy",d=>y(d.avg_compound)).attr("r",5)
+                .attr("fill",d=>d.avg_compound>=0?"#27ae60":"#c0392b")
+                .on("mouseover",(event,d)=>showTooltip(event,
+                    `<div class="tt-title">${d.year}</div>Avg sentiment: ${d.avg_compound}<br>` +
+                    `Angriest: ${d.angriest_video?.title||"N/A"}<br>Most wholesome: ${d.most_wholesome_video?.title||"N/A"}`))
+                .on("mouseout",hideTooltip);
+
+            svg.append("g").attr("transform",`translate(0,${height})`).call(d3.axisBottom(x).ticks(years.length).tickFormat(d3.format("d")));
+            svg.append("g").call(d3.axisLeft(y).ticks(5));
+        }
+
+        // All-time records
+        const angriest = DATA.angriest_video;
+        const wholesome = DATA.most_wholesome_video;
+        if (angriest || wholesome) {
+            const callouts = section.append("div").attr("class","sentiment-callout");
+            if (wholesome) {
+                const card = callouts.append("div").attr("class","sc-card positive");
+                card.append("div").attr("class","sc-label").text("Most Wholesome Video Ever");
+                card.append("div").attr("class","sc-quote").text(wholesome.title);
+                card.append("div").attr("class","sc-meta").text(`Compound: ${wholesome.compound} (${wholesome.year})`);
+            }
+            if (angriest) {
+                const card = callouts.append("div").attr("class","sc-card negative");
+                card.append("div").attr("class","sc-label").text("Angriest Video Ever");
+                card.append("div").attr("class","sc-quote").text(angriest.title);
+                card.append("div").attr("class","sc-meta").text(`Compound: ${angriest.compound} (${angriest.year})`);
+            }
+        }
+    }
+}
+
+function renderRants(container) {
+    if (currentVideo !== "all") {
+        // Single video rant view
+        const v = DATA.videos[currentVideo];
+        if (!v || !v.rants || !v.rants.top_rants.length) return;
+
+        const section = container.append("div").attr("class","section");
+        const header = section.append("div").attr("class","section-header");
+        header.append("div").attr("class","section-kicker").text("Rant Detector");
+        header.append("h2").text("Peak Rant Moments");
+        header.append("div").attr("class","section-sub").text("30-second windows scored by speed, negativity, superlatives, and fillers.");
+
+        section.append("div").attr("class","narrative").html(
+            `Rant Index: <strong>${v.rants.rant_index}</strong> ` +
+            (v.rants.rant_index > 1 ? "(Full meltdown detected)" : v.rants.rant_index > 0.5 ? "(Heated moments)" : "(Relatively calm)")
+        );
+
+        const board = section.append("div").attr("class","rant-leaderboard");
+        v.rants.top_rants.slice(0,3).forEach((r,i) => {
+            const entry = board.append("div").attr("class","rant-entry");
+            entry.append("div").attr("class","rant-rank").text(`#${i+1}`);
+            const body = entry.append("div").attr("class","rant-body");
+            const mins = Math.floor(r.start/60), secs = Math.floor(r.start%60);
+            body.append("div").attr("class","rant-meta").text(`${mins}:${String(secs).padStart(2,'0')} — Score: ${r.score} | ${r.wpm} WPM | Neg: ${(r.neg*100).toFixed(0)}%`);
+            body.append("div").attr("class","rant-quote").text(`"${r.text_preview}${r.text_preview.length>=200?"...":""}"`);
+        });
+        return;
+    }
+
+    // Aggregate: Top 10 Greatest Rants
+    const rants = DATA.greatest_rants;
+    if (!rants || !rants.length) return;
+
+    const section = container.append("div").attr("class","section");
+    const header = section.append("div").attr("class","section-header");
+    header.append("div").attr("class","section-kicker").text("Hall of Fury");
+    header.append("h2").text("The 10 Greatest Rants of All Time");
+    header.append("div").attr("class","section-sub").text("Composite score: 35% speed + 30% negativity + 20% superlatives + 15% fillers.");
+
+    const maxScore = d3.max(rants, d=>d.score) || 1;
+    const board = section.append("div").attr("class","rant-leaderboard");
+    rants.forEach((r,i) => {
+        const entry = board.append("div").attr("class","rant-entry");
+        entry.append("div").attr("class","rant-rank").text(`#${i+1}`);
+        const body = entry.append("div").attr("class","rant-body");
+        body.append("div").attr("class","rant-title").text(r.title);
+        const mins = Math.floor(r.start/60), secs = Math.floor(r.start%60);
+        body.append("div").attr("class","rant-meta").text(
+            `${r.year} | ${mins}:${String(secs).padStart(2,'0')} | Score: ${r.score} | ${r.wpm} WPM | Neg: ${(r.neg*100).toFixed(0)}%`
+        );
+        body.append("div").attr("class","rant-quote").text(`"${r.text_preview}${r.text_preview.length>=200?"...":""}"`);
+        const bar = entry.append("div");
+        const barW = bar.append("div").attr("class","rant-score-bar");
+        barW.append("div").attr("class","fill").style("width", `${(r.score/maxScore*100).toFixed(0)}%`);
+    });
+
+    // Radar chart for #1 rant
+    if (rants.length > 0) {
+        const top = rants[0];
+        const chart = section.append("div").attr("class","chart-container");
+        chart.append("div").attr("class","chart-title").text(`#1 Rant Breakdown: "${top.title}"`);
+        const size = 260, cx = 450, cy = 150, radius = 100;
+        const svg = chart.append("svg").attr("viewBox","0 0 900 300");
+        const metrics = [
+            {label:"WPM", value:top.wpm, max:300},
+            {label:"Negativity", value:top.neg*100, max:100},
+            {label:"Superlatives", value:top.sup_density, max:20},
+            {label:"Fillers", value:top.filler_density, max:20}
+        ];
+        const angleSlice = Math.PI*2/metrics.length;
+        // Grid
+        [0.25,0.5,0.75,1].forEach(level => {
+            const points = metrics.map((_,i)=>{
+                const angle = i*angleSlice - Math.PI/2;
+                return `${cx+radius*level*Math.cos(angle)},${cy+radius*level*Math.sin(angle)}`;
+            }).join(" ");
+            svg.append("polygon").attr("points",points).attr("fill","none").attr("stroke","#ddd").attr("stroke-width",0.5);
+        });
+        // Axes
+        metrics.forEach((m,i)=>{
+            const angle = i*angleSlice - Math.PI/2;
+            svg.append("line").attr("x1",cx).attr("y1",cy)
+                .attr("x2",cx+radius*Math.cos(angle)).attr("y2",cy+radius*Math.sin(angle))
+                .attr("stroke","#ddd");
+            svg.append("text")
+                .attr("x",cx+(radius+20)*Math.cos(angle)).attr("y",cy+(radius+20)*Math.sin(angle))
+                .attr("text-anchor","middle").attr("font-size","12px").attr("fill","#666")
+                .text(m.label);
+        });
+        // Data polygon
+        const dataPoints = metrics.map((m,i)=>{
+            const angle = i*angleSlice - Math.PI/2;
+            const val = Math.min(m.value/m.max, 1);
+            return `${cx+radius*val*Math.cos(angle)},${cy+radius*val*Math.sin(angle)}`;
+        }).join(" ");
+        svg.append("polygon").attr("points",dataPoints).attr("fill","var(--accent)").attr("opacity",0.3).attr("stroke","var(--accent)").attr("stroke-width",2);
+    }
+}
+
+function renderTfidf(container) {
+    if (currentVideo !== "all" || !DATA.tfidf) return;
+    const tfidf = DATA.tfidf;
+    const sigs = tfidf.year_signatures || {};
+    const trends = tfidf.word_trends || {};
+
+    if (!Object.keys(sigs).length) return;
+
+    const section = container.append("div").attr("class","section");
+    const header = section.append("div").attr("class","section-header");
+    header.append("div").attr("class","section-kicker").text("Linguistic Archaeology");
+    header.append("h2").text("The Zeitgeist Machine");
+    header.append("div").attr("class","section-sub").text("What words defined each year? TF-IDF finds the words that made each year unique.");
+
+    section.append("div").attr("class","narrative").html(
+        "<strong>How it works:</strong> TF-IDF (Term Frequency &ndash; Inverse Document Frequency) is a way to find " +
+        "words that are <em>unusually common</em> in one year compared to all others. A high score doesn't just mean " +
+        "they said a word a lot &mdash; it means they said it a lot <em>that year specifically</em>. Think of it as: " +
+        "\"If someone only listened to one year, which words would stand out?\" Each word below is sized by its score."
+    );
+
+    // Year signatures
+    const sigBox = section.append("div").style("margin","24px 0");
+    const yearFilter = currentYear !== "all" ? [currentYear] : null;
+    Object.entries(sigs).sort((a,b)=>a[0]-b[0]).forEach(([year, words]) => {
+        if (yearFilter && !yearFilter.includes(year)) return;
+        if (!words.length) return;
+        const maxScore = words[0].score;
+        const row = sigBox.append("div").attr("class","tfidf-year-row");
+        row.append("div").attr("class","tfidf-year").text(year);
+        const wordsDiv = row.append("div").attr("class","tfidf-words");
+        words.forEach(w => {
+            const scale = 0.7 + (w.score / maxScore) * 0.6;
+            wordsDiv.append("span").attr("class","tfidf-word-tag")
+                .style("font-size", `${Math.round(12*scale)}px`)
+                .style("opacity", 0.5 + (w.score/maxScore)*0.5)
+                .text(w.word)
+                .on("mouseover",(event)=>showTooltip(event,`<div class="tt-title">${w.word}</div>TF-IDF: ${w.score}`))
+                .on("mouseout",hideTooltip);
+        });
+    });
+
+    // Word trends multi-line chart
+    const trendWords = Object.keys(trends);
+    if (trendWords.length > 0) {
+        const chart = section.append("div").attr("class","chart-container");
+        chart.append("div").attr("class","chart-title").text("Tracked Words Over Time");
+        const margin = {top:20,right:120,bottom:40,left:50};
+        const width = 900-margin.left-margin.right, height = 260-margin.top-margin.bottom;
+        const svg = chart.append("svg")
+            .attr("viewBox",`0 0 ${width+margin.left+margin.right} ${height+margin.top+margin.bottom}`)
+            .append("g").attr("transform",`translate(${margin.left},${margin.top})`);
+
+        const allYears = [...new Set(trendWords.flatMap(w=>Object.keys(trends[w]).map(Number)))].sort();
+        const allVals = trendWords.flatMap(w=>Object.values(trends[w]));
+        const x = d3.scaleLinear().domain(d3.extent(allYears)).range([0,width]);
+        const y = d3.scaleLinear().domain([0,d3.max(allVals)*1.1]).range([height,0]);
+        const color = d3.scaleOrdinal(d3.schemeTableau10);
+
+        const activeWords = new Set(trendWords);
+
+        trendWords.forEach((word,wi) => {
+            const pts = Object.entries(trends[word]).map(([yr,val])=>({year:+yr,val})).sort((a,b)=>a.year-b.year);
+            svg.append("path").datum(pts)
+                .attr("class",`trend-line-${wi}`)
+                .attr("d",d3.line().x(d=>x(d.year)).y(d=>y(d.val)).curve(d3.curveMonotoneX))
+                .attr("fill","none").attr("stroke",color(wi)).attr("stroke-width",2);
+            svg.selectAll(`.td-${wi}`).data(pts).join("circle")
+                .attr("class",`trend-dot-${wi}`)
+                .attr("cx",d=>x(d.year)).attr("cy",d=>y(d.val)).attr("r",3).attr("fill",color(wi));
+        });
+
+        svg.append("g").attr("transform",`translate(0,${height})`).call(d3.axisBottom(x).ticks(allYears.length).tickFormat(d3.format("d")));
+        svg.append("g").call(d3.axisLeft(y).ticks(5));
+
+        // Legend
+        const legend = svg.append("g").attr("transform",`translate(${width+10},0)`);
+        trendWords.forEach((word,i) => {
+            const g = legend.append("g").attr("transform",`translate(0,${i*20})`).style("cursor","pointer");
+            g.append("rect").attr("width",12).attr("height",12).attr("fill",color(i));
+            g.append("text").attr("x",16).attr("y",10).attr("font-size","11px").text(word);
+        });
+    }
+}
+
+function renderMarkovQuotes(container) {
+    if (currentVideo !== "all" || !DATA.markov_quotes || !DATA.markov_quotes.length) return;
+
+    const section = container.append("div").attr("class","section");
+    const header = section.append("div").attr("class","section-header");
+    header.append("div").attr("class","section-kicker").text("Machine Learning Cinema");
+    header.append("h2").text("The AI Movie Critic");
+
+    const isLLM = DATA.quote_source === "gemini";
+    if (isLLM) {
+        header.append("div").attr("class","section-sub").text("We fed Justin & Tyler's transcripts to an AI and asked it to write new quotes in their style. These are 100% fake.");
+    } else {
+        header.append("div").attr("class","section-sub").text("Generated by a Markov chain trained on every word they've ever said. These quotes are 100% fake.");
+        section.append("div").attr("class","narrative").html(
+            "<strong>How it works:</strong> A Markov chain looks at every pair of consecutive words in the transcripts, " +
+            "then learns: \"After the words <em>this movie</em>, what word usually comes next?\" It builds a giant map of these " +
+            "patterns, then generates new sentences by following the chain &mdash; always picking the next word based on " +
+            "what the previous two words were. The result sounds <em>vaguely</em> like Justin and Tyler, but often veers " +
+            "into beautiful nonsense."
+        );
+    }
+
+    let quoteIdx = 0;
+    const quotes = DATA.markov_quotes;
+
+    const card = section.append("div").attr("class","markov-card");
+    const quoteEl = card.append("div").attr("class","markov-quote").text(`"${quotes[0]}"`);
+    const counter = card.append("div").style("font-size","12px").style("color","var(--muted)")
+        .style("margin-top","8px").style("font-family","JetBrains Mono, monospace")
+        .text(`1 / ${quotes.length}`);
+
+    card.append("button").attr("class","markov-btn").text("Generate Another")
+        .on("click", () => {
+            quoteIdx = (quoteIdx + 1) % quotes.length;
+            quoteEl.style("opacity",0);
+            setTimeout(() => {
+                quoteEl.text(`"${quotes[quoteIdx]}"`).style("opacity",1);
+                counter.text(`${quoteIdx+1} / ${quotes.length}`);
+            }, 300);
+        });
+}
+
 function renderCastle(container, videos) {
     // Aggregate Castle mentions across selected videos
     let totalMentions = 0, awardMentions = 0, movieMentions = 0, rabbitMentions = 0;
@@ -1256,6 +1875,52 @@ function renderCastle(container, videos) {
             const secs = Math.floor(ctx.time % 60);
             q.html(`"${ctx.text}" <span class="cq-time">&mdash; ${ctx.video.slice(0,50)}, ${mins}:${String(secs).padStart(2,'0')}</span>`);
         });
+    }
+
+    // Castle Predictor - "What Summons the Rabbit"
+    const predictor = DATA.castle_predictor;
+    if (predictor && predictor.coefficients && predictor.coefficients.length && currentVideo === "all") {
+        const predBox = section.append("div").style("margin-top","32px");
+        predBox.append("div").style("font-family","'Playfair Display', serif")
+            .style("font-size","20px").style("font-weight","700").style("margin-bottom","4px")
+            .text("What Summons the Rabbit?");
+        predBox.append("div").style("font-size","13px").style("color","var(--muted)").style("margin-bottom","16px")
+            .text(`Logistic regression trained on ${predictor.n_total} videos (${predictor.n_positive} with Castle mentions). Accuracy: ${(predictor.accuracy*100).toFixed(0)}%`);
+
+        // Coefficient bar chart
+        const coeffs = predictor.coefficients;
+        const maxCoeff = d3.max(coeffs, d=>Math.abs(d.coefficient));
+        const coeffBox = predBox.append("div").style("background","var(--card-bg)").style("padding","16px").style("border","1px solid var(--border)");
+
+        coeffs.forEach(c => {
+            const row = coeffBox.append("div").attr("class","predictor-coeff-bar");
+            row.append("div").attr("class","pcb-label").text(c.feature);
+            const bar = row.append("div").attr("class","pcb-bar");
+            const pct = Math.abs(c.coefficient) / maxCoeff * 50;
+            const fill = bar.append("div").attr("class","pcb-fill");
+            if (c.coefficient >= 0) {
+                fill.style("left","50%").style("width",pct+"%").style("background","#27ae60");
+            } else {
+                fill.style("left",(50-pct)+"%").style("width",pct+"%").style("background","#c0392b");
+            }
+        });
+
+        // Legend
+        const legDiv = coeffBox.append("div").style("display","flex").style("gap","20px").style("margin-top","8px").style("font-size","11px").style("color","var(--muted)");
+        legDiv.append("div").html('<span style="color:#c0392b">&#9664;</span> Repels Castle');
+        legDiv.append("div").html('<span style="color:#27ae60">&#9654;</span> Summons Castle');
+
+        // Snarky narrative
+        const topPos = coeffs.filter(c=>c.coefficient>0).sort((a,b)=>b.coefficient-a.coefficient)[0];
+        const topNeg = coeffs.filter(c=>c.coefficient<0).sort((a,b)=>a.coefficient-b.coefficient)[0];
+        if (topPos || topNeg) {
+            let narrative = "According to our highly scientific model, ";
+            if (topPos) narrative += `<strong>${topPos.feature}</strong> is most likely to summon Castle`;
+            if (topPos && topNeg) narrative += ", while ";
+            if (topNeg) narrative += `<strong>${topNeg.feature}</strong> actively repels him`;
+            narrative += ". We take no responsibility for the implications of training a machine learning model on a rabbit's viewing preferences.";
+            predBox.append("div").attr("class","narrative").style("margin-top","12px").html(narrative);
+        }
     }
 }
 

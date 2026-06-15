@@ -5,3 +5,5 @@ nltk
 python-dotenv
 pytest
 ruff
+scikit-learn
+google-genai
