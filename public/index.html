@@ -263,6 +263,128 @@
         }
         .speaker-card.justin { border-top-color: var(--justin); }
         .speaker-card.tyler { border-top-color: var(--tyler); }
+
+        /* Head-to-Head Section */
+        .h2h-subsection { margin: 48px 0; }
+        .h2h-subsection .h2h-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .h2h-subsection .h2h-subtitle {
+            font-size: 13px;
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+        .h2h-verdict {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+        .trading-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 16px 0;
+        }
+        .trading-card {
+            padding: 24px;
+            background: var(--card-bg);
+            border: 3px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+        }
+        .trading-card.justin { border-color: var(--justin); }
+        .trading-card.tyler { border-color: var(--tyler); }
+        .trading-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+        .stat-bar-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+        .stat-bar-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            width: 100px;
+            text-align: right;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--muted);
+        }
+        .stat-bar-track {
+            flex: 1;
+            height: 14px;
+            background: #eee;
+            border-radius: 7px;
+            overflow: hidden;
+        }
+        .stat-bar-fill { height: 100%; border-radius: 7px; transition: width 0.5s; }
+        .stat-bar-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            width: 36px;
+            font-weight: 600;
+        }
+        .h2h-big-numbers {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin: 16px 0;
+        }
+        .h2h-big-num {
+            text-align: center;
+        }
+        .h2h-big-num .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 900;
+            line-height: 1;
+        }
+        .h2h-big-num .num-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+        .phrase-bubbles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 8px 0;
+        }
+        .phrase-bubble {
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #fff;
+        }
+        .merged-card {
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(192,57,43,0.05), rgba(41,128,185,0.05));
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        .merged-card p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+        .h2h-speaker-note {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--muted);
+            text-align: center;
+            margin-bottom: 24px;
+        }
         .speaker-card h3 {
             font-family: 'Playfair Display', serif;
             font-size: 24px;
@@ -796,6 +918,7 @@ function render() {
     renderBigNumbers(container, videos, sp);
     renderNarrative(container, videos, sp);
     if (sp === "all" && DATA.has_speaker_data) renderSpeakerComparison(container, videos);
+    if (sp === "all" && DATA.head_to_head && DATA.head_to_head.videos_with_speaker_data > 0) renderHeadToHead(container);
     renderWordCloud(container, videos, sp);
     renderFillerWordsChart(container, videos, sp);
     renderSuperlativeChart(container, videos, sp);
@@ -1922,6 +2045,343 @@ function renderCastle(container, videos) {
             predBox.append("div").attr("class","narrative").style("margin-top","12px").html(narrative);
         }
     }
+}
+
+function renderHeadToHead(container) {
+    const h2h = DATA.head_to_head;
+    if (!h2h) return;
+
+    const section = container.append("div").attr("class","section");
+    const header = section.append("div").attr("class","section-header");
+    header.append("div").attr("class","kicker").text("FRIEND VS FRIEND");
+    header.append("h2").text("Head to Head");
+    header.append("div").attr("class","sub").text("14 ways to settle the eternal sibling rivalry");
+    section.append("div").attr("class","h2h-speaker-note")
+        .text(`Speaker data available for ${h2h.videos_with_speaker_data} video${h2h.videos_with_speaker_data !== 1 ? 's' : ''}`);
+
+    renderH2HTradingCards(section, h2h);
+    renderH2HInterruptions(section, h2h);
+    renderH2HFilibuster(section, h2h);
+    renderH2HHarsherCritic(section, h2h);
+    renderH2HTasteDivergence(section, h2h);
+    renderH2HBrokenRecord(section, h2h);
+    renderH2HSpeedDebater(section, h2h);
+    renderH2HHipsterIndex(section, h2h);
+    renderH2HSuperlativeStyle(section, h2h);
+    renderH2HYesMan(section, h2h);
+    renderH2HRantStarters(section, h2h);
+    renderH2HConversationMomentum(section, h2h);
+    renderH2HLastWord(section, h2h);
+    renderH2HMergedProfile(section, h2h);
+}
+
+function h2hSub(parent, title, subtitle) {
+    const sub = parent.append("div").attr("class","h2h-subsection");
+    sub.append("div").attr("class","h2h-title").text(title);
+    if (subtitle) sub.append("div").attr("class","h2h-subtitle").text(subtitle);
+    return sub;
+}
+
+function renderH2HTradingCards(section, h2h) {
+    const cards = h2h.trading_cards;
+    if (!cards || !cards.Justin || !cards.Tyler) return;
+    const sub = h2hSub(section, "Draft Pick Trading Cards", "Every stat, normalized to 100");
+    const grid = sub.append("div").attr("class","trading-cards");
+    const statLabels = {wpm: "Speed", vocab_size: "Vocab", rant_power: "Rant Power", positivity: "Positivity", hot_take_rate: "Hot Takes", filler_rate: "Articulation"};
+    ["Justin","Tyler"].forEach(sp => {
+        const card = grid.append("div").attr("class",`trading-card ${sp.toLowerCase()}`);
+        card.append("h4").style("color", speakerColor(sp)).text(sp);
+        const norm = cards[sp].normalized || {};
+        Object.entries(statLabels).forEach(([key, label]) => {
+            const val = norm[key] || 0;
+            const row = card.append("div").attr("class","stat-bar-row");
+            row.append("div").attr("class","stat-bar-label").text(label);
+            const track = row.append("div").attr("class","stat-bar-track");
+            track.append("div").attr("class","stat-bar-fill").style("width", val+"%").style("background", speakerColor(sp));
+            row.append("div").attr("class","stat-bar-value").text(Math.round(val));
+        });
+    });
+}
+
+function renderH2HInterruptions(section, h2h) {
+    const intr = h2h.interruptions;
+    if (!intr) return;
+    const sub = h2hSub(section, "Who Interrupts More?", "Speaker switches with < 0.5s gap");
+    const total = intr.justin_interrupts_tyler + intr.tyler_interrupts_justin;
+    if (total === 0) { sub.append("p").text("No interruptions detected."); return; }
+    const nums = sub.append("div").attr("class","h2h-big-numbers");
+    [{name:"Justin",val:intr.justin_interrupts_tyler,label:"Justin \u2192 Tyler"},
+     {name:"Tyler",val:intr.tyler_interrupts_justin,label:"Tyler \u2192 Justin"}].forEach(d => {
+        const n = nums.append("div").attr("class","h2h-big-num");
+        n.append("div").attr("class","num").style("color", speakerColor(d.name)).text(d.val);
+        n.append("div").attr("class","num-label").text(d.label);
+    });
+    const winner = intr.justin_interrupts_tyler > intr.tyler_interrupts_justin ? "Justin" : "Tyler";
+    sub.append("div").attr("class","h2h-verdict").text(`${winner} is the serial interrupter`);
+    if (intr.interruption_moments && intr.interruption_moments.length > 0) {
+        const m = intr.interruption_moments[0];
+        sub.append("p").style("margin-top","8px").style("font-style","italic").style("color","var(--muted)")
+            .text(`"${m.text_preview}" \u2014 ${m.interrupter}, cutting in`);
+    }
+}
+
+function renderH2HFilibuster(section, h2h) {
+    const fili = h2h.filibuster;
+    if (!fili) return;
+    const sub = h2hSub(section, "The Filibuster Index", "Longest uninterrupted monologues");
+    ["Justin","Tyler"].forEach(sp => {
+        const monos = fili[sp];
+        if (!monos || !monos.length) return;
+        sub.append("div").style("font-weight","600").style("color", speakerColor(sp)).style("margin-top","12px").text(sp);
+        monos.slice(0,3).forEach((m,i) => {
+            sub.append("div").style("font-family","'JetBrains Mono',monospace").style("font-size","12px").style("margin","4px 0")
+                .text(`${i+1}. ${m.duration.toFixed(1)}s (${m.segment_count} segments) \u2014 "${m.text_preview.slice(0,80)}..."`);
+        });
+    });
+    const jMax = (fili.Justin && fili.Justin[0]) ? fili.Justin[0].duration : 0;
+    const tMax = (fili.Tyler && fili.Tyler[0]) ? fili.Tyler[0].duration : 0;
+    const winner = jMax > tMax ? "Justin" : "Tyler";
+    sub.append("div").attr("class","h2h-verdict").text(`${winner} holds the filibuster record at ${Math.max(jMax,tMax).toFixed(1)}s`);
+}
+
+function renderH2HHarsherCritic(section, h2h) {
+    const hc = h2h.harsher_critic;
+    if (!hc || !hc.Justin || !hc.Tyler) return;
+    const sub = h2hSub(section, "Who's the Harsher Critic?", "Average sentiment score per speaker");
+    const nums = sub.append("div").attr("class","h2h-big-numbers");
+    ["Justin","Tyler"].forEach(sp => {
+        const n = nums.append("div").attr("class","h2h-big-num");
+        n.append("div").attr("class","num").style("color", speakerColor(sp)).text(hc[sp].avg_sentiment.toFixed(2));
+        n.append("div").attr("class","num-label").text(`${sp} (${hc[sp].video_count} videos)`);
+    });
+    const harsher = hc.Justin.avg_sentiment < hc.Tyler.avg_sentiment ? "Justin" : "Tyler";
+    sub.append("div").attr("class","h2h-verdict").text(`${harsher} is the harsher critic`);
+}
+
+function renderH2HTasteDivergence(section, h2h) {
+    const td = h2h.taste_divergence;
+    if (!td || !td.most_divisive || td.most_divisive.length === 0) return;
+    const sub = h2hSub(section, "The Taste Divergence Score", `Average sentiment gap: ${td.avg_gap.toFixed(3)}`);
+    const w = 600, h = Math.min(td.most_divisive.length * 40 + 40, 240), margin = {top:20,right:20,bottom:20,left:200};
+    const svg = sub.append("div").attr("class","chart-container").append("svg").attr("viewBox",`0 0 ${w} ${h}`);
+    const data = td.most_divisive.slice(0,5);
+    const y = d3.scaleBand().domain(data.map(d=>d.title)).range([margin.top, h-margin.bottom]).padding(0.3);
+    const x = d3.scaleLinear().domain([0, d3.max(data, d=>d.gap)]).range([margin.left, w-margin.right]);
+    svg.selectAll("text.label").data(data).join("text").attr("x", margin.left-8).attr("y", d=>y(d.title)+y.bandwidth()/2)
+        .attr("text-anchor","end").attr("dominant-baseline","middle").attr("font-size","11px").text(d=>d.title.slice(0,25));
+    svg.selectAll("rect.j").data(data).join("rect").attr("x", margin.left).attr("y", d=>y(d.title))
+        .attr("width", d=>Math.max((x(d.gap)-margin.left)/2,0)).attr("height", y.bandwidth()/2).attr("fill","var(--justin)").attr("rx",2);
+    svg.selectAll("rect.t").data(data).join("rect").attr("x", margin.left).attr("y", d=>y(d.title)+y.bandwidth()/2)
+        .attr("width", d=>Math.max((x(d.gap)-margin.left)/2,0)).attr("height", y.bandwidth()/2).attr("fill","var(--tyler)").attr("rx",2);
+    svg.selectAll("text.gap").data(data).join("text").attr("x", d=>x(d.gap)+4).attr("y", d=>y(d.title)+y.bandwidth()/2)
+        .attr("dominant-baseline","middle").attr("font-size","10px").attr("font-family","'JetBrains Mono',monospace").text(d=>d.gap.toFixed(3));
+}
+
+function renderH2HBrokenRecord(section, h2h) {
+    const br = h2h.broken_record;
+    if (!br) return;
+    const sub = h2hSub(section, "The Broken Record Award", "Most repeated phrases per speaker");
+    ["Justin","Tyler"].forEach(sp => {
+        const phrases = br[sp];
+        if (!phrases || !phrases.length) return;
+        sub.append("div").style("font-weight","600").style("color", speakerColor(sp)).style("margin-top","12px").text(sp);
+        const bubbles = sub.append("div").attr("class","phrase-bubbles");
+        phrases.slice(0,8).forEach(p => {
+            const size = Math.min(8 + p.count, 16);
+            bubbles.append("span").attr("class","phrase-bubble")
+                .style("background", speakerColor(sp)).style("font-size", size+"px")
+                .text(`"${p.phrase}" \u00d7${p.count}`);
+        });
+    });
+}
+
+function renderH2HSpeedDebater(section, h2h) {
+    const sd = h2h.speed_debater;
+    if (!sd) return;
+    const sub = h2hSub(section, "Speed Debater", "Words per minute when agreeing vs disagreeing");
+    // Aggregate from per-video data if available
+    const perVideoData = [];
+    Object.values(DATA.videos || {}).forEach(v => {
+        const spd = (v.head_to_head || {}).speed_debater;
+        if (spd) perVideoData.push(spd);
+    });
+    if (perVideoData.length === 0) { sub.append("p").text("Not enough data."); return; }
+    const agg = {};
+    ["Justin","Tyler"].forEach(sp => {
+        let totalAgreeWpm = 0, totalDisagreeWpm = 0, count = 0;
+        perVideoData.forEach(d => {
+            if (d[sp] && (d[sp].agree_wpm || d[sp].disagree_wpm)) {
+                totalAgreeWpm += d[sp].agree_wpm;
+                totalDisagreeWpm += d[sp].disagree_wpm;
+                count++;
+            }
+        });
+        agg[sp] = {agree_wpm: count ? (totalAgreeWpm/count).toFixed(1) : 0, disagree_wpm: count ? (totalDisagreeWpm/count).toFixed(1) : 0};
+    });
+    const grid = sub.append("div").style("display","grid").style("grid-template-columns","1fr 1fr").style("gap","16px");
+    ["Justin","Tyler"].forEach(sp => {
+        const card = grid.append("div").style("text-align","center");
+        card.append("div").style("font-weight","600").style("color", speakerColor(sp)).text(sp);
+        card.append("div").style("font-family","'JetBrains Mono',monospace").style("font-size","12px")
+            .html(`Agreeing: <strong>${agg[sp].agree_wpm}</strong> WPM &nbsp; Disagreeing: <strong>${agg[sp].disagree_wpm}</strong> WPM`);
+    });
+}
+
+function renderH2HHipsterIndex(section, h2h) {
+    const hi = h2h.hipster_index;
+    if (!hi) return;
+    const sub = h2hSub(section, "The Hipster Index", '"Overrated" vs "Underrated" — who\'s the contrarian?');
+    const grid = sub.append("div").style("display","grid").style("grid-template-columns","1fr 1fr").style("gap","16px");
+    ["Justin","Tyler"].forEach(sp => {
+        const d = hi[sp];
+        if (!d) return;
+        const card = grid.append("div").style("text-align","center");
+        card.append("div").style("font-weight","600").style("color", speakerColor(sp)).text(sp);
+        card.append("div").style("font-family","'JetBrains Mono',monospace").style("font-size","13px")
+            .html(`Overrated: <strong>${d.overrated_count}</strong> &nbsp; Underrated: <strong>${d.underrated_count}</strong>`);
+        card.append("div").style("font-size","11px").style("color","var(--muted)").text(`Hipster Score: ${(d.hipster_score*100).toFixed(0)}%`);
+    });
+    const jScore = (hi.Justin||{}).hipster_score||0, tScore = (hi.Tyler||{}).hipster_score||0;
+    const hipster = jScore > tScore ? "Justin" : "Tyler";
+    sub.append("div").attr("class","h2h-verdict").text(`${hipster} is the bigger hipster`);
+}
+
+function renderH2HSuperlativeStyle(section, h2h) {
+    const ss = h2h.superlative_style;
+    if (!ss || !ss.Justin || !ss.Tyler) return;
+    const sub = h2hSub(section, "Superlative Style", "Positive vs negative vs intensity superlatives");
+    const w = 400, h = 300, cx = w/2, cy = h/2+10, r = 100;
+    const axes = ["positive","negative","intensity"];
+    const labels = ["Positive","Negative","Intensity"];
+    const svg = sub.append("div").attr("class","chart-container").append("svg").attr("viewBox",`0 0 ${w} ${h}`);
+    const maxVal = Math.max(...axes.map(a => Math.max(ss.Justin[a]||0, ss.Tyler[a]||0)), 1);
+    const angleSlice = Math.PI * 2 / axes.length;
+    // Grid
+    [0.33,0.66,1].forEach(level => {
+        const pts = axes.map((_,i) => {
+            const angle = angleSlice*i - Math.PI/2;
+            return `${cx+r*level*Math.cos(angle)},${cy+r*level*Math.sin(angle)}`;
+        }).join(" ");
+        svg.append("polygon").attr("points",pts).attr("fill","none").attr("stroke","#ddd").attr("stroke-width",0.5);
+    });
+    // Axis labels
+    axes.forEach((a,i) => {
+        const angle = angleSlice*i - Math.PI/2;
+        svg.append("text").attr("x",cx+(r+20)*Math.cos(angle)).attr("y",cy+(r+20)*Math.sin(angle))
+            .attr("text-anchor","middle").attr("font-size","11px").text(labels[i]);
+    });
+    // Data polygons
+    ["Justin","Tyler"].forEach(sp => {
+        const pts = axes.map((a,i) => {
+            const val = (ss[sp][a]||0)/maxVal;
+            const angle = angleSlice*i - Math.PI/2;
+            return `${cx+r*val*Math.cos(angle)},${cy+r*val*Math.sin(angle)}`;
+        }).join(" ");
+        svg.append("polygon").attr("points",pts).attr("fill",speakerColor(sp)).attr("fill-opacity",0.2)
+            .attr("stroke",speakerColor(sp)).attr("stroke-width",2);
+    });
+    // Legend
+    const legend = svg.append("g").attr("transform",`translate(${w-100},20)`);
+    ["Justin","Tyler"].forEach((sp,i) => {
+        legend.append("rect").attr("x",0).attr("y",i*18).attr("width",12).attr("height",12).attr("fill",speakerColor(sp)).attr("rx",2);
+        legend.append("text").attr("x",16).attr("y",i*18+10).attr("font-size","11px").text(sp);
+    });
+}
+
+function renderH2HYesMan(section, h2h) {
+    const ym = h2h.yes_man;
+    if (!ym) return;
+    const sub = h2hSub(section, "The Yes-Man Tracker", "Who agrees more vs disagrees more?");
+    const grid = sub.append("div").style("display","grid").style("grid-template-columns","1fr 1fr").style("gap","16px");
+    ["Justin","Tyler"].forEach(sp => {
+        const d = ym[sp];
+        if (!d) return;
+        const card = grid.append("div").style("text-align","center");
+        card.append("div").style("font-weight","600").style("color", speakerColor(sp)).text(sp);
+        card.append("div").style("font-family","'JetBrains Mono',monospace").style("font-size","13px")
+            .html(`Agrees: <strong>${d.agreements}</strong> &nbsp; Disagrees: <strong>${d.disagreements}</strong>`);
+        card.append("div").style("font-size","11px").style("color","var(--muted)").text(`Yes-Man Ratio: ${(d.yes_man_ratio*100).toFixed(0)}%`);
+    });
+    const jRatio = (ym.Justin||{}).yes_man_ratio||0, tRatio = (ym.Tyler||{}).yes_man_ratio||0;
+    const yesman = jRatio > tRatio ? "Justin" : "Tyler";
+    sub.append("div").attr("class","h2h-verdict").text(`${yesman} is the bigger yes-man`);
+}
+
+function renderH2HRantStarters(section, h2h) {
+    const rs = h2h.rant_starters;
+    if (!rs) return;
+    const sub = h2hSub(section, "Who Starts the Rants?", "Who's speaking at the peak of the hottest rants");
+    const counts = rs.counts || {};
+    const nums = sub.append("div").attr("class","h2h-big-numbers");
+    ["Justin","Tyler"].forEach(sp => {
+        const n = nums.append("div").attr("class","h2h-big-num");
+        n.append("div").attr("class","num").style("color", speakerColor(sp)).text(counts[sp]||0);
+        n.append("div").attr("class","num-label").text(sp);
+    });
+    const winner = (counts.Justin||0) > (counts.Tyler||0) ? "Justin" : "Tyler";
+    sub.append("div").attr("class","h2h-verdict").text(`${winner} is the rant instigator`);
+    // Top rant quotes
+    ["Justin","Tyler"].forEach(sp => {
+        const rants = (rs.top_rants||{})[sp];
+        if (rants && rants.length > 0) {
+            sub.append("p").style("margin-top","8px").style("font-style","italic").style("color","var(--muted)").style("font-size","12px")
+                .text(`${sp}'s hottest: "${rants[0].text_preview.slice(0,80)}..." (${rants[0].title})`);
+        }
+    });
+}
+
+function renderH2HConversationMomentum(section, h2h) {
+    const cm = h2h.conversation_momentum;
+    if (!cm) return;
+    const sub = h2hSub(section, "Conversation Momentum", `Average: ${cm.avg_switches_per_minute} speaker switches per minute`);
+    // Show per-video timeline from individual videos
+    const videoTimelines = [];
+    Object.values(DATA.videos || {}).forEach(v => {
+        const t = (v.head_to_head || {}).conversation_momentum;
+        if (t && t.timeline && t.timeline.length > 0) {
+            videoTimelines.push({title: v.title, spm: t.switches_per_minute});
+        }
+    });
+    if (videoTimelines.length === 0) return;
+    videoTimelines.sort((a,b) => b.spm - a.spm);
+    const top5 = videoTimelines.slice(0,5);
+    sub.append("div").style("font-weight","600").style("margin-top","8px").text("Most Rapid-Fire Conversations:");
+    top5.forEach((v,i) => {
+        sub.append("div").style("font-family","'JetBrains Mono',monospace").style("font-size","12px").style("margin","2px 0")
+            .text(`${i+1}. ${v.title.slice(0,40)} \u2014 ${v.spm} switches/min`);
+    });
+}
+
+function renderH2HLastWord(section, h2h) {
+    const lw = h2h.last_word;
+    if (!lw) return;
+    const total = (lw.Justin||0) + (lw.Tyler||0);
+    if (total === 0) return;
+    const sub = h2hSub(section, "The Last Word", "Who gets the final say in each video?");
+    const nums = sub.append("div").attr("class","h2h-big-numbers");
+    ["Justin","Tyler"].forEach(sp => {
+        const count = lw[sp]||0;
+        const pct = total > 0 ? (count/total*100).toFixed(0) : 0;
+        const n = nums.append("div").attr("class","h2h-big-num");
+        n.append("div").attr("class","num").style("color", speakerColor(sp)).text(pct+"%");
+        n.append("div").attr("class","num-label").text(`${sp} (${count}/${total})`);
+    });
+    const winner = (lw.Justin||0) > (lw.Tyler||0) ? "Justin" : "Tyler";
+    sub.append("div").attr("class","h2h-verdict").text(`${winner} always gets the last word`);
+}
+
+function renderH2HMergedProfile(section, h2h) {
+    const mp = h2h.merged_profile;
+    if (!mp || !mp.wpm) return;
+    const sub = h2hSub(section, "If They Were One Person", "The ultimate movie critic fusion");
+    const card = sub.append("div").attr("class","merged-card");
+    card.append("p").html(`Meet <strong>Justyler</strong>, the merged movie critic. They speak at <strong>${mp.wpm} WPM</strong> ` +
+        `with a vocabulary of <strong>${mp.unique_words.toLocaleString()}</strong> unique words.`);
+    card.append("p").html(`They inherited ${mp.speed_from}'s speed, ${mp.vocabulary_from}'s vocabulary, ` +
+        `and unfortunately ${mp.filler_habit_from}'s filler word habit.`);
+    card.append("p").html(`Armed with <strong>${mp.total_hot_takes}</strong> hot takes, ` +
+        `<strong>${mp.total_superlatives.toLocaleString()}</strong> superlatives, and ` +
+        `<strong>${mp.total_fillers.toLocaleString()}</strong> filler words, Justyler is the ultimate movie awards machine.`);
 }
 
 function renderFooter(container) {
