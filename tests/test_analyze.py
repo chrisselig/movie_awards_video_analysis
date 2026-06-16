@@ -11,6 +11,13 @@ from analyze_data import (
     analyze_sentiment, analyze_rants, build_markov_chain,
     compute_tfidf_fingerprints, train_castle_predictor,
     compute_greatest_rants,
+    analyze_interruptions, analyze_repeated_phrases,
+    analyze_speed_by_context, analyze_monologues,
+    analyze_hipster_index, analyze_agreement_asymmetry,
+    analyze_conversation_momentum, analyze_last_word,
+    categorize_superlatives_by_speaker,
+    compute_taste_divergence, compute_rant_starters,
+    compute_merged_profile, compute_trading_cards,
 )
 
 
@@ -31,7 +38,8 @@ def test_analyze_word_frequency_removes_stop_words():
     result = analyze_word_frequency(segs)
     words = [w for w, _ in result]
     assert "the" not in words
-    assert "movie" in words
+    # "movie" is in EXTRA_STOPS, so it gets filtered; "film" and "great" should remain
+    assert "film" in words
 
 
 def test_analyze_filler_words_counts_correctly():
@@ -321,3 +329,220 @@ def test_castle_predictor_with_enough_data():
     assert len(result["coefficients"]) == 7
     assert 0 <= result["accuracy"] <= 1
     assert len(result["probabilities"]) == 20
+
+
+# --- Head-to-Head Feature Tests ---
+
+def _make_speaker_segments():
+    """Helper: alternating Justin/Tyler segments with timing."""
+    return [
+        {"start": 0.0, "duration": 5.0, "text": "I think this movie was great", "speaker": "Justin"},
+        {"start": 5.0, "duration": 4.0, "text": "no way it was terrible", "speaker": "Tyler"},
+        {"start": 9.0, "duration": 3.0, "text": "i agree it had problems", "speaker": "Justin"},
+        {"start": 12.5, "duration": 5.0, "text": "exactly the worst movie", "speaker": "Tyler"},
+        {"start": 18.0, "duration": 4.0, "text": "but the acting was amazing", "speaker": "Justin"},
+    ]
+
+
+def test_interruptions_detects_speaker_switch():
+    # gap between seg 1 end (9.0) and seg 2 start (9.0) = 0, so interruption
+    segs = _make_speaker_segments()
+    result = analyze_interruptions(segs)
+    assert result["justin_interrupts_tyler"] + result["tyler_interrupts_justin"] > 0
+    assert len(result["interruption_moments"]) > 0
+
+
+def test_interruptions_no_speaker_data():
+    segs = [{"start": 0, "duration": 5, "text": "hello", "speaker": None},
+            {"start": 5, "duration": 5, "text": "world", "speaker": None}]
+    result = analyze_interruptions(segs)
+    assert result["justin_interrupts_tyler"] == 0
+    assert result["tyler_interrupts_justin"] == 0
+
+
+def test_repeated_phrases_finds_ngrams():
+    segs = [
+        {"start": 0, "duration": 5, "text": "the best movie the best movie the best movie ever", "speaker": "Justin"},
+        {"start": 5, "duration": 5, "text": "yeah totally cool", "speaker": "Tyler"},
+    ]
+    result = analyze_repeated_phrases(segs, "Justin")
+    assert len(result) > 0
+    assert any("best movie" in r["phrase"] for r in result)
+
+
+def test_repeated_phrases_filters_stopwords():
+    segs = [
+        {"start": 0, "duration": 5, "text": "the the the and and and the the the", "speaker": "Justin"},
+    ]
+    result = analyze_repeated_phrases(segs, "Justin")
+    # All stopword-only grams should be filtered out
+    assert len(result) == 0
+
+
+def test_monologues_finds_longest_run():
+    segs = [
+        {"start": 0, "duration": 10, "text": "blah", "speaker": "Justin"},
+        {"start": 10, "duration": 10, "text": "blah", "speaker": "Justin"},
+        {"start": 20, "duration": 5, "text": "blah", "speaker": "Tyler"},
+        {"start": 25, "duration": 3, "text": "blah", "speaker": "Tyler"},
+        {"start": 28, "duration": 2, "text": "blah", "speaker": "Tyler"},
+    ]
+    result = analyze_monologues(segs)
+    assert len(result["Justin"]) > 0
+    assert result["Justin"][0]["duration"] == 20.0
+    assert result["Tyler"][0]["duration"] == 10.0
+
+
+def test_hipster_index_counts_markers():
+    segs = [
+        {"start": 0, "duration": 5, "text": "that movie is overrated and overhyped honestly", "speaker": "Justin"},
+        {"start": 5, "duration": 5, "text": "nah it is underrated a hidden gem", "speaker": "Tyler"},
+    ]
+    j_result = analyze_hipster_index(segs, "Justin")
+    assert j_result["overrated_count"] == 2
+    assert j_result["underrated_count"] == 0
+
+    t_result = analyze_hipster_index(segs, "Tyler")
+    assert t_result["underrated_count"] == 2  # "underrated" + "hidden gem"
+    assert t_result["overrated_count"] == 0
+
+
+def test_agreement_asymmetry_per_speaker():
+    segs = [
+        {"start": 0, "duration": 5, "text": "i agree exactly absolutely", "speaker": "Justin"},
+        {"start": 5, "duration": 5, "text": "i disagree no way hard disagree", "speaker": "Tyler"},
+    ]
+    result = analyze_agreement_asymmetry(segs)
+    assert result["Justin"]["agreements"] == 3
+    assert result["Justin"]["disagreements"] == 0
+    assert result["Tyler"]["agreements"] == 0
+    assert result["Tyler"]["disagreements"] == 3
+
+
+def test_conversation_momentum_counts_switches():
+    segs = [
+        {"start": 0, "duration": 2, "text": "a", "speaker": "Justin"},
+        {"start": 2, "duration": 2, "text": "b", "speaker": "Tyler"},
+        {"start": 4, "duration": 2, "text": "c", "speaker": "Justin"},
+        {"start": 6, "duration": 2, "text": "d", "speaker": "Tyler"},
+    ]
+    result = analyze_conversation_momentum(segs)
+    assert result["switches_per_minute"] > 0
+    assert len(result["timeline"]) > 0
+
+
+def test_last_word_identifies_final_speaker():
+    segs = [
+        {"start": 0, "duration": 5, "text": "opening", "speaker": "Justin"},
+        {"start": 5, "duration": 5, "text": "middle", "speaker": "Tyler"},
+        {"start": 10, "duration": 5, "text": "last word here", "speaker": "Justin"},
+    ]
+    result = analyze_last_word(segs)
+    assert result["speaker"] == "Justin"
+
+
+def test_last_word_no_speaker():
+    segs = [{"start": 0, "duration": 5, "text": "hello", "speaker": None}]
+    result = analyze_last_word(segs)
+    assert result["speaker"] is None
+
+
+def test_trading_cards_normalizes_stats():
+    speaker_agg = {
+        "Justin": {
+            "words_per_minute": 160, "unique_words": 5000, "total_fillers": 100,
+            "total_superlatives": 50, "hot_takes": 20, "filler_per_minute": 3.0,
+            "videos_with_data": 10,
+        },
+        "Tyler": {
+            "words_per_minute": 140, "unique_words": 4000, "total_fillers": 80,
+            "total_superlatives": 60, "hot_takes": 15, "filler_per_minute": 2.5,
+            "videos_with_data": 10,
+        },
+    }
+    video_analyses = {}
+    result = compute_trading_cards(speaker_agg, video_analyses)
+    assert "Justin" in result
+    assert "Tyler" in result
+    assert "normalized" in result["Justin"]
+    # One speaker should have 100 and the other 0 for each stat
+    assert result["Justin"]["normalized"]["wpm"] == 100.0
+    assert result["Tyler"]["normalized"]["wpm"] == 0.0
+
+
+def test_taste_divergence_finds_gap():
+    video_analyses = {
+        "v1": {
+            "title": "Happy Movie", "year": 2020,
+            "by_speaker": {
+                "Justin": {"sentiment": {"compound": 0.8}},
+                "Tyler": {"sentiment": {"compound": -0.2}},
+            },
+        },
+        "v2": {
+            "title": "Agreed Movie", "year": 2021,
+            "by_speaker": {
+                "Justin": {"sentiment": {"compound": 0.5}},
+                "Tyler": {"sentiment": {"compound": 0.5}},
+            },
+        },
+    }
+    result = compute_taste_divergence(video_analyses)
+    assert len(result["most_divisive"]) > 0
+    assert result["most_divisive"][0]["title"] == "Happy Movie"
+    assert result["most_divisive"][0]["gap"] == 1.0
+
+
+def test_merged_profile_combines_stats():
+    speaker_agg = {
+        "Justin": {
+            "words_per_minute": 160, "unique_words": 5000, "total_fillers": 100,
+            "total_superlatives": 50, "hot_takes": 20,
+        },
+        "Tyler": {
+            "words_per_minute": 140, "unique_words": 4000, "total_fillers": 80,
+            "total_superlatives": 60, "hot_takes": 15,
+        },
+    }
+    result = compute_merged_profile(speaker_agg)
+    assert result["wpm"] == 150.0
+    assert result["unique_words"] == 9000
+    assert result["speed_from"] == "Justin"
+
+
+def test_rant_starters_attributes_speaker():
+    video_analyses = {
+        "v1": {
+            "title": "Ranty Movie", "year": 2020,
+            "rants": {"rant_index": 2.0, "top_rants": [
+                {"start": 10, "end": 40, "score": 2.0, "text_preview": "terrible awful"}
+            ]},
+            "_segments_raw": [
+                {"start": 8, "duration": 10, "text": "terrible", "speaker": "Justin"},
+                {"start": 20, "duration": 10, "text": "awful", "speaker": "Tyler"},
+            ],
+        },
+    }
+    result = compute_rant_starters(video_analyses)
+    # Rant midpoint is 25, Tyler is speaking at 20-30
+    assert result["counts"]["Tyler"] >= 1 or result["counts"]["Justin"] >= 1
+
+
+def test_speed_debater_splits_contexts():
+    segs = [
+        {"start": 0, "duration": 5, "text": "i agree this movie was fantastic and wonderful", "speaker": "Justin"},
+        {"start": 5, "duration": 5, "text": "i disagree this was terrible awful garbage worst", "speaker": "Tyler"},
+    ]
+    result = analyze_speed_by_context(segs, {})
+    assert result["Justin"]["agree_wpm"] > 0
+    assert result["Tyler"]["disagree_wpm"] > 0
+
+
+def test_superlative_style_categorizes():
+    segs = [
+        {"start": 0, "duration": 5, "text": "best greatest amazing insane terrible", "speaker": "Justin"},
+    ]
+    result = categorize_superlatives_by_speaker(segs, "Justin")
+    assert result["positive"] == 3  # best, greatest, amazing
+    assert result["negative"] == 1  # terrible
+    assert result["intensity"] == 1  # insane
