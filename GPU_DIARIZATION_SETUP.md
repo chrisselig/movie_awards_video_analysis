@@ -33,7 +33,11 @@ https://www.nvidia.com/Download/index.aspx
 
 Select: RTX 3060 Ti, Windows 10/11, Game Ready Driver.
 
-**Important:** Do NOT install CUDA inside WSL2 separately — the Windows driver provides GPU access to WSL2 automatically.
+**Critical:** Do NOT install an NVIDIA Linux GPU driver (`nvidia-driver-*`) inside WSL2. The Windows driver handles GPU passthrough automatically. Installing a Linux driver will break `nvidia-smi` and GPU access. If you accidentally do this, fix with:
+```bash
+sudo apt-get remove --purge nvidia-driver-* libnvidia-*
+# Then from PowerShell: wsl --shutdown
+```
 
 Verify GPU is visible inside WSL2:
 
@@ -143,7 +147,27 @@ yt-dlp --version
 
 ---
 
-## 7. Run Diarization
+## 7. Sanity Check
+
+Run this before diarizing to verify the full stack:
+
+```bash
+python3 -c "
+import torch
+import torchaudio
+print(f'PyTorch: {torch.__version__}')
+print(f'CUDA available: {torch.cuda.is_available()}')
+print(f'GPU: {torch.cuda.get_device_name(0)}')
+print(f'torchaudio: {torchaudio.__version__}')
+print(f'torchaudio backends: {torchaudio.list_audio_backends()}')
+"
+```
+
+Expected: CUDA available = True, GPU = NVIDIA GeForce RTX 3060 Ti.
+
+---
+
+## 8. Run Diarization
 
 ```bash
 source venv/bin/activate
@@ -171,7 +195,7 @@ python -u diarize.py --cleanup-audio
 
 ---
 
-## 8. After Diarization: Regenerate Analysis
+## 9. After Diarization: Regenerate Analysis
 
 Once diarization is done (or partially done), regenerate the analysis data:
 
@@ -195,6 +219,22 @@ The RTX 3060 Ti has 8GB VRAM. pyannote should fit comfortably, but if you hit OO
 # Reduce batch size (not directly configurable in pyannote, but closing other GPU apps helps)
 # Close any games/browsers using GPU before running
 ```
+
+### `libcuda.so` not found
+WSL2 mounts the Windows CUDA driver at `/usr/lib/wsl/lib/`. If PyTorch can't find it:
+```bash
+export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
+```
+Add this to `~/.bashrc`.
+
+### WSL2 running out of RAM
+By default WSL2 uses up to 50% of system RAM. Create/edit `C:\Users\<you>\.wslconfig` on the Windows side:
+```ini
+[wsl2]
+memory=12GB
+swap=4GB
+```
+Then restart: `wsl --shutdown` from PowerShell.
 
 ### `pyannote` model download fails
 - Ensure your HF_TOKEN is set correctly in `.env`
