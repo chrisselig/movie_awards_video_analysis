@@ -709,6 +709,68 @@
             margin-bottom: 24px;
         }
 
+        .section-group-header {
+            border-top: 3px solid var(--text);
+            padding-top: 12px;
+            margin-bottom: 48px;
+            margin-top: 64px;
+        }
+        .section-group-header:first-child { margin-top: 0; }
+        .section-group-header .group-kicker {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+        .section-group-header .group-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+
+        .back-to-overview {
+            display: inline-block;
+            padding: 6px 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            background: transparent;
+            cursor: pointer;
+            margin-bottom: 24px;
+            transition: all 0.15s;
+        }
+        .back-to-overview:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .record-card.record-highlight {
+            border-left-color: #e67e22;
+            background: #fffbf0;
+        }
+
+        .tfidf-year-row.tfidf-highlight {
+            background: #fffbf0;
+            border-left: 3px solid var(--accent3);
+            padding-left: 9px;
+        }
+
+        .energy-placeholder {
+            text-align: center;
+            padding: 48px 24px;
+            background: var(--card-bg);
+            border: 1px dashed var(--border);
+            color: var(--muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+        }
+
         @media (max-width: 768px) {
             header h1 { font-size: 32px; }
             .section-header h2 { font-size: 24px; }
@@ -892,6 +954,24 @@ function hasSpeakerData(videos) {
     return videos.some(v => v.has_speaker_data);
 }
 
+function renderGroupHeader(container, kicker, title) {
+    const div = container.append("div").attr("class","section-group-header");
+    div.append("div").attr("class","group-kicker").text(kicker);
+    div.append("div").attr("class","group-title").text(title);
+}
+
+function renderBackToOverview(container) {
+    container.append("button").attr("class","back-to-overview")
+        .text("\u2190 Back to Overview")
+        .on("click", () => {
+            currentVideo = "all";
+            currentYear = "all";
+            d3.select("#filter-year").property("value","all");
+            updateVideoFilter();
+            render();
+        });
+}
+
 function render() {
     const container = d3.select("#main-content");
     container.html("");
@@ -915,24 +995,34 @@ function render() {
         );
     }
 
+    if (currentVideo !== "all") renderBackToOverview(container);
+
+    // Group A: The Matchup
+    renderGroupHeader(container, "Part I", "The Matchup");
     renderBigNumbers(container, videos, sp);
     renderNarrative(container, videos, sp);
-    if (sp === "all" && DATA.has_speaker_data) renderSpeakerComparison(container, videos);
-    if (sp === "all" && DATA.head_to_head && DATA.head_to_head.videos_with_speaker_data > 0) renderHeadToHead(container);
+    if (DATA.head_to_head || (currentVideo !== "all" && DATA.videos[currentVideo]?.head_to_head)) renderHeadToHead(container);
+    if (DATA.has_speaker_data || (currentVideo !== "all" && DATA.videos[currentVideo]?.by_speaker)) renderSpeakerComparison(container, videos);
+    renderHarmonyMeter(container, videos);
+
+    // Group B: Deep Dive
+    renderGroupHeader(container, "Part II", "Deep Dive");
+    renderSentiment(container, videos);
+    renderEnergyTimeline(container, videos);
     renderWordCloud(container, videos, sp);
     renderFillerWordsChart(container, videos, sp);
     renderSuperlativeChart(container, videos, sp);
-    if (currentVideo === "all") renderVocabularyEvolution(container, sp);
-    if (videos.length === 1) renderEnergyTimeline(container, videos[0]);
-    renderHarmonyMeter(container, videos);
     renderHotTakes(container, videos, sp);
-    renderSentiment(container, videos);
     renderRants(container);
+    renderCastle(container, videos);
+
+    // Group C: The Record Book
+    renderGroupHeader(container, "Part III", "The Record Book");
+    renderRecords(container);
+    renderVocabularyEvolution(container, sp);
+    renderFillerEvolution(container, sp);
     renderTfidf(container);
     renderMarkovQuotes(container);
-    renderCastle(container, videos);
-    if (currentVideo === "all") renderRecords(container);
-    if (currentVideo === "all") renderFillerEvolution(container, sp);
     renderFooter(container);
 }
 
@@ -1017,59 +1107,131 @@ function renderNarrative(container, videos, speaker) {
 }
 
 function renderSpeakerComparison(container, videos) {
-    if (!DATA.by_speaker || !Object.keys(DATA.by_speaker).length) return;
+    const isPerVideo = currentVideo !== "all";
+    const videoSpeaker = isPerVideo ? (DATA.videos[currentVideo]?.by_speaker || null) : null;
+    const speakerData = videoSpeaker || DATA.by_speaker;
+
+    if (!speakerData || !Object.keys(speakerData).length) {
+        if (isPerVideo) {
+            const section = container.append("div").attr("class","section");
+            const header = section.append("div").attr("class","section-header");
+            header.append("div").attr("class","section-kicker").text("Speaker Stats");
+            header.append("h2").text("Justin vs. Tyler: The Tale of the Tape");
+            section.append("div").attr("class","no-speaker-note")
+                .html("<strong>No speaker data for this video.</strong> Diarization not yet run for this episode.");
+        }
+        return;
+    }
 
     const section = container.append("div").attr("class","section");
     const header = section.append("div").attr("class","section-header");
-    header.append("div").attr("class","section-kicker").text("Head to Head");
+    header.append("div").attr("class","section-kicker").text(isPerVideo ? "Per-Video Speaker Stats" : "Head to Head");
     header.append("h2").text("Justin vs. Tyler: The Tale of the Tape");
-    header.append("div").attr("class","section-sub").text("Who talks more? Who uses bigger words? Who can't stop saying 'amazing'?");
+    header.append("div").attr("class","section-sub").text(
+        isPerVideo ? "Speaker breakdown for this episode" : "Who talks more? Who uses bigger words? Who can't stop saying 'amazing'?"
+    );
 
     const grid = section.append("div").attr("class","speaker-comparison");
 
-    ["Justin", "Tyler"].forEach(name => {
-        const stats = DATA.by_speaker[name];
-        if (!stats) return;
-        const card = grid.append("div").attr("class", `speaker-card ${name.toLowerCase()}`);
-        card.append("h3").text(name);
-
-        const rows = [
-            ["Total Words", fmt(stats.total_words)],
-            ["Speaking Time", fmtDec(stats.total_speaking_time_min) + " min"],
-            ["Words/Minute", fmtDec(stats.words_per_minute)],
-            ["Unique Words", fmt(stats.unique_words)],
-            ["Vocabulary (TTR)", stats.ttr],
-            ["Fillers/Minute", stats.filler_per_minute],
-            ["Superlatives/Min", stats.superlative_per_minute],
-            ["Hot Takes", fmt(stats.hot_takes)],
-            ["Top Filler", stats.top_fillers?.[0] ? `"${stats.top_fillers[0][0]}" (${stats.top_fillers[0][1]}x)` : "N/A"],
-            ["Top Superlative", stats.top_superlatives?.[0] ? `"${stats.top_superlatives[0][0]}" (${stats.top_superlatives[0][1]}x)` : "N/A"],
-        ];
-
-        rows.forEach(([lbl, val]) => {
-            const row = card.append("div").attr("class","stat-row");
-            row.append("span").attr("class","stat-label").text(lbl);
-            row.append("span").attr("class","stat-value").text(val);
+    if (isPerVideo && videoSpeaker) {
+        // Per-video: compute stats from video's by_speaker data
+        ["Justin", "Tyler"].forEach(name => {
+            const sp = videoSpeaker[name];
+            if (!sp) return;
+            const card = grid.append("div").attr("class", `speaker-card ${name.toLowerCase()}`);
+            card.append("h3").text(name);
+            const totalWords = sp.vocabulary?.total_words || 0;
+            const speakMin = (sp.speaking_time_seconds || 0) / 60;
+            const wpm = speakMin > 0 ? (totalWords / speakMin).toFixed(1) : "N/A";
+            const fillerCount = Object.values(sp.filler_words || {}).reduce((s,f) => s + f.count, 0);
+            const fillerPerMin = speakMin > 0 ? (fillerCount / speakMin).toFixed(2) : "N/A";
+            const supTotal = sp.superlatives?.total || 0;
+            const supPerMin = speakMin > 0 ? (supTotal / speakMin).toFixed(2) : "N/A";
+            const topFiller = Object.entries(sp.filler_words || {}).sort((a,b) => b[1].count - a[1].count)[0];
+            const topSup = sp.superlatives?.words ? Object.entries(sp.superlatives.words).sort((a,b) => b[1].count - a[1].count)[0] : null;
+            const rows = [
+                ["Total Words", fmt(totalWords)],
+                ["Speaking Time", fmtDec(speakMin) + " min"],
+                ["Words/Minute", wpm],
+                ["Unique Words", fmt(sp.vocabulary?.unique_words || 0)],
+                ["Vocabulary (TTR)", sp.vocabulary?.ttr?.toFixed(4) || "N/A"],
+                ["Fillers/Minute", fillerPerMin],
+                ["Superlatives/Min", supPerMin],
+                ["Hot Takes", fmt(sp.hot_takes?.count || 0)],
+                ["Top Filler", topFiller ? `"${topFiller[0]}" (${topFiller[1].count}x)` : "N/A"],
+                ["Top Superlative", topSup ? `"${topSup[0]}" (${topSup[1].count}x)` : "N/A"],
+            ];
+            rows.forEach(([lbl, val]) => {
+                const row = card.append("div").attr("class","stat-row");
+                row.append("span").attr("class","stat-label").text(lbl);
+                row.append("span").attr("class","stat-value").text(val);
+            });
         });
-    });
 
-    // Speaking time bar comparison
-    const jTime = DATA.by_speaker.Justin?.total_speaking_time_min || 0;
-    const tTime = DATA.by_speaker.Tyler?.total_speaking_time_min || 0;
-    const total = jTime + tTime;
-    if (total > 0) {
-        const chart = section.append("div").attr("class","chart-container");
-        chart.append("div").attr("class","chart-title").text("Who Dominates the Mic?");
-        const svg = chart.append("svg").attr("viewBox","0 0 900 60");
-        const jPct = jTime / total;
-        svg.append("rect").attr("x",20).attr("y",10).attr("width",(860)*jPct).attr("height",40)
-            .attr("fill","var(--justin)").attr("rx",4);
-        svg.append("rect").attr("x",20+(860)*jPct).attr("y",10).attr("width",(860)*(1-jPct)).attr("height",40)
-            .attr("fill","var(--tyler)").attr("rx",4);
-        svg.append("text").attr("x",30).attr("y",35).attr("fill","#fff").attr("font-weight","700")
-            .attr("font-size","14px").text(`Justin: ${(jPct*100).toFixed(0)}%`);
-        svg.append("text").attr("x",880).attr("y",35).attr("fill","#fff").attr("font-weight","700")
-            .attr("font-size","14px").attr("text-anchor","end").text(`Tyler: ${((1-jPct)*100).toFixed(0)}%`);
+        // Per-video mic dominance
+        const jSec = videoSpeaker.Justin?.speaking_time_seconds || 0;
+        const tSec = videoSpeaker.Tyler?.speaking_time_seconds || 0;
+        const totalSec = jSec + tSec;
+        if (totalSec > 0) {
+            const chart = section.append("div").attr("class","chart-container");
+            chart.append("div").attr("class","chart-title").text("Who Dominates the Mic?");
+            const svg = chart.append("svg").attr("viewBox","0 0 900 60");
+            const jPct = jSec / totalSec;
+            svg.append("rect").attr("x",20).attr("y",10).attr("width",(860)*jPct).attr("height",40)
+                .attr("fill","var(--justin)").attr("rx",4);
+            svg.append("rect").attr("x",20+(860)*jPct).attr("y",10).attr("width",(860)*(1-jPct)).attr("height",40)
+                .attr("fill","var(--tyler)").attr("rx",4);
+            svg.append("text").attr("x",30).attr("y",35).attr("fill","#fff").attr("font-weight","700")
+                .attr("font-size","14px").text(`Justin: ${(jPct*100).toFixed(0)}%`);
+            svg.append("text").attr("x",880).attr("y",35).attr("fill","#fff").attr("font-weight","700")
+                .attr("font-size","14px").attr("text-anchor","end").text(`Tyler: ${((1-jPct)*100).toFixed(0)}%`);
+        }
+    } else {
+        // Aggregate view (original behavior)
+        ["Justin", "Tyler"].forEach(name => {
+            const stats = speakerData[name];
+            if (!stats) return;
+            const card = grid.append("div").attr("class", `speaker-card ${name.toLowerCase()}`);
+            card.append("h3").text(name);
+
+            const rows = [
+                ["Total Words", fmt(stats.total_words)],
+                ["Speaking Time", fmtDec(stats.total_speaking_time_min) + " min"],
+                ["Words/Minute", fmtDec(stats.words_per_minute)],
+                ["Unique Words", fmt(stats.unique_words)],
+                ["Vocabulary (TTR)", stats.ttr],
+                ["Fillers/Minute", stats.filler_per_minute],
+                ["Superlatives/Min", stats.superlative_per_minute],
+                ["Hot Takes", fmt(stats.hot_takes)],
+                ["Top Filler", stats.top_fillers?.[0] ? `"${stats.top_fillers[0][0]}" (${stats.top_fillers[0][1]}x)` : "N/A"],
+                ["Top Superlative", stats.top_superlatives?.[0] ? `"${stats.top_superlatives[0][0]}" (${stats.top_superlatives[0][1]}x)` : "N/A"],
+            ];
+
+            rows.forEach(([lbl, val]) => {
+                const row = card.append("div").attr("class","stat-row");
+                row.append("span").attr("class","stat-label").text(lbl);
+                row.append("span").attr("class","stat-value").text(val);
+            });
+        });
+
+        // Speaking time bar comparison
+        const jTime = speakerData.Justin?.total_speaking_time_min || 0;
+        const tTime = speakerData.Tyler?.total_speaking_time_min || 0;
+        const total = jTime + tTime;
+        if (total > 0) {
+            const chart = section.append("div").attr("class","chart-container");
+            chart.append("div").attr("class","chart-title").text("Who Dominates the Mic?");
+            const svg = chart.append("svg").attr("viewBox","0 0 900 60");
+            const jPct = jTime / total;
+            svg.append("rect").attr("x",20).attr("y",10).attr("width",(860)*jPct).attr("height",40)
+                .attr("fill","var(--justin)").attr("rx",4);
+            svg.append("rect").attr("x",20+(860)*jPct).attr("y",10).attr("width",(860)*(1-jPct)).attr("height",40)
+                .attr("fill","var(--tyler)").attr("rx",4);
+            svg.append("text").attr("x",30).attr("y",35).attr("fill","#fff").attr("font-weight","700")
+                .attr("font-size","14px").text(`Justin: ${(jPct*100).toFixed(0)}%`);
+            svg.append("text").attr("x",880).attr("y",35).attr("fill","#fff").attr("font-weight","700")
+                .attr("font-size","14px").attr("text-anchor","end").text(`Tyler: ${((1-jPct)*100).toFixed(0)}%`);
+        }
     }
 }
 
@@ -1290,6 +1452,18 @@ function renderVocabularyEvolution(container, speaker) {
         .on("mouseover",(event,d)=>showTooltip(event,`<div class="tt-title">${d.year}</div>WPM: ${d.words_per_minute}<br>TTR: ${d.ttr}`))
         .on("mouseout",hideTooltip);
 
+    // Highlight selected video's year
+    if (currentVideo !== "all") {
+        const selYear = DATA.videos[currentVideo]?.year;
+        const match = years.find(d => d.year == selYear);
+        if (match) {
+            svg.append("circle").attr("cx",x(match.year)).attr("cy",y(match.ttr)).attr("r",10)
+                .attr("fill","none").attr("stroke","var(--accent3)").attr("stroke-width",3);
+            svg.append("circle").attr("cx",x(match.year)).attr("cy",y2(match.words_per_minute)).attr("r",10)
+                .attr("fill","none").attr("stroke","var(--accent3)").attr("stroke-width",3);
+        }
+    }
+
     svg.append("g").attr("transform",`translate(0,${height})`).call(d3.axisBottom(x).ticks(years.length).tickFormat(d3.format("d")));
     svg.append("g").call(d3.axisLeft(y).ticks(5)).append("text").attr("fill","#c0392b").attr("y",-10).attr("font-size","11px").text("TTR");
     svg.append("g").attr("transform",`translate(${width},0)`).call(d3.axisRight(y2).ticks(5))
@@ -1302,8 +1476,18 @@ function renderVocabularyEvolution(container, speaker) {
     legend.append("text").attr("x",25).attr("y",24).attr("font-size","12px").text("Words Per Minute");
 }
 
-function renderEnergyTimeline(container, video) {
-    if (!video.energy_timeline?.length) return;
+function renderEnergyTimeline(container, videos) {
+    if (currentVideo === "all") {
+        const section = container.append("div").attr("class","section");
+        const header = section.append("div").attr("class","section-header");
+        header.append("div").attr("class","section-kicker").text("Energy Map");
+        header.append("h2").text("When Do They Peak?");
+        section.append("div").attr("class","energy-placeholder")
+            .text("Select a video to see its energy timeline");
+        return;
+    }
+    const video = videos[0];
+    if (!video || !video.energy_timeline?.length) return;
 
     const section = container.append("div").attr("class","section");
     const header = section.append("div").attr("class","section-header");
@@ -1404,7 +1588,7 @@ function renderHotTakes(container, videos, speaker) {
 }
 
 function renderRecords(container) {
-    if (currentVideo !== "all" || !DATA.all_time_records) return;
+    if (!DATA.all_time_records) return;
     const records = DATA.all_time_records;
     const section = container.append("div").attr("class","section");
     const header = section.append("div").attr("class","section-header");
@@ -1425,8 +1609,9 @@ function renderRecords(container) {
     };
     Object.entries(defs).forEach(([key,cfg]) => {
         const r = records[key]; if (!r) return;
-        const card = grid.append("div").attr("class","record-card");
-        card.append("div").attr("class","record-label").text(cfg.label);
+        const isHighlighted = currentVideo !== "all" && r.video_id === currentVideo;
+        const card = grid.append("div").attr("class","record-card" + (isHighlighted ? " record-highlight" : ""));
+        card.append("div").attr("class","record-label").text(cfg.label + (isHighlighted ? " \u2605" : ""));
         card.append("div").attr("class","record-value").text(r.title.length>50?r.title.slice(0,47)+"...":r.title);
         card.append("div").attr("class","record-detail").text(cfg.detail(r));
     });
@@ -1474,6 +1659,18 @@ function renderFillerEvolution(container, speaker) {
         .attr("cx",d=>x(d.year)).attr("cy",d=>yS(d.superlative_per_minute)).attr("r",4).attr("fill","#e67e22")
         .on("mouseover",(event,d)=>showTooltip(event,`<div class="tt-title">${d.year}</div>Superlatives/min: ${d.superlative_per_minute}`))
         .on("mouseout",hideTooltip);
+
+    // Highlight selected video's year
+    if (currentVideo !== "all") {
+        const selYear = DATA.videos[currentVideo]?.year;
+        const match = years.find(d => d.year == selYear);
+        if (match) {
+            svg.append("circle").attr("cx",x(match.year)).attr("cy",yF(match.filler_per_minute)).attr("r",9)
+                .attr("fill","none").attr("stroke","var(--accent3)").attr("stroke-width",3);
+            svg.append("circle").attr("cx",x(match.year)).attr("cy",yS(match.superlative_per_minute)).attr("r",9)
+                .attr("fill","none").attr("stroke","var(--accent3)").attr("stroke-width",3);
+        }
+    }
 
     svg.append("g").attr("transform",`translate(0,${height})`).call(d3.axisBottom(x).ticks(years.length).tickFormat(d3.format("d")));
     svg.append("g").call(d3.axisLeft(yF).ticks(5)).append("text").attr("fill","#c0392b").attr("y",-10).text("Fillers/min");
@@ -1741,7 +1938,7 @@ function renderRants(container) {
 }
 
 function renderTfidf(container) {
-    if (currentVideo !== "all" || !DATA.tfidf) return;
+    if (!DATA.tfidf) return;
     const tfidf = DATA.tfidf;
     const sigs = tfidf.year_signatures || {};
     const trends = tfidf.word_trends || {};
@@ -1764,11 +1961,13 @@ function renderTfidf(container) {
     // Year signatures
     const sigBox = section.append("div").style("margin","24px 0");
     const yearFilter = currentYear !== "all" ? [currentYear] : null;
+    const selectedVideoYear = currentVideo !== "all" ? DATA.videos[currentVideo]?.year : null;
     Object.entries(sigs).sort((a,b)=>a[0]-b[0]).forEach(([year, words]) => {
         if (yearFilter && !yearFilter.includes(year)) return;
         if (!words.length) return;
         const maxScore = words[0].score;
-        const row = sigBox.append("div").attr("class","tfidf-year-row");
+        const isYearHighlighted = selectedVideoYear && String(selectedVideoYear) === String(year);
+        const row = sigBox.append("div").attr("class","tfidf-year-row" + (isYearHighlighted ? " tfidf-highlight" : ""));
         row.append("div").attr("class","tfidf-year").text(year);
         const wordsDiv = row.append("div").attr("class","tfidf-words");
         words.forEach(w => {
@@ -1826,7 +2025,7 @@ function renderTfidf(container) {
 }
 
 function renderMarkovQuotes(container) {
-    if (currentVideo !== "all" || !DATA.markov_quotes || !DATA.markov_quotes.length) return;
+    if (!DATA.markov_quotes || !DATA.markov_quotes.length) return;
 
     const section = container.append("div").attr("class","section");
     const header = section.append("div").attr("class","section-header");
@@ -2048,31 +2247,41 @@ function renderCastle(container, videos) {
 }
 
 function renderHeadToHead(container) {
-    const h2h = DATA.head_to_head;
+    const isPerVideo = currentVideo !== "all";
+    const videoH2H = isPerVideo ? (DATA.videos[currentVideo]?.head_to_head || null) : null;
+    const h2h = videoH2H || DATA.head_to_head;
     if (!h2h) return;
 
     const section = container.append("div").attr("class","section");
     const header = section.append("div").attr("class","section-header");
     header.append("div").attr("class","kicker").text("FRIEND VS FRIEND");
     header.append("h2").text("Head to Head");
-    header.append("div").attr("class","sub").text("14 ways to settle the eternal sibling rivalry");
-    section.append("div").attr("class","h2h-speaker-note")
-        .text(`Speaker data available for ${h2h.videos_with_speaker_data} video${h2h.videos_with_speaker_data !== 1 ? 's' : ''}`);
 
-    renderH2HTradingCards(section, h2h);
+    if (isPerVideo && videoH2H) {
+        header.append("div").attr("class","sub").text("Per-video speaker matchup");
+    } else if (isPerVideo && !videoH2H) {
+        header.append("div").attr("class","sub").text("No per-video speaker data — showing aggregate");
+    } else {
+        header.append("div").attr("class","sub").text("14 ways to settle the eternal sibling rivalry");
+        section.append("div").attr("class","h2h-speaker-note")
+            .text(`Speaker data available for ${h2h.videos_with_speaker_data} video${h2h.videos_with_speaker_data !== 1 ? 's' : ''}`);
+    }
+
+    // Per-video: skip aggregate-only sub-sections
+    if (!(isPerVideo && videoH2H)) renderH2HTradingCards(section, h2h);
     renderH2HInterruptions(section, h2h);
     renderH2HFilibuster(section, h2h);
-    renderH2HHarsherCritic(section, h2h);
-    renderH2HTasteDivergence(section, h2h);
+    if (!(isPerVideo && videoH2H)) renderH2HHarsherCritic(section, h2h);
+    if (!(isPerVideo && videoH2H)) renderH2HTasteDivergence(section, h2h);
     renderH2HBrokenRecord(section, h2h);
     renderH2HSpeedDebater(section, h2h);
     renderH2HHipsterIndex(section, h2h);
     renderH2HSuperlativeStyle(section, h2h);
     renderH2HYesMan(section, h2h);
-    renderH2HRantStarters(section, h2h);
+    if (!(isPerVideo && videoH2H)) renderH2HRantStarters(section, h2h);
     renderH2HConversationMomentum(section, h2h);
     renderH2HLastWord(section, h2h);
-    renderH2HMergedProfile(section, h2h);
+    if (!(isPerVideo && videoH2H)) renderH2HMergedProfile(section, h2h);
 }
 
 function h2hSub(parent, title, subtitle) {
