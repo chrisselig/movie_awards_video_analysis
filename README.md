@@ -8,7 +8,7 @@ A forensic linguistic analysis of 124 episodes of [Justin & Tyler's Movie Awards
 
 I wanted a project that touched the full stack of a real data pipeline — ingestion, a resumable/incremental ETL step, an ML-adjacent analysis layer, and a presentation layer — against messy, real-world data (YouTube auto-captions, two people talking over each other, years of inconsistent video formats) instead of a clean Kaggle CSV.
 
-This was also my first project after completing Vanderbilt University's *Claude Code: Software Engineering with Generative AI Agents* course on Coursera. It became the foundation I carried into my corporate work at Cenovus, where I built an internal co-pilot skills/agents/instructions/prompts repo that let me move faster and more consistently across Databricks, Posit Connect, Python, R, data governance, and HR data security work.
+This was also my first project after completing Vanderbilt University's [*Claude Code: Software Engineering with Generative AI Agents*](https://www.coursera.org/learn/claude-code) course on Coursera. It became the foundation I carried into my corporate work at Cenovus, where I built an internal co-pilot skills/agents/instructions/prompts repo that let me move faster and more consistently across Databricks, Posit Connect, Python, R, data governance, and HR data security work.
 
 ## Pipeline
 
